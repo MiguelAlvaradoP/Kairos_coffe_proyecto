@@ -1,15 +1,16 @@
 body{
-    background-image: url(https://img.freepik.com/vector-premium/patron-costuras-granos-cafe_109161-2305.jpg);
+    /*background-image: url(https://img.freepik.com/vector-premium/patron-costuras-granos-cafe_109161-2305.jpg);
     background-attachment: scroll; /* El fondo se mueve con el contenido */
     background-repeat: repeat;      /* Se repite para cubrir */
     background-size: auto;    
     margin: 0;
-      font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #F5F5DC;
 }
 /* Barra de navegación */
 .navbar {
   text-align: center;
-  background: #3e2723;
+  background: #556B2F;
   padding: 10px;
   /* --- CAMBIOS PARA QUE SE QUEDE FIJO --- */
   position: sticky;
@@ -54,11 +55,12 @@ body{
   color: white;
   max-width: 40%;
 
-  background-color: rgba(121, 85, 72, 0.7); /* Café claro con 70% de opacidad */
+  background-color: rgba(46, 31, 24, 0.8); /* Café moka oscuro con 80% opacidad */
   padding: 25px; /* Espacio dentro del recuadro */
   border-radius: 15px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sutil sombra para dar profundidad */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
+
 .carousel-text h2 {
   font-size: 2.5rem;
   margin: 0 0 15px;
@@ -128,40 +130,55 @@ body{
 
 /* ===== Estilos para la sección de Categorías ===== */
 .categorias-section {
-    width: 90%; /* Ancho de la sección */
-    margin: 50px auto; /* Centra la sección y le da espacio vertical */
-    padding: 20px;
-    background-color: rgba(121, 85, 72, 0.7); /* Fondo café claro con transparencia */
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: white; /* Texto blanco para contrastar con el fondo */
+    width: 90%;
+    margin: 50px auto;
+    padding: 40px 20px;
+    background-color: #556B2F; /* Verde musgo */
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-.categorias-section table {
-    width: 100%;
-    border-collapse: collapse; /* Elimina el espacio entre celdas */
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
 }
 
-.categorias-section td {
-    padding: 15px; /* Espacio dentro de cada celda */
-}
-
-.categorias-section img {
-    max-width: 150px; /* Tamaño máximo para las imágenes */
-    height: auto;
-    transition: transform 0.3s ease; /* Transición para el efecto hover */
-}
-
-.categorias-section img:hover {
-    transform: scale(1.1); /* Agranda la imagen al pasar el mouse */
-}
-
-.categorias-section h3 {
-    font-size: 1.1rem;
-    margin-top: 10px; /* Espacio entre la imagen y el texto */
+.categorias-grid a {
+    background-color: #2E1F18; /* Café tostado medio */
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
     color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.categorias-grid a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.categorias-grid img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.categorias-grid a:hover img {
+    transform: scale(1.15);
+}
+
+.categorias-grid h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 
 /* ===== Estilos para el Banner GIF ===== */
 .banner-gif {
@@ -205,7 +222,7 @@ body{
 
 /* ===== FOOTER ===== */
 .main-footer {
-    background-color: #2b1c18; /* Café oscuro de fondo */
+    background-color: #2E1F18; /* Café oscuro de fondo */
     color: #f0f0f0; /* Color de texto claro para contrastar */
     padding: 40px 0 20px 0; /* Espaciado interno */
     font-family: Arial, sans-serif;

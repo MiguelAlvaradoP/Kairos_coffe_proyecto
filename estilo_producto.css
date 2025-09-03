@@ -1,129 +1,144 @@
-body{
-    background-image: url(https://img.freepik.com/vector-premium/patron-costuras-granos-cafe_109161-2305.jpg);
-    background-attachment: scroll; /* El fondo se mueve con el contenido */
-    background-repeat: repeat;      /* Se repite para cubrir */
-    background-size: auto;    
+body {
+    background-attachment: scroll;
+    background-repeat: repeat;
+    background-size: auto;
     margin: 0;
-      font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #F5F5DC;
+
 }
-/* Barra de navegación */
+
+/* NAVBAR */
 .navbar {
   text-align: center;
-  background: #3e2723;
-  padding: 10px;
-  /* --- CAMBIOS PARA QUE SE QUEDE FIJO --- */
+  background: #2E1F18;
+  padding: 12px;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
-  /* --- FIN CAMBIOS --- */
+  z-index: 1000;
 }
+
 .navbar a {
-  color: white;
-  margin: 0 15px;
+  color: #F5F5DC;
+  margin: 0 18px;
   text-decoration: none;
   font-weight: bold;
-}
-/* Solo aplica a la sección Daroma */
-#productos-daroma {
-    background-color: rgba(139, 69, 19, 0.2); /* café claro transparente */
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px auto;
-    max-width: 1200px;
+  transition: color 0.3s ease;
 }
 
-#productos-daroma h3 {
+.navbar a:hover {
+  color: #DCCCA3;
+}
+
+/* SECCIONES */
+.productos-daroma {
+    background-color: rgba(46, 31, 24, 0.9);
+    color: #F5F5DC;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 1300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.productos-daroma h3 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    color: #DCCCA3;
+    border-bottom: 2px solid #556B2F;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-/* Contenedor del carrusel */
+/* CARRUSEL */
 .carrusel-container {
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 25px;
+    background-color: #2E1F18;
 }
 
-/* Carrusel horizontal */
 .carrusel {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    gap: 15px;
-    padding: 10px 0;
+    gap: 20px;
+    padding: 15px 0;
 }
 
-/* Ocultar scrollbar en Chrome, Safari y Opera */
 .carrusel::-webkit-scrollbar {
     display: none;
 }
 
-/* Cada producto */
+/* PRODUCTOS */
 .producto {
-    flex: 0 0 250px; /* ancho fijo de cada producto */
-    background-color: #4B2E2E; /* café oscuro */
-    border-radius: 15px;
-    padding: 15px;
+    flex: 0 0 250px;
+    background-color: #556B2F;
+    border-radius: 18px;
+    padding: 18px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #F5F5DC;
 }
 
 .producto img {
     width: 150px;
     height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
 }
 
 .producto h2 {
     font-size: 1.2em;
-    margin: 5px 0;
+    margin: 6px 0;
+    color: #F5F5DC;
 }
 
 .producto p {
     margin: 5px 0;
+    color: #DCCCA3;
 }
+
+.producto h2:last-of-type {
+    color: #FFD580; /* precio en beige dorado */
+    font-weight: bold;
+}
+
 .producto:hover {
-    transform: translateY(-5px); /* Sube un poco la tarjeta */
-    transition: transform 0.3s ease;
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(220, 204, 163, 0.3);
 }
 
+.producto img:hover {
+    transform: scale(1.15);
+}
 
-/* Botones laterales */
+/* BOTONES CARRUSEL */
 .carrusel-btn {
-    background-color: rgba(75, 46, 46, 0.8);
+    background-color: rgba(46, 31, 24, 0.8);
     border: none;
-    color: white;
+    color: #F5F5DC;
     font-size: 2em;
-    padding: 5px 15px;
+    padding: 12px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 50%;
     z-index: 10;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: background 0.3s ease;
 }
 
-.carrusel-btn.prev {
-    left: 0;
-}
-
-.carrusel-btn.next {
-    right: 0;
-}
+.carrusel-btn.prev { left: 5px; }
+.carrusel-btn.next { right: 5px; }
 
 .carrusel-btn:hover {
-    background-color: rgba(75, 46, 46, 1);
+    background-color: #DCCCA3;
+    color: #2E1F18;
 }
-.producto img {
-    width: 150px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease; /* Transición suave */
-}
-
-.producto img:hover {
-    transform: scale(1.2); /* Agranda un 20% al pasar el mouse */
+h1,h3{
+    text-align: center;
 }
