@@ -10,12 +10,16 @@ body {
 
 /* NAVBAR */
 .navbar {
-  text-align: center;
-  background: #2E1F18;
-  padding: 12px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    background: #556B2F;
+    position: relative;
+    padding: 10px 20px;
+    top: 0;
+    z-index: 1000;
+    position: sticky;
 }
 
 .navbar a {
@@ -29,6 +33,120 @@ body {
 .navbar a:hover {
   color: #DCCCA3;
 }
+.carrito-container {
+    margin-left: auto; /* Lo empuja a la derecha */
+    position: relative;
+    cursor: pointer;
+}
+
+/* Icono carrito */
+.icono-carrito {
+    width: 30px;
+    height: 30px;
+}
+
+/* Contador (circulito rojo) */
+#contador-carrito {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+/* Panel lateral */
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: -400px; /* oculto por defecto */
+    width: 350px;
+    height: 100%;
+    background: #F5F5DC;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Panel abierto */
+.carrito-panel.active {
+    right: 0;
+}
+
+/* Botón cerrar */
+#cerrar-carrito {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+}
+
+/* Lista con scroll */
+#lista-carrito {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 40px;
+    max-height: calc(100vh - 80px); /* ajusta según altura del header */
+}
+
+#lista-carrito div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+#lista-carrito img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+/* Botón cerrar */
+#cerrar-carrito {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+}
+.eliminar-item {
+    background: transparent;
+    border: none;
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.item-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.item-carrito img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
 
 /* SECCIONES */
 .productos-daroma {
@@ -74,20 +192,28 @@ body {
 
 /* PRODUCTOS */
 .producto {
-    flex: 0 0 250px;
+    flex: 0 0 25%;
     background-color: #556B2F;
-    border-radius: 18px;
-    padding: 18px;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: #DCCCA3;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     color: #F5F5DC;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .producto img {
-    width: 150px;
-    height: auto;
+    width: auto;           /* Mantiene proporción */
+    height: 180px;         /* 🔑 Todas tendrán la misma altura */
+    object-fit: contain;   /* Ajusta dentro del espacio sin recortar */
+    margin: 0 auto 10px;   /* Centra la imagen */
+    display: block;
     border-radius: 12px;
-    margin-bottom: 12px;
     transition: transform 0.3s ease;
 }
 
@@ -141,4 +267,19 @@ body {
 }
 h1,h3{
     text-align: center;
+}
+.btn-carrito {
+    margin-top: auto;
+    padding: 10px 15px;
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-carrito:hover {
+    background: #5d4037;
 }
