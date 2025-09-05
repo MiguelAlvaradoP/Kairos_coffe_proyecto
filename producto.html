@@ -24,6 +24,9 @@
         <span id="total-carrito">Total: $0</span>
         <button id="cerrar-carrito">×</button>
     </div>
+        <div class="carrito-footer">
+    <button id="btn-pagar">Pagar</button>
+    </div>
     <div id="lista-carrito"></div>
     </div>
     <h1>CAFÉ SELECCIÓN</h1>
@@ -713,9 +716,75 @@
             mostrarCarrito(); // refrescar la lista
         });
     });
+    // Botón pagar
+    const btnPagar = document.getElementById('btn-pagar');
+
+    btnPagar.addEventListener('click', () => {
+    // Guardar carrito en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    // Redirigir a la página de pago
+    window.location.href = 'checkout.html';
+});
+
 }
 
     </script>
 
 </body>
+<footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="https://ia-coffee.com/images/logo-cairos-claro.png" alt="Kairós Coffee Logo" class="footer-logo">
+                <div class="payment-methods">
+                    <p>Métodos de Pago:</p>
+                    <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="payment-icon">
+                    <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="payment-icon">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="payment-icon">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="payment-icon">
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Kairós Coffee</h4>
+                <ul>
+                    <li><a href="#">Nuestra Historia</a></li>
+                    <li><a href="producto.html">Productos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Kairós Coffee Chile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section info">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Despachos y Retiros</a></li>
+                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h4>Newsletter</h4>
+                <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Correo electrónico">
+                    <button type="submit">→</button>
+                </div>
+            </div>
+
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
+                <div class="social-links">
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </html>

@@ -1,0 +1,97 @@
+/* Estilos generales para centrar el contenido */
+body {
+    background-color: #F5F5DC; /* Un color de fondo suave y claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que ocupe al menos la altura de la ventana */
+    box-sizing: border-box;
+}
+
+/* Contenedor principal para la página de confirmación */
+.confirmacion-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilos para el panel de confirmación */
+.confirmacion-panel {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.confirmacion-header h2 {
+    color: #3e2723;
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+
+.confirmacion-body p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.confirmacion-footer {
+    margin-top: 20px;
+}
+
+.btn-volver {
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #5d4037;
+}
+
+/* Estilos para el Banner GIF */
+.banner-gif {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.banner-gif img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para el Texto sobre el GIF */
+.banner-gif-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #3e2723;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 60%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner-gif-text p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}

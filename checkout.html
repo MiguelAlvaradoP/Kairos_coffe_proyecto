@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagar - Carrito</title>
+<link rel="stylesheet" href="estilo_checkout.css">
+</head>
+<body>
+
+        <div class="checkout-container">
+            <!-- Panel carrito -->
+            <div id="checkout-panel" class="checkout-panel">
+                <div class="checkout-header">
+                    <h2>Resumen de compra</h2>
+                    <span id="total-checkout">Total: $0</span>
+                </div>
+
+                <div id="lista-checkout"></div>
+
+                <div class="checkout-footer">
+                    <button class="btn-volver" onclick="window.location.href='producto.html'">Volver</button>
+                    <button class="btn-confirmar" id="btn-confirmar">Confirmar compra</button>
+                </div>
+            </div>
+
+            <!-- Panel métodos de pago -->
+            <div class="payment-panel">
+                <h3>Seleccionar método de pago</h3>
+                <label class="payment-option">
+                    <input type="radio" name="pago" value="tarjeta" checked>
+                    💳 Tarjeta de crédito / débito
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="pago" value="transferencia">
+                    🏦 Transferencia bancaria
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="pago" value="paypal">
+                    🌐 PayPal
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="pago" value="efectivo">
+                    💵 Pago en efectivo (contra entrega)
+                </label>
+            </div>
+        </div>
+        <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="https://ia-coffee.com/images/logo-cairos-claro.png" alt="Kairós Coffee Logo" class="footer-logo">
+                <div class="payment-methods">
+                    <p>Métodos de Pago:</p>
+                    <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="payment-icon">
+                    <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="payment-icon">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="payment-icon">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="payment-icon">
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Kairós Coffee</h4>
+                <ul>
+                    <li><a href="#">Nuestra Historia</a></li>
+                    <li><a href="producto.html">Productos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Kairós Coffee Chile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section info">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Despachos y Retiros</a></li>
+                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h4>Newsletter</h4>
+                <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Correo electrónico">
+                    <button type="submit">→</button>
+                </div>
+            </div>
+
+            <div class="footer-section contact">
+                <h4>Contáctanos</h4>
+                <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
+                <div class="social-links">
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+        <script>
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const lista = document.getElementById('lista-checkout');
+        const totalElemento = document.getElementById('total-checkout');
+        const btnConfirmar = document.getElementById('btn-confirmar');
+
+        function renderCheckout() {
+            lista.innerHTML = "";
+            let total = 0;
+
+            carrito.forEach((item, index) => {
+                total += item.precio;
+
+                const div = document.createElement('div');
+                div.classList.add('producto');
+                div.innerHTML = `
+                    <img src="${item.imagen}" alt="${item.nombre}">
+                    <div class="info">
+                        <span>${item.nombre}</span><br>
+                        <span>$${item.precio.toLocaleString()}</span>
+                    </div>
+                    <button class="eliminar" data-index="${index}">×</button>
+                `;
+                lista.appendChild(div);
+            });
+
+            totalElemento.textContent = "Total: $" + total.toLocaleString();
+
+            // Guardar carrito actualizado
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // Eventos de eliminar
+            document.querySelectorAll('.eliminar').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const i = btn.getAttribute('data-index');
+                    carrito.splice(i, 1);
+                    renderCheckout();
+                });
+            });
+        }
+
+        // Confirmar compra → vacía el carrito y redirige
+        btnConfirmar.addEventListener('click', () => {
+            localStorage.removeItem('carrito');
+            window.location.href = "confirmacion.html";
+        });
+
+        renderCheckout();
+        </script>
+        </body>
+</html>

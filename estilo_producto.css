@@ -283,3 +283,159 @@ h1,h3{
 .btn-carrito:hover {
     background: #5d4037;
 }
+.main-footer {
+    background-color: #2E1F18; /* Café oscuro de fondo */
+    color: #f0f0f0; /* Color de texto claro para contrastar */
+    padding: 40px 0 20px 0; /* Espaciado interno */
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-around; /* Distribuye el espacio entre las columnas */
+    max-width: 1200px; /* Ancho máximo del contenido del footer */
+    margin: 0 auto; /* Centra el contenido del footer */
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1; /* Permite que las secciones crezcan y se encojan */
+    min-width: 200px; /* Ancho mínimo para cada columna */
+    margin: 20px 15px; /* Margen entre secciones */
+}
+
+.footer-section.about {
+    flex: 1.2; /* El logo y métodos de pago pueden ocupar un poco más de espacio */
+    min-width: 250px;
+}
+
+.footer-logo {
+    max-width: 180px; /* Tamaño del logo */
+    margin-bottom: 20px;
+}
+
+.payment-methods p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.payment-icon {
+    height: 30px; /* Altura de los iconos de pago */
+    margin-right: 8px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.payment-icon:hover {
+    opacity: 1;
+}
+
+.footer-section h4 {
+    color: #fff; /* Títulos en blanco */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea debajo de los títulos */
+    padding-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #f0f0f0; /* Color de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #a07a67; /* Un tono café más claro para el hover */
+}
+
+/* Newsletter */
+.footer-section.newsletter p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px 0 0 5px; /* Bordes redondeados solo a la izquierda */
+    background-color: #4a3833; /* Fondo más claro para el input */
+    color: #f0f0f0;
+    outline: none;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #b0b0b0;
+}
+
+.newsletter-form button {
+    background-color: #a07a67; /* Color del botón de envío */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0; /* Bordes redondeados solo a la derecha */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #c09a87;
+}
+
+/* Contacto */
+.footer-section.contact p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.footer-section.contact p a {
+    color: #a07a67;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-section.contact p a:hover {
+    color: #c09a87;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a img {
+    height: 30px; /* Tamaño de los iconos de redes sociales */
+    margin-right: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.social-links a img:hover {
+    opacity: 1;
+}
+
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+    font-size: 0.85rem;
+    color: #b0b0b0;
+}
+
