@@ -326,15 +326,25 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const username = document.getElementById('username').value;
+            // Define las variables de los inputs aquí, al inicio
+            const usernameInput = document.getElementById('username');
+            // Asumimos que también hay un input para la contraseña, como en tu código anterior
+            const passwordInput = document.getElementById('password'); 
+
+            const username = usernameInput.value;
             const loginAlert = document.getElementById('loginAlert');
 
-            if (username.trim() !== '') { // Verifica que el campo no esté vacío
+            if (username.trim() !== '') { // Verifica que el campo de usuario no esté vacío
                 loginAlert.classList.remove('d-none', 'alert-danger');
                 loginAlert.classList.add('alert-success');
                 loginAlert.textContent = '¡Inicio de sesión exitoso! Bienvenido de vuelta.';
                 
-                // Oculta el modal después de 2 segundos
+                // ¡Esta es la corrección!
+                // Limpiamos los campos inmediatamente al iniciar sesión con éxito.
+                usernameInput.value = '';
+                passwordInput.value = '';
+
+                // Oculta el modal y el mensaje de éxito después de 2 segundos.
                 setTimeout(() => {
                     const myModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                     myModal.hide();
