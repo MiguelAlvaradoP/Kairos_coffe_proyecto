@@ -98,3 +98,15 @@ form textarea:focus {
         padding: 15px;
     }
 }
+
+/* Estilos para los mensajes de error de validación */
+.error-message {
+    color: #dc3545; /* Color rojo de Bootstrap */
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+/* Opcional: Estilo para resaltar los campos con error */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
