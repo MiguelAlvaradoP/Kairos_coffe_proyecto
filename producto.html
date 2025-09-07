@@ -1,690 +1,721 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo_producto.css">
     <title>Productos Kairós</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .bg-custom-dark {
+            background-color: #2E1F18;
+            color: rgb(241, 243, 155);
+        }
+        .text-custom-green {
+            color: #556B2F;
+        }
+        .btn-custom {
+            background-color: #556B2F;
+            color: rgb(221, 193, 193);
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #dcdab9;
+            color: rgb(24, 70, 29);
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar">
-        <a href="index.html">INICIO</a>
-        <a href="#">CAFÉ</a>
-        <a href="#">CÁPSULAS</a>
-        <a href="#">TÉ</a>
-        <a href="#">YERBA MATE</a>
-        <a href="#">ACCESORIOS</a>
-        <a href="#">OFERTAS</a>
-        <a href="contacto.html">CONTACTO</a>
-        <div class="carrito-container">
-            <span id="contador-carrito">0</span>
-            <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Carrito" class="icono-carrito">
+<body class="bg-light">
+
+    <div class="navbar navbar-expand-lg navbar-dark sticky-top bg-custom-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Kairós Coffee</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CAFÉ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CÁPSULAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TÉ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">YERBA MATE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ACCESORIOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">OFERTAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
+                </ul>
+                <div class="carrito-container d-flex align-items-center ms-lg-3">
+                    <span id="contador-carrito" class="badge rounded-pill bg-danger me-1">0</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Carrito" style="width: 30px;" class="icono-carrito">
+                </div>
+            </div>
         </div>
     </div>
+
     <div id="carrito-panel" class="carrito-panel">
-    <div class="carrito-header">
-        <span id="total-carrito">Total: $0</span>
-        <button id="cerrar-carrito">×</button>
-    </div>
+        <div class="carrito-header">
+            <span id="total-carrito">Total: $0</span>
+            <button id="cerrar-carrito" class="btn-close btn-close-white"></button>
+        </div>
+        <div id="lista-carrito" class="list-group list-group-flush"></div>
         <div class="carrito-footer">
-    <button id="btn-pagar">Pagar</button>
+            <button id="btn-pagar" class="btn btn-custom w-100 mt-3">Pagar</button>
+        </div>
     </div>
-    <div id="lista-carrito"></div>
-    </div>
-    <h1>CAFÉ SELECCIÓN</h1>
-        <div id="productos-daroma">
-            <h3>Daroma</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/grano-excelso.png" alt="mezcla_excelso-grano">
-                        <h2>MEZCLA EXCELSO</h2>
-                        <p>Café grano 250gr</p>
-                        <p>80% ARÁBICA | 20% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="excelso-grano-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/grano-forte.png" alt="mezcla_forte-grano">
-                        <h2>MEZCLA FORTE</h2>
-                        <p>Café grano 250gr</p>
-                        <p>50% ARÁBICA | 50% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="forte-grano-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/cafe_0000_MOLIDO-EXCELSO-500g-1-1.png" alt="molido-excelso">
-                        <h2>MEZCLA EXCELSO</h2>
-                        <p>Café molido 500gr</p>
-                        <p>80% ARÁBICA | 20% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="excelso-molido-500" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/cafe_0001_MOLIDO-FORTE-500g-1-1.png" alt="molido-forte">
-                        <h2>MEZCLA FORTE</h2>
-                        <p>Café molido 500gr</p>
-                        <p>50% ARÁBICA | 50% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="forte-molido-500" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/molido-excelso-3.png" alt="molido-excelso-250">
-                        <h2>MEZCLA EXCELSO</h2>
-                        <p>Café molido 250</p>
-                        <p>80% ARÁBICA | 20% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="excelso-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/molido-forte-2.png" alt="molido-forte-250">
-                        <h2>MEZCLA FORTE</h2>
-                        <p>Café molido 250gr</p>
-                        <p>50% ARÁBICA | 50% ROBUSTA</p>
-                        <h2>$5.500</h2>
-                        <button id="forte-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-            <h3>MARLEY COFFEE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155589-500-auto?v=638705724453500000&width=500&height=auto&aspect=true" alt="one-love-grano">
-                        <h2>ORGÁNICO GRANO ENTERO ONE LOVE</h2>
-                        <p>Café grano 227gr</p>
-                        <h2>$12.000</h2>
-                        <button id="one-love-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155649-500-auto?v=638719657085200000&width=500&height=auto&aspect=true" alt="catch-a-fire-grano">
-                        <h2>ORGÁNICO GRANO ENTERO CATCH A FIRE</h2>
-                        <p>Café grano 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="catch-a-fire-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155734-500-auto?v=638754028994500000&width=500&height=auto&aspect=true" alt="keep-on-moving">
-                        <h2>ORGÁNICO GRANO ENTERO KEEP ON MOVING</h2>
-                        <p>Café grano 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="keep-moving-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155480-500-auto?v=638705671360170000&width=500&height=auto&aspect=true" alt="simmer-down">
-                        <h2>ORGÁNICO MOLIDO DESCAFEINADO SIMMER DOWN</h2>
-                        <p>Café grano 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="simmer-down-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155904-500-auto?v=638888145891970000&width=500&height=auto&aspect=true" alt="buffalo-soldier">
-                        <h2>ORGÁNICO MOLIDO BUFFALO SOLDIER</h2>
-                        <p>Café grano 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="buffalo-soldier-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155474-500-auto?v=638705669178330000&width=500&height=auto&aspect=true" alt="one-love-molido">
-                        <h2>CAFÉ ÓRGANICO MOLIDO ONE LOVE</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="one-love-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155732-500-auto?v=638754023784200000&width=500&height=auto&aspect=true" alt="keep-on-moving-molido">
-                        <h2>CAFÉ ÓRGANICO MOLIDO KEEP ON MOVING</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="keep-moving-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155678-500-auto?v=638723771637770000&width=500&height=auto&aspect=true" alt="caramel-nut-cream">
-                        <h2>CAFÉ ÓRGANICO MOLIDO SABORIZADO CARAMEL NUT CREAM</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="nut-cream-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155676-500-auto?v=638723771184770000&width=500&height=auto&aspect=true" alt="french-vainilla">
-                        <h2>CAFÉ ÓRGANICO MOLIDO SABORIZADO FRENCH VANILLA</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="french-vainilla-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-            <h3>ILLY COFFEE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw790312d6/products/sfra/coffee/Medium2x/7577ME_Medium_2x_01.png?q=75" alt="grano-tueste">
-                        <h2>CAFÉ GRANO DE TUESTE</h2>
-                        <p>Café grano 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="tueste-grano-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw17afe6be/products/sfra/coffee/Medium2x/A116ME_Medium_2x_01.png?q=75" alt="mezcla_excelso-grano">
-                        <h2>CAFÉ GRANO ARABICA SELECCTION BRASIL</h2>
-                        <p>Café grano 250gr</p>
-                        <h2>$11.500</h2>
-                        <button id="arabica-brasil-250-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwdbad6504/products/sfra/coffee/Medium2x/I0003885_Medium_2x_01.png?q=75" alt="arabica-brasil">
-                        <h2>CAFÉ GRANO TUESTE CLASSICO</h2>
-                        <p>Café grano 500gr</p>
-                        <h2>$16.000</h2>
-                        <button id="tueste-clasico-grano-500" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwb2a9a2d2/products/sfra/coffee/Medium2x/7141ME_Medium_2x_01.png?q=75" alt="arabica-colombia">
-                        <h2>CAFÉ GRANO ARABICA SELECTION COLOMBIA</h2>
-                        <p>Café grano 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="arabica-brasil-grano-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwfd8f8b4a/products/sfra/coffee/Medium2x/7985ST_Medium_2x_01.png?q=75" alt="espresso-descafeinado">
-                        <h2>CAFÉ ESPRESSO MOLIDO DESCAFEINADO</h2>
-                        <p>Café grano 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="espresso-descafeinado-grano-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw6f0f76c5/products/sfra/coffee/Medium2x/A136ME_Medium_2x_01.png?q=75" alt="arabica-brasil-mineiro">
-                        <h2>CAFÉ MOLIDO ARABICA SELECTION BRASIL MINEIRO</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="arabica-brasil-mineiro-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw61cde813/products/sfra/coffee/Medium2x/9975ST_Medium_2x_01.png?q=75" alt="tueste-moka">
-                        <h2>CAFÉ MOLIDO DE TUESTE INTENSO PARA CAFETERA MOKA</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$11.500</h2>
-                        <button id="tueste-intenso-moka-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw7e7ebc75/products/sfra/coffee/Medium2x/8870ST_Medium_2x_01.png?q=75" alt="espresso-intenso">
-                        <h2>CAFÉ ESPRESSO MOLIDO INTENSO</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$5.000</h2>
-                        <button id="espresso-molido-intenso-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw66212d75/products/sfra/coffee/Medium2x/9973ME_Medium_2x_01.png?q=75" alt="espresso-forte-latas">
-                        <h2>CAFÉ ESPRESSO MOLIDO FORTE LATAS</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="espresso-forte-latas-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-            <h3>LAVAZZA</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/rossa/3518-d-m-rossa-beans.png" alt="QUIALITÁ-ROSSA">
-                        <h2>CAFÉ GRANO QUIALITÁ ROSSA</h2>
-                        <p>Café grano 1KG</p>
-                        <h2>$20.000</h2>
-                        <button id="qualita-rosa-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/crema_e_aroma/2540-d-m-crema_e_aroma-beans.png" alt="crema-e-aroma">
-                        <h2>CAFÉ GRANO CREMA E AROMA</h2>
-                        <p>Café grano 1KG</p>
-                        <h2>$20.900</h2>
-                        <button id="crema-e-roma-grano" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/de/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/decaffeinato/1107-d-m-decaffeinato-tin.png" alt="decaffeinato">
-                        <h2>CAFÉ DECAFFEINATO</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$10.500</h2>
-                        <button id="decaffeinato-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/espresso/1868-d-m-espresso_classico-ground.png" alt="espresso-italiano">
-                        <h2>CAFÉ MOLIDO ESPRESSO ITALIANO CLASSICO</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$10.000</h2>
-                        <button id="espresso-italiano-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/it/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/crema-e-gusto/3801-d-m-crema_e_gusto_classico-ground-250.png" alt="crema-e-gosto-italiano">
-                        <h2>CAFÉ MOLIDO CREMA E GUSTO CLASSICO</h2>
-                        <p>Café molido 250</p>
-                        <h2>$16.900</h2>
-                        <button id="crema-e-gusto-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/oro/1209-d-m-oro_tin-ground-.png" alt="qualita-oro">
-                        <h2>CAFÉ MOLIDO QUALITA ORO</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$12.400</h2>
-                        <button id="qualita-oro-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://csa.lavazza.com/content/dam/lavazza-athena/b2c/plp-pag-catalogo/teaser-card-overview/main-asset/coffee/rossa/3609-d-m-rossa_tin-ground.png" alt="qualita-rosa">
-                        <h2>CAFÉ MOLIDO QUALITA ROSSA</h2>
-                        <p>Café molido 250gr</p>
-                        <h2>$12.400</h2>
-                        <button id="qualita-rosa-molido-250" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-        </div>
-    <br>
-        <h1>CAPSULAS SELECCIÓN</h1>
-        <div id="productos-daroma">
-            <h3>MARLEY COFFEE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155508-500-auto?v=638705681396800000&width=500&height=auto&aspect=true" alt="capsula-buffalo-soldier">
-                        <h2>CÁPSULAS BUFFALO SOLDIER - COMPATIBLES CON NESPRESSO</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$12.000</h2>
-                        <button id="capsula-buffalo-soldier" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155511-500-auto?v=638705682137830000&width=500&height=auto&aspect=true" alt="capsula-one-love">
-                        <h2>CÁPSULAS ON LOVE - COMPATIBLES CON NESPRESSO</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.500</h2>
-                        <button id="capsulas-one-love" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155514-500-auto?v=638705682995800000&width=500&height=auto&aspect=true" alt="capsulas-get-up">
-                        <h2>CÁPSULAS GET UP STAND UP - COMPATIBLES CON NESPRESSO</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="capsulas-get-up-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155518-500-auto?v=638705686691300000&width=500&height=auto&aspect=true" alt="capsulas-catch-a-fire">
-                        <h2>CÁPSULAS CATCH A FIRE - COMPATIBLES CON NESPRESSO</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="capsulas-catch-a-fire-molido" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155668-500-auto?v=638723758216800000&width=500&height=auto&aspect=true" alt="capsulas-talkin-capuccino">
-                        <h2>CÁPSULAS TALKIN BLUES CAPUCCINO VAINILLA</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="talkin-capuccino-vainilla" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155666-500-auto?v=638723757547630000&width=500&height=auto&aspect=true" alt="capsulas-talkin-latte">
-                        <h2>CÁPSULAS TALKIN BLUES CHAI LATTE</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="talkin-chai-latte" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155728-500-auto?v=638741847153570000&width=500&height=auto&aspect=true" alt="capsulas-talkin-caramel-latte">
-                        <h2>CÁPSULAS TALKIN BLUES CARAMEL LATTE</h2>
-                        <p>Café molido 227gr</p>
-                        <h2>$11.000</h2>
-                        <button id="talkin-caramel-latte" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-            <h3>ILLY COFFEE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwcb06a92a/products/sfra/coffee/Medium2x/A179_Medium_2x_01.png?q=75" alt="tueste-forte">
-                        <h2>CÁPSULAS DE CAFÉ DE TUESTE X▪CAPS FORTE</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$8.000</h2>
-                        <button id="capsulas-tueste-forte" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw8b6a2d1b/products/sfra/coffee/Medium2x/A176_Medium_2x_01.png?q=75" alt="descafeinado-forte">
-                        <h2>CÁPSULAS DE CAFÉ DESCAFEINADO X▪CAPS</h2>
-                        <p>Café molido 30 cápsulas</p>
-                        <h2>$16.500</h2>
-                        <button id="capsulas-descafeinado-x-caps" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw2862988d/products/sfra/coffee/Medium2x/A180_Medium_2x_01.png?q=75" alt="capsulas-longo">
-                        <h2>CÁPSULAS DE CAFÉ LUNGO X▪CAPS</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$6.000</h2>
-                        <button id="capsulas-lungo" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwa3ea6429/products/sfra/coffee/Medium2x/A154_Medium_2x_01.png?q=75" alt="descafeinado-x-caps">
-                        <h2>CÁPSULAS DE CAFÉ DESCAFEINADO X▪CAPS</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$5.000</h2>
-                        <button id="capsulas-descafeinado-x-caps-10" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw497f25de/products/sfra/coffee/Medium2x/A178_Medium_2x_01.png?q=75" alt="capsulas-tueste-intenso">
-                        <h2>CÁPSULAS DE CAFÉ TUESTE INTENSO X▪CAPS</h2>
-                        <p>Café grano 250gr</p>
-                        <h2>$8.000</h2>
-                        <button id="capsulas-tueste-intenso-x-caps" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwca399478/products/sfra/coffee/Medium2x/A188_Medium_2x_01.png?q=75" alt="intenso-iperespresso">
-                        <h2>CÁPSULAS CAFÉ INTENSO IPERESPRESSO</h2>
-                        <p>Café molido 30 cápsulas</p>
-                        <h2>$15.000</h2>
-                        <button id="capsulas-intenso-iperespresso" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw744b58bd/products/sfra/coffee/Medium2x/A189_Medium_2x_01.png?q=75" alt="decaffeinato-iperespresso">
-                        <h2>CÁPSULAS DECAFFEINATO IPERESPRESSO</h2>
-                        <p>Café molido 30 cápsulas</p>
-                        <h2>$11.500</h2>
-                        <button id="capsulas-decaffeinato-iperespresso" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-            <h3>CAFÉ CON SENTIDO</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/1815fc57-93fc-4932-a8f7-2abfcb3eaaad.png?v=1746567450&width=460" alt="capsulas-dulce-compañia">
-                        <h2>CÁPSULAS DE CAFÉ - DULCE COMPAÑIA</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$6.000</h2>
-                        <button id="dulce-compañia" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/1a410b85-f4ae-42ab-8192-6133efd39edb.png?v=1746567438&width=460" alt="capsulas-aroma-fraternal">
-                        <h2>CÁPSULAS DE CAFÉ AROMA FRATERNAL</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$6.500</h2>
-                        <button id="aroma-fraternal" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/c994d8a4-c21e-4ef0-8172-713f93859236.png?v=1746567444&width=460" alt="capsulas-apoyo-intenso">
-                        <h2>CÁPSULAS DE CAFÉ APOYO INTENO</h2>
-                        <p>Café molido 10 cápsulas</p>
-                        <h2>$6.000</h2>
-                        <button id="apoyo-intenso" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/5d11b1cc-3513-4d9c-b7af-b6539a811184.png?v=1746567458&width=460" alt="capsulas-apoyo-intenso-60">
-                        <h2>CÁPSULAS DE CAFÉ APOYO INTESO - X60 CÁPSULAS</h2>
-                        <p>Café molido 60 cápsulas</p>
-                        <h2>$35.000</h2>
-                        <button id="apoyo-intenso-60" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/4662ce58-563b-4092-b5ed-20c7df9d3e20.png?v=1746567452&width=460" alt="capsulas-dulce-compañia-60">
-                        <h2>CÁPSULAS DE CAFÉ DULCE COMPAÑIA - X60 CÁPSULAS</h2>
-                        <p>Café molido 60 cápsulas</p>
-                        <h2>35.000</h2>
-                        <button id="dulce-compania-60" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/595e19d6-c632-47ef-a673-6fc818331f1e.png?v=1753462651&width=460" alt="capsulas-con-sentido-60">
-                        <h2>CÁPSULAS CAFÉ CON SENTIDO - X60 CÁPSULAS</h2>
-                        <p>Café molido 60 cápsulas</p>
-                        <h2>$35.400</h2>
-                        <button id="con-sentido-60" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://mercadodelcafe.cl/cdn/shop/files/9196696a-28c3-460e-9404-b58a66e97099.png?v=1744150848&width=460" alt="capsulas-aroma-fraternal-200">
-                        <h2>CÁPSULAS DE CAFÉ AROMA FRATERNAL - X200 CÁPSULAS</h2>
-                        <p>Café molido 200 cápsulas</p>
-                        <h2>$101.500</h2>
-                        <button id="aroma-fraternal-200" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-        </div>
-    <br>
-        <div id="productos-daroma">
-            <h1>TÉ Y YERBA MATE SELECCIÓN</h1>
-            <h3>DILMAH CHILE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/mmp5431-edited-2d4878d4-76bf-4257-aaa9-d206a27f8a82_1300x1300.jpg?v=1754588179" alt="te-negro">
-                        <h2>TÉ NEGROR EN HOJAS CEYLON</h2>
-                        <p>te negro 100% - 75gr</p>
-                        <h2>$16.000</h2>
-                        <button id="te negro" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-green-tea-with-mint-f4381995-ee17-4f2c-9876-9d692d068240_1300x1300.jpg?v=1726096173" alt="te-verde-menta">
-                        <h2>20 BOLSAS DE TÉ RESERVE DILMAH VERDE MENTA</h2>
-                        <p>té verde menta 5% y aceite de menta 0.75% - 40gr</p>
-                        <h2>$11.500</h2>
-                        <button id="verde-menta" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/infusion-dilmah-vivid-camomilla-lata-60g-6un-6623d627-785e-4160-aa7f-828becf58dda_1300x1300.jpg?v=1726512627" alt="manzanilla-vivid">
-                        <h2>INFUSIÓN DILMAH MANZANILLA VIVID</h2>
-                        <p>flores de manzanilla 100% - 60gr</p>
-                        <h2>$16.000</h2>
-                        <button id="manzanilla" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-ceylon-spice-chai-74f466ea-b93a-4df0-a168-701906c076c2_b3237980-4bd7-4f39-b443-2d09b6eee857_1300x1300.jpg?v=1726096301" alt="sppice-chai">
-                        <h2>20 BOLSAS TÉ RESERVE DILMAH SPICE CHAI</h2>
-                        <p>té negro canela 10%, raiz de jengibre 10%, granos de pimienta negra 5%, yemas de clavo 5%</p>
-                        <h2>$35.000</h2>
-                        <button id="spice-chai" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/exquisitely-flavoured-tea-individually-wrapped-bags-020-x-2g-vertical-variety-pack-80284-012-001-17025-large-1-f91c1b75-3a28-4f33-b2c7-421974a02a90_963cbaab-d478-4d26-9600-c8fb29a72ed1_1300x1300.jpg?v=1730899924" alt="sabores-surtidos">
-                        <h2>20 BOLSAS TÉ NEGRO SABORES SURTIDOS</h2>
-                        <p>vainilla, limón, mango, frutilla, durazno, caramelo - 40gr</p>
-                        <h2>35.000</h2>
-                        <button id="surtidos" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://shopdilmah.cl/cdn/shop/files/p-45060-001-1-09c1177c-2a4a-4ba2-871a-888bd8594678_de76020d-2ee4-482b-8d82-abb99aa3699c_1300x1300.jpg?v=1726096164" alt="te-negro-durazno">
-                        <h2>ELIXIR CONCENTRADO DE TÉ NEGRO DURAZNO ALMENDRA</h2>
-                        <p>Agua, Azúcar de caña, Miel de abeja, Extracto de té negro de Ceylon cosechado a mano. - 60ml</p>
-                        <h2>$35.400</h2>
-                        <button id="te-negro-durazno" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <button class="carrusel-btn next">&gt;</button>
-                </div>
-            </div>
-            <h3>YERBAS MATE</h3>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/9de2e9_934b6d41f2f24f41b7406c3bde941da3~mv2.png/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/9de2e9_934b6d41f2f24f41b7406c3bde941da3~mv2.png" alt="flor-yerba">
-                        <h2>FLOR DE YERBA - YERBAS SERRANAS</h2>
-                        <p>incluye: poleo, menta, manzanilla y burrito - 500gr</p>
-                        <h2>$3.000</h2>
-                        <button id="yerbas-serranas" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/7d69bc_53161d4274b747a797da4ae17531e6fe~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_53161d4274b747a797da4ae17531e6fe~mv2.jpg" alt="menta-cedron">
-                        <h2>CURTIBANA COMPUESYA MENTA CREDRÓN Y POLEO</h2>
-                        <p>elaborada sin palo, con sabor a menta, cedrón y poleo - 400gr</p>
-                        <h2>$4.500</h2>
-                        <button id="compuesta" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/7d69bc_1efc0ae2d62e4c1faa55ac0ac1cadc42~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_1efc0ae2d62e4c1faa55ac0ac1cadc42~mv2.jpg" alt="cascaras-limon">
-                        <h2>YI YI CON CÁSCARAS DE LIMÓN</h2>
-                        <p>Elaborada con palo, combinada con cascaras de limon - 400 gr</p>
-                        <h2>$4.000</h2>
-                        <button id="limon" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/7d69bc_1b5118106dcf431c982edf1f1df6dfb2~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_1b5118106dcf431c982edf1f1df6dfb2~mv2.jpg" alt="mezcla_excelso-grano">
-                        <h2>YI YI CON HIERBAS NATURALES</h2>
-                        <p>Elaborada con palo, hierbas naturales como menta, cedron y poleo</p>
-                        <h2>$4.000</h2>
-                        <button id="hierbas-naturales" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/7d69bc_36696b693ab54124a77acd2dde49dbc8~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_36696b693ab54124a77acd2dde49dbc8~mv2.jpg" alt="palo">
-                        <h2>YERBA MATE MAPUCHE ORGANICA</h2>
-                        <p>Elaborada con palo cultivada en ambientes ecologicos  - 400gr</p>
-                        <h2>4.790</h2>
-                        <button id="organica" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://static.wixstatic.com/media/7d69bc_281074fef93e4cb8b2b01de62559fa39~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_281074fef93e4cb8b2b01de62559fa39~mv2.jpg" alt="condesa">
-                        <h2>CONDESA SELECCIÓN PREMIUM</h2>
-                        <p>Yerba sin palo, aroma y sabor ahumado - 400gr</p>
-                        <h2>$3.990</h2>
-                        <button id="condesa" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-        </div>
-        <div id="productos-daroma">
-            <h1>ACCESORIOS SELECCIÓN</h1>
-            <div class="carrusel-container">
-                <button class="carrusel-btn prev">&lt;</button>
-                <div class="carrusel">
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/05/cafetera-italiana-6-tazas.webp" alt="italiana">
-                        <h2>CAFETERA ITALIANA 6 TAZAS</h2>
-                        <p>Aluminio - filtro metalico - 300ml (aprox)</p>
-                        <h2>$8.000</h2>
-                        <button id="italiana" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/05/prensa-francesa-rosada-768x768.jpeg" alt="francesa">
-                        <h2>PRENSA FRANCESA</h2>
-                        <p>material libre de BPA - 600ml (aprox)</p>
-                        <h2>$7.500</h2>
-                        <button id="francesa" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/tamper-51-mm-espresso.jpg" alt="tamper">
-                        <h2>TAMPER 51 mm</h2>
-                        <p>Base acero inoxidable - alto nivel de precisión</p>
-                        <h2>$7.500</h2>
-                        <button id="tamper" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/458344547_1631887944052944_6995948483815845435_n.jpg" alt="agitador-cafe">
-                        <h2>AGITADOR DE CAFÉ PARA ESPRESSO</h2>
-                        <p>Agitador para eliminar grumos</p>
-                        <h2>$4.500</h2>
-                        <button id="agitador" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/462651762_1662581957868678_3559737261505409118_n.jpg" alt="taza-medidora">
-                        <h2>TAZA MEDIDORA DE ESPRESSO</h2>
-                        <p>graduada hasta 75 ml.</p>
-                        <h2>$4.900</h2>
-                        <button id="taza-medidora" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/11/D_NQ_NP_914432-MLC48348749288_112021-O.webp" alt="tetera-cuello-cisne">
-                        <h2>TETERA CUELLO DE CISNE</h2>
-                        <p>Capacidad 600ml</p>
-                        <h2>$16.900</h2>
-                        <button id="cuello-cisne" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/462521304_557960460244564_3212496753936341134_n.jpg" alt="portafolio">
-                        <h2>PORTAFILTRO SIN FONDO DOLNGHI EDICA</h2>
-                        <p>22 cm</p>
-                        <h2>$23.900</h2>
-                        <button id="portafolio" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                    <div class="producto">
-                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/01/distribuidor-cafe-espresso-51mm.jpeg" alt="distribuidor">
-                        <h2>DISTRIBUIDOR CAFÉ ESPRESSO 51mm</h2>
-                        <p>Altura ajustable - acero inoxidable</p>
-                        <h2>$11.900</h2>
-                        <button id="distribuidor" class="btn-carrito">Agregar al carrito</button>
-                    </div>
-                </div>
-                <button class="carrusel-btn next">&gt;</button>
-            </div>
-        </div>
+    
+    <main class="container my-5">
+        <h1 class="text-center mb-5" style="color: #2E1F18;">CAFÉ SELECCIÓN</h1>
 
+        <section class="mb-5">
+            <h3 class="mb-3 text-custom-green">Daroma</h3>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/grano-excelso.png" alt="mezcla_excelso-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA EXCELSO</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <p class="card-text text-muted">80% ARÁBICA | 20% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="excelso-grano-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/grano-forte.png" alt="mezcla_forte-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA FORTE</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <p class="card-text text-muted">50% ARÁBICA | 50% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="forte-grano-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/cafe_0000_MOLIDO-EXCELSO-500g-1-1.png" alt="molido-excelso" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA EXCELSO</h2>
+                            <p class="card-text">Café molido 500gr</p>
+                            <p class="card-text text-muted">80% ARÁBICA | 20% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="excelso-molido-500" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/cafe_0001_MOLIDO-FORTE-500g-1-1.png" alt="molido-forte" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA FORTE</h2>
+                            <p class="card-text">Café molido 500gr</p>
+                            <p class="card-text text-muted">50% ARÁBICA | 50% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="forte-molido-500" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/molido-excelso-3.png" alt="molido-excelso-250" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA EXCELSO</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <p class="card-text text-muted">80% ARÁBICA | 20% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="excelso-molido-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://cafedaroma.cl/wp-content/uploads/2022/09/molido-forte-2.png" alt="molido-forte-250" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">MEZCLA FORTE</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <p class="card-text text-muted">50% ARÁBICA | 50% ROBUSTA</p>
+                            <h2 class="card-text fw-bold">$5.500</h2>
+                            <button id="forte-molido-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
+            </div>
+        </section>
 
+        <section class="mb-5">
+            <h3 class="mb-3 text-custom-green">MARLEY COFFEE</h3>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155589-500-auto?v=638705724453500000&width=500&height=auto&aspect=true" alt="one-love-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ORGÁNICO GRANO ENTERO ONE LOVE</h2>
+                            <p class="card-text">Café grano 227gr</p>
+                            <h2 class="card-text fw-bold">$12.000</h2>
+                            <button id="one-love-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155649-500-auto?v=638719657085200000&width=500&height=auto&aspect=true" alt="catch-a-fire-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ORGÁNICO GRANO ENTERO CATCH A FIRE</h2>
+                            <p class="card-text">Café grano 227gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="catch-a-fire-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155734-500-auto?v=638754028994500000&width=500&height=auto&aspect=true" alt="keep-on-moving" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ORGÁNICO GRANO ENTERO KEEP ON MOVING</h2>
+                            <p class="card-text">Café grano 227gr</p>
+                            <h2 class="card-text fw-bold">$11.000</h2>
+                            <button id="keep-moving-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155480-500-auto?v=638705671360170000&width=500&height=auto&aspect=true" alt="simmer-down" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ORGÁNICO MOLIDO DESCAFEINADO SIMMER DOWN</h2>
+                            <p class="card-text">Café grano 227gr</p>
+                            <h2 class="card-text fw-bold">$11.000</h2>
+                            <button id="simmer-down-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155904-500-auto?v=638888145891970000&width=500&height=auto&aspect=true" alt="buffalo-soldier" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ORGÁNICO MOLIDO BUFFALO SOLDIER</h2>
+                            <p class="card-text">Café grano 227gr</p>
+                            <h2 class="card-text fw-bold">$11.000</h2>
+                            <button id="buffalo-soldier-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155474-500-auto?v=638705669178330000&width=500&height=auto&aspect=true" alt="one-love-molido" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ÓRGANICO MOLIDO ONE LOVE</h2>
+                            <p class="card-text">Café molido 227gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="one-love-molido" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155732-500-auto?v=638754023784200000&width=500&height=auto&aspect=true" alt="keep-on-moving-molido" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ÓRGANICO MOLIDO KEEP ON MOVING</h2>
+                            <p class="card-text">Café molido 227gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="keep-moving-molido" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155678-500-auto?v=638723771637770000&width=500&height=auto&aspect=true" alt="caramel-nut-cream" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ÓRGANICO MOLIDO SABORIZADO CARAMEL NUT CREAM</h2>
+                            <p class="card-text">Café molido 227gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="nut-cream-molido" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://coffeemarleycl.vtexassets.com/arquivos/ids/155676-500-auto?v=638723771184770000&width=500&height=auto&aspect=true" alt="french-vainilla" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ÓRGANICO MOLIDO SABORIZADO FRENCH VANILLA</h2>
+                            <p class="card-text">Café molido 227gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="french-vainilla-molido" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
+            </div>
+        </section>
 
+        <section class="mb-5">
+            <h3 class="mb-3 text-custom-green">ILLY COFFEE</h3>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw790312d6/products/sfra/coffee/Medium2x/7577ME_Medium_2x_01.png?q=75" alt="grano-tueste" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ GRANO DE TUESTE</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="tueste-grano-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw17afe6be/products/sfra/coffee/Medium2x/A116ME_Medium_2x_01.png?q=75" alt="mezcla_excelso-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ GRANO ARABICA SELECCTION BRASIL</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="arabica-brasil-250-grano" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwdbad6504/products/sfra/coffee/Medium2x/I0003885_Medium_2x_01.png?q=75" alt="arabica-brasil" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ GRANO TUESTE CLASSICO</h2>
+                            <p class="card-text">Café grano 500gr</p>
+                            <h2 class="card-text fw-bold">$16.000</h2>
+                            <button id="tueste-clasico-grano-500" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwb2a9a2d2/products/sfra/coffee/Medium2x/7141ME_Medium_2x_01.png?q=75" alt="arabica-colombia" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ GRANO ARABICA SELECTION COLOMBIA</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="arabica-brasil-grano-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dwfd8f8b4a/products/sfra/coffee/Medium2x/7985ST_Medium_2x_01.png?q=75" alt="espresso-descafeinado" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ESPRESSO MOLIDO DESCAFEINADO</h2>
+                            <p class="card-text">Café grano 250gr</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="espresso-descafeinado-grano-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw6f0f76c5/products/sfra/coffee/Medium2x/A136ME_Medium_2x_01.png?q=75" alt="arabica-brasil-mineiro" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ MOLIDO ARABICA SELECTION BRASIL MINEIRO</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="arabica-brasil-mineiro-molido-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw61cde813/products/sfra/coffee/Medium2x/9975ST_Medium_2x_01.png?q=75" alt="tueste-moka" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ MOLIDO DE TUESTE INTENSO PARA CAFETERA MOKA</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="tueste-intenso-moka-molido-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw7e7ebc75/products/sfra/coffee/Medium2x/8870ST_Medium_2x_01.png?q=75" alt="espresso-intenso" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ESPRESSO MOLIDO INTENSO</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <h2 class="card-text fw-bold">$5.000</h2>
+                            <button id="espresso-molido-intenso-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://www.illy.com/dw/image/v2/BBDD_PRD/on/demandware.static/-/Sites-masterCatalog_illycaffe/default/dw66212d75/products/sfra/coffee/Medium2x/9973ME_Medium_2x_01.png?q=75" alt="espresso-forte-latas" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFÉ ESPRESSO MOLIDO FORTE LATAS</h2>
+                            <p class="card-text">Café molido 250gr</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="espresso-forte-latas-molido-250" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
+            </div>
+        </section>
 
-        
-<footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-section about">
-                <img src="https://ia-coffee.com/images/logo-cairos-claro.png" alt="Kairós Coffee Logo" class="footer-logo">
-                <div class="payment-methods">
-                    <p>Métodos de Pago:</p>
-                    <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="payment-icon">
-                    <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="payment-icon">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="payment-icon">
+        <section id="productos-daroma" class="mb-5">
+            <h1 class="text-center mb-5" style="color: #2E1F18;">TÉ Y YERBA MATE SELECCIÓN</h1>
+            <h3 class="mb-3 text-custom-green">DILMAH CHILE</h3>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/mmp5431-edited-2d4878d4-76bf-4257-aaa9-d206a27f8a82_1300x1300.jpg?v=1754588179" alt="te-negro" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">TÉ NEGROR EN HOJAS CEYLON</h2>
+                            <p class="card-text">te negro 100% - 75gr</p>
+                            <h2 class="card-text fw-bold">$16.000</h2>
+                            <button id="te negro" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-green-tea-with-mint-f4381995-ee17-4f2c-9876-9d692d068240_1300x1300.jpg?v=1726096173" alt="te-verde-menta" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">20 BOLSAS DE TÉ RESERVE DILMAH VERDE MENTA</h2>
+                            <p class="card-text">té verde menta 5% y aceite de menta 0.75% - 40gr</p>
+                            <h2 class="card-text fw-bold">$11.500</h2>
+                            <button id="verde-menta" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/infusion-dilmah-vivid-camomilla-lata-60g-6un-6623d627-785e-4160-aa7f-828becf58dda_1300x1300.jpg?v=1726512627" alt="manzanilla-vivid" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">INFUSIÓN DILMAH MANZANILLA VIVID</h2>
+                            <p class="card-text">flores de manzanilla 100% - 60gr</p>
+                            <h2 class="card-text fw-bold">$16.000</h2>
+                            <button id="manzanilla" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-ceylon-spice-chai-74f466ea-b93a-4df0-a168-701906c076c2_b3237980-4bd7-4f39-b443-2d09b6eee857_1300x1300.jpg?v=1726096301" alt="sppice-chai" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">20 BOLSAS TÉ RESERVE DILMAH SPICE CHAI</h2>
+                            <p class="card-text">té negro canela 10%, raiz de jengibre 10%, granos de pimienta negra 5%, yemas de clavo 5%</p>
+                            <h2 class="card-text fw-bold">$35.000</h2>
+                            <button id="spice-chai" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/exquisitely-flavoured-tea-individually-wrapped-bags-020-x-2g-vertical-variety-pack-80284-012-001-17025-large-1-f91c1b75-3a28-4f33-b2c7-421974a02a90_963cbaab-d478-4d26-9600-c8fb29a72ed1_1300x1300.jpg?v=1730899924" alt="sabores-surtidos" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">20 BOLSAS TÉ NEGRO SABORES SURTIDOS</h2>
+                            <p class="card-text">vainilla, limón, mango, frutilla, durazno, caramelo - 40gr</p>
+                            <h2 class="card-text fw-bold">$35.000</h2>
+                            <button id="surtidos" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://shopdilmah.cl/cdn/shop/files/p-45060-001-1-09c1177c-2a4a-4ba2-871a-888bd8594678_de76020d-2ee4-482b-8d82-abb99aa3699c_1300x1300.jpg?v=1726096164" alt="te-negro-durazno" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">ELIXIR CONCENTRADO DE TÉ NEGRO DURAZNO ALMENDRA</h2>
+                            <p class="card-text">Agua, Azúcar de caña, Miel de abeja, Extracto de té negro de Ceylon cosechado a mano. - 60ml</p>
+                            <h2 class="card-text fw-bold">$35.400</h2>
+                            <button id="te-negro-durazno" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
                 </div>
             </div>
-
-            <div class="footer-section links">
-                <h4>Kairós Coffee</h4>
-                <ul>
-                    <li><a href="#">Nuestra Historia</a></li>
-                    <li><a href="producto.html">Productos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Kairós Coffee Chile</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section info">
-                <h4>Información</h4>
-                <ul>
-                    <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Despachos y Retiros</a></li>
-                    <li><a href="#">Cambios y Devoluciones</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section newsletter">
-                <h4>Newsletter</h4>
-                <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Correo electrónico">
-                    <button type="submit">→</button>
+            <h3 class="mb-3 text-custom-green">YERBAS MATE</h3>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/9de2e9_934b6d41f2f24f41b7406c3bde941da3~mv2.png/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/9de2e9_934b6d41f2f24f41b7406c3bde941da3~mv2.png" alt="flor-yerba" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">FLOR DE YERBA - YERBAS SERRANAS</h2>
+                            <p class="card-text">incluye: poleo, menta, manzanilla y burrito - 500gr</p>
+                            <h2 class="card-text fw-bold">$3.000</h2>
+                            <button id="yerbas-serranas" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/7d69bc_53161d4274b747a797da4ae17531e6fe~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_53161d4274b747a797da4ae17531e6fe~mv2.jpg" alt="menta-cedron" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CURTIBANA COMPUESYA MENTA CREDRÓN Y POLEO</h2>
+                            <p class="card-text">elaborada sin palo, con sabor a menta, cedrón y poleo - 400gr</p>
+                            <h2 class="card-text fw-bold">$4.500</h2>
+                            <button id="compuesta" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/7d69bc_1efc0ae2d62e4c1faa55ac0ac1cadc42~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_1efc0ae2d62e4c1faa55ac0ac1cadc42~mv2.jpg" alt="cascaras-limon" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">YI YI CON CÁSCARAS DE LIMÓN</h2>
+                            <p class="card-text">Elaborada con palo, combinada con cascaras de limon - 400 gr</p>
+                            <h2 class="card-text fw-bold">$4.000</h2>
+                            <button id="limon" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/7d69bc_1b5118106dcf431c982edf1f1df6dfb2~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_1b5118106dcf431c982edf1f1df6dfb2~mv2.jpg" alt="mezcla_excelso-grano" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">YI YI CON HIERBAS NATURALES</h2>
+                            <p class="card-text">Elaborada con palo, hierbas naturales como menta, cedron y poleo</p>
+                            <h2 class="card-text fw-bold">$4.000</h2>
+                            <button id="hierbas-naturales" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/7d69bc_36696b693ab54124a77acd2dde49dbc8~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_36696b693ab54124a77acd2dde49dbc8~mv2.jpg" alt="palo" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">YERBA MATE MAPUCHE ORGANICA</h2>
+                            <p class="card-text">Elaborada con palo cultivada en ambientes ecologicos  - 400gr</p>
+                            <h2 class="card-text fw-bold">$4.790</h2>
+                            <button id="organica" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://static.wixstatic.com/media/7d69bc_281074fef93e4cb8b2b01de62559fa39~mv2.jpg/v1/fill/w_798,h_798,q_90,enc_avif,quality_auto/7d69bc_281074fef93e4cb8b2b01de62559fa39~mv2.jpg" alt="condesa" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CONDESA SELECCIÓN PREMIUM</h2>
+                            <p class="card-text">Yerba sin palo, aroma y sabor ahumado - 400gr</p>
+                            <h2 class="card-text fw-bold">$3.990</h2>
+                            <button id="condesa" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
                 </div>
+                <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
             </div>
-
-            <div class="footer-section contact">
-                <h4>Contáctanos</h4>
-                <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
-                <div class="social-links">
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook"></a>
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+        </section>
+        <section id="productos-accesorios" class="mb-5">
+            <h1 class="text-center mb-5" style="color: #2E1F18;">ACCESORIOS SELECCIÓN</h1>
+            <div class="carrusel-container position-relative">
+                <button class="carrusel-btn prev btn btn-secondary position-absolute top-50 start-0 translate-middle-y">&lt;</button>
+                <div class="carrusel d-flex overflow-auto">
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/05/cafetera-italiana-6-tazas.webp" alt="italiana" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">CAFETERA ITALIANA 6 TAZAS</h2>
+                            <p class="card-text">Aluminio - filtro metalico - 300ml (aprox)</p>
+                            <h2 class="card-text fw-bold">$8.000</h2>
+                            <button id="italiana" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/05/prensa-francesa-rosada-768x768.jpeg" alt="francesa" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">PRENSA FRANCESA</h2>
+                            <p class="card-text">material libre de BPA - 600ml (aprox)</p>
+                            <h2 class="card-text fw-bold">$7.500</h2>
+                            <button id="francesa" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/tamper-51-mm-espresso.jpg" alt="tamper" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">TAMPER 51 mm</h2>
+                            <p class="card-text">Base acero inoxidable - alto nivel de precisión</p>
+                            <h2 class="card-text fw-bold">$7.500</h2>
+                            <button id="tamper" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/458344547_1631887944052944_6995948483815845435_n.jpg" alt="agitador-cafe" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">AGITADOR DE CAFÉ PARA ESPRESSO</h2>
+                            <p class="card-text">Agitador para eliminar grumos</p>
+                            <h2 class="card-text fw-bold">$4.500</h2>
+                            <button id="agitador" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/462651762_1662581957868678_3559737261505409118_n.jpg" alt="taza-medidora" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">TAZA MEDIDORA DE ESPRESSO</h2>
+                            <p class="card-text">graduada hasta 75 ml.</p>
+                            <h2 class="card-text fw-bold">$4.900</h2>
+                            <button id="taza-medidora" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/11/D_NQ_NP_914432-MLC48348749288_112021-O.webp" alt="tetera-cuello-cisne" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">TETERA CUELLO DE CISNE</h2>
+                            <p class="card-text">Capacidad 600ml</p>
+                            <h2 class="card-text fw-bold">$16.900</h2>
+                            <button id="cuello-cisne" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2024/10/462521304_557960460244564_3212496753936341134_n.jpg" alt="portafolio" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">PORTAFILTRO SIN FONDO DOLNGHI EDICA</h2>
+                            <p class="card-text">22 cm</p>
+                            <h2 class="card-text fw-bold">$23.900</h2>
+                            <button id="portafolio" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <div class="producto card m-2 p-3 text-center" style="min-width: 250px;">
+                        <img src="https://clandestinocafe.cl/wp-content/uploads/2025/01/distribuidor-cafe-espresso-51mm.jpeg" alt="distribuidor" class="card-img-top mx-auto">
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">DISTRIBUIDOR CAFÉ ESPRESSO 51mm</h2>
+                            <p class="card-text">Altura ajustable - acero inoxidable</p>
+                            <h2 class="card-text fw-bold">$11.900</h2>
+                            <button id="distribuidor" class="btn btn-custom btn-sm btn-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
                 </div>
+                <button class="carrusel-btn next btn btn-secondary position-absolute top-50 end-0 translate-middle-y">&gt;</button>
             </div>
-        </div>
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Funciones para el carrito de compras
+        const carritoPanel = document.getElementById('carrito-panel');
+        const cerrarCarritoBtn = document.getElementById('cerrar-carrito');
+        const iconoCarrito = document.querySelector('.icono-carrito');
+        const contadorCarrito = document.getElementById('contador-carrito');
+        const listaCarrito = document.getElementById('lista-carrito');
+        const totalCarrito = document.getElementById('total-carrito');
+        const pagarBtn = document.getElementById('btn-pagar');
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-    <script src="carrito.js"></script>
-    </body>
+        // Productos hardcodeados
+        const productos = [
+            { id: "excelso-grano-250", nombre: "Mezcla Excelso (Grano)", precio: 5500 },
+            { id: "forte-grano-250", nombre: "Mezcla Forte (Grano)", precio: 5500 },
+            { id: "excelso-molido-500", nombre: "Mezcla Excelso (Molido)", precio: 5500 },
+            { id: "forte-molido-500", nombre: "Mezcla Forte (Molido)", precio: 5500 },
+            { id: "excelso-molido-250", nombre: "Mezcla Excelso (Molido)", precio: 5500 },
+            { id: "forte-molido-250", nombre: "Mezcla Forte (Molido)", precio: 5500 },
+            { id: "one-love-grano", nombre: "One Love (Grano)", precio: 12000 },
+            { id: "catch-a-fire-grano", nombre: "Catch a Fire (Grano)", precio: 11500 },
+            { id: "keep-moving-grano", nombre: "Keep On Moving (Grano)", precio: 11000 },
+            { id: "simmer-down-grano", nombre: "Simmer Down (Descafeinado)", precio: 11000 },
+            { id: "buffalo-soldier-grano", nombre: "Buffalo Soldier (Molido)", precio: 11000 },
+            { id: "one-love-molido", nombre: "One Love (Molido)", precio: 11500 },
+            { id: "keep-moving-molido", nombre: "Keep On Moving (Molido)", precio: 11500 },
+            { id: "nut-cream-molido", nombre: "Caramel Nut Cream (Molido)", precio: 11500 },
+            { id: "french-vainilla-molido", nombre: "French Vanilla (Molido)", precio: 11500 },
+            { id: "tueste-grano-250", nombre: "Illy Tueste (Grano)", precio: 8000 },
+            { id: "arabica-brasil-250-grano", nombre: "Illy Brasil (Grano)", precio: 11500 },
+            { id: "tueste-clasico-grano-500", nombre: "Illy Clássico (Grano)", precio: 16000 },
+            { id: "arabica-brasil-grano-250", nombre: "Illy Colombia (Grano)", precio: 8000 },
+            { id: "espresso-descafeinado-grano-250", nombre: "Illy Descafeinado (Grano)", precio: 8000 },
+            { id: "arabica-brasil-mineiro-molido-250", nombre: "Illy Brasil Mineiro (Molido)", precio: 8000 },
+            { id: "tueste-intenso-moka-molido-250", nombre: "Illy Intenso (Molido)", precio: 11500 },
+            { id: "espresso-molido-intenso-250", nombre: "Illy Espresso Intenso (Molido)", precio: 5000 },
+            { id: "espresso-forte-latas-molido-250", nombre: "Illy Forte (Molido)", precio: 8000 },
+            { id: "te negro", nombre: "Té Negro en Hojas Ceylon", precio: 16000 },
+            { id: "verde-menta", nombre: "Té Reserve Dilmah Verde Menta", precio: 11500 },
+            { id: "manzanilla", nombre: "Infusión Dilmah Manzanilla Vivid", precio: 16000 },
+            { id: "spice-chai", nombre: "Té Reserve Dilmah Spice Chai", precio: 35000 },
+            { id: "surtidos", nombre: "Té Negro Sabores Surtidos", precio: 35000 },
+            { id: "te-negro-durazno", nombre: "Elixir Té Negro Durazno Almendra", precio: 35400 },
+            { id: "yerbas-serranas", nombre: "Flor de Yerba - Yerbas Serranas", precio: 3000 },
+            { id: "compuesta", nombre: "Curtibana Compuesta Menta Cedrón y Poleo", precio: 4500 },
+            { id: "limon", nombre: "Yi Yi con Cáscaras de Limón", precio: 4000 },
+            { id: "hierbas-naturales", nombre: "Yi Yi con Hierbas Naturales", precio: 4000 },
+            { id: "organica", nombre: "Yerba Mate Mapuche Orgánica", precio: 4790 },
+            { id: "condesa", nombre: "Condesa Selección Premium", precio: 3990 },
+            { id: "italiana", nombre: "Cafetera Italiana 6 Tazas", precio: 8000 },
+            { id: "francesa", nombre: "Prensa Francesa", precio: 7500 },
+            { id: "tamper", nombre: "Tamper 51 mm", precio: 7500 },
+            { id: "agitador", nombre: "Agitador de Café para Espresso", precio: 4500 },
+            { id: "taza-medidora", nombre: "Taza Medidora de Espresso", precio: 4900 },
+            { id: "cuello-cisne", nombre: "Tetera Cuello de Cisne", precio: 16900 },
+            { id: "portafolio", nombre: "Portafiltro Sin Fondo Dolnghi Edica", precio: 23900 },
+            { id: "distribuidor", nombre: "Distribuidor Café Espresso 51mm", precio: 11900 },
+        ];
+
+        // Funciones del carrito
+        function obtenerCarrito() {
+            const carritoJSON = localStorage.getItem('carrito');
+            return carritoJSON ? JSON.parse(carritoJSON) : [];
+        }
+
+        function guardarCarrito(carrito) {
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+
+        function actualizarContador() {
+            const carrito = obtenerCarrito();
+            const totalItems = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+            contadorCarrito.textContent = totalItems;
+        }
+
+        function renderizarCarrito() {
+            const carrito = obtenerCarrito();
+            listaCarrito.innerHTML = '';
+            let total = 0;
+
+            if (carrito.length === 0) {
+                listaCarrito.innerHTML = '<p class="text-center text-muted mt-3">El carrito está vacío.</p>';
+                totalCarrito.textContent = 'Total: $0';
+                return;
+            }
+
+        carrito.forEach((producto, index) => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item d-flex justify-content-between align-items-center';
+            item.innerHTML = `
+                <span>${producto.nombre} - $${producto.precio.toLocaleString('es-CL')} x ${producto.cantidad}</span>
+                <button class="btn btn-sm btn-outline-danger btn-eliminar-item" data-index="${index}">Eliminar</button>
+            `;
+            listaCarrito.appendChild(item);
+            total += producto.precio * producto.cantidad;
+        });
+
+        totalCarrito.textContent = `Total: $${total.toLocaleString('es-CL')}`;
+
+        document.querySelectorAll('.btn-eliminar-item').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                eliminarDelCarrito(index);
+            });
+        });
+        }
+
+        function agregarAlCarrito(productoId) {
+            const producto = productos.find(p => p.id === productoId);
+            if (!producto) {
+                console.error('Producto no encontrado');
+                return;
+            }
+
+            // Obtener la imagen desde el botón/producto en el HTML
+            const card = document.getElementById(productoId).closest('.producto');
+            const imagen = card.querySelector('img').src;
+
+            const carrito = obtenerCarrito();
+            const productoEnCarrito = carrito.find(p => p.id === productoId);
+
+            if (productoEnCarrito) {
+                productoEnCarrito.cantidad++;
+            } else {
+                carrito.push({ ...producto, id: productoId, cantidad: 1, imagen: imagen });
+            }
+
+            guardarCarrito(carrito);
+            actualizarContador();
+            renderizarCarrito();
+            alert(`¡Se agregó ${producto.nombre} al carrito!`);
+        }
+
+        function eliminarDelCarrito(index) {
+            const carrito = obtenerCarrito();
+            carrito.splice(index, 1);
+            guardarCarrito(carrito);
+            actualizarContador();
+            renderizarCarrito();
+        }
+
+        // Eventos
+        document.addEventListener('DOMContentLoaded', () => {
+            actualizarContador();
+            renderizarCarrito();
+        });
+
+        document.querySelectorAll('.btn-carrito').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productoId = e.target.id;
+                agregarAlCarrito(productoId);
+            });
+        });
+
+        iconoCarrito.addEventListener('click', () => {
+            carritoPanel.classList.add('open');
+            renderizarCarrito();
+        });
+
+        cerrarCarritoBtn.addEventListener('click', () => {
+            carritoPanel.classList.remove('open');
+        });
+
+        pagarBtn.addEventListener('click', () => {
+            if (obtenerCarrito().length > 0) {
+                window.location.href = "checkout.html";
+            } else {
+                alert("El carrito está vacío.");
+            }
+        });
+        // Funcionalidad de carrusel
+        document.querySelectorAll('.carrusel-container').forEach(container => {
+        const carrusel = container.querySelector('.carrusel');
+        const prevBtn = container.querySelector('.carrusel-btn.prev');
+        const nextBtn = container.querySelector('.carrusel-btn.next');
+
+        const scrollAmount = 300; // píxeles que avanza por clic
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                carrusel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                carrusel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+        });
+    </script>
+</body>
 </html>

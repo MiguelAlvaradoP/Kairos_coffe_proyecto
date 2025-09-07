@@ -3,152 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pagar - Carrito</title>
-<link rel="stylesheet" href="estilo_checkout.css">
+<title>Pagar - Kairós Coffee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo_checkout.css">
+    <style>
+        .btn-custom {
+            background-color: #556B2F;
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #435427;
+            color: white;
+        }
+        .bg-custom-dark {
+            background-color: #2E1F18;
+            color: white;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
 
-        <div class="checkout-container">
-            <!-- Panel carrito -->
-            <div id="checkout-panel" class="checkout-panel">
-                <div class="checkout-header">
-                    <h2>Resumen de compra</h2>
-                    <span id="total-checkout">Total: $0</span>
-                </div>
-
-                <div id="lista-checkout"></div>
-
-                <div class="checkout-footer">
-                    <button class="btn-volver" onclick="window.location.href='producto.html'">Volver</button>
-                    <button class="btn-confirmar" id="btn-confirmar">Confirmar compra</button>
-                </div>
-            </div>
-
-            <!-- Panel métodos de pago -->
-            <div class="payment-panel">
-                <h3>Seleccionar método de pago</h3>
-                <label class="payment-option">
-                    <input type="radio" name="pago" value="tarjeta" checked>
-                    💳 Tarjeta de crédito / débito
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="pago" value="transferencia">
-                    🏦 Transferencia bancaria
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="pago" value="paypal">
-                    🌐 PayPal
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="pago" value="efectivo">
-                    💵 Pago en efectivo (contra entrega)
-                </label>
-            </div>
-        </div>
-        <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-section about">
-                <img src="https://ia-coffee.com/images/logo-cairos-claro.png" alt="Kairós Coffee Logo" class="footer-logo">
-                <div class="payment-methods">
-                    <p>Métodos de Pago:</p>
-                    <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="payment-icon">
-                    <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="payment-icon">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="payment-icon">
-                </div>
-            </div>
-
-            <div class="footer-section links">
-                <h4>Kairós Coffee</h4>
-                <ul>
-                    <li><a href="#">Nuestra Historia</a></li>
-                    <li><a href="producto.html">Productos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Kairós Coffee Chile</a></li>
+    <div class="navbar navbar-expand-lg navbar-dark sticky-top bg-custom-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Kairós Coffee</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CAFÉ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CÁPSULAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TÉ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">YERBA MATE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ACCESORIOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">OFERTAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
                 </ul>
-            </div>
-
-            <div class="footer-section info">
-                <h4>Información</h4>
-                <ul>
-                    <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Despachos y Retiros</a></li>
-                    <li><a href="#">Cambios y Devoluciones</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section newsletter">
-                <h4>Newsletter</h4>
-                <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Correo electrónico">
-                    <button type="submit">→</button>
-                </div>
-            </div>
-
-            <div class="footer-section contact">
-                <h4>Contáctanos</h4>
-                <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
-                <div class="social-links">
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook"></a>
-                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram"></a>
+                <div class="carrito-container d-flex align-items-center ms-lg-3">
+                    <span id="contador-carrito" class="badge rounded-pill bg-danger me-1">0</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Carrito" style="width: 30px;" class="icono-carrito">
                 </div>
             </div>
         </div>
+    </div>
+    
+    <main class="container py-5">
+        <h1 class="text-center mb-4" style="color: #2E1F18;">Finalizar Compra</h1>
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="card shadow-lg p-4 h-100">
+                    <h2 class="card-title mb-3" style="color: #556B2F;">Información de Envío y Pago</h2>
+                    <form id="formulario-envio">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="nombre-envio" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre-envio" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="direccion" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="ciudad" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="codigo-postal" class="form-label">Código Postal</label>
+                                <input type="text" class="form-control" id="codigo-postal" required>
+                            </div>
+                        </div>
+                        <h3 class="mt-4 mb-3" style="color: #2E1F18;">Método de Pago</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pago" id="tarjeta" value="tarjeta" checked>
+                            <label class="form-check-label" for="tarjeta">
+                                💳 Tarjeta de crédito / débito
+                            </label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="radio" name="pago" id="transferencia" value="transferencia">
+                            <label class="form-check-label" for="transferencia">
+                                🏦 Transferencia bancaria
+                            </label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='producto.html'">Volver al Carrito</button>
+                            <button type="submit" class="btn btn-custom">Confirmar Compra</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-lg-5">
+                <div class="card shadow-lg p-4 h-100">
+                    <h2 class="card-title mb-3" style="color: #556B2F;">Resumen del Pedido</h2>
+                    <div id="lista-checkout" class="mb-3"></div>
+                    <div class="d-flex justify-content-between fw-bold fs-5 pt-3 border-top" style="color: #2E1F18;">
+                        <span>Total a pagar:</span>
+                        <span id="total-checkout">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <div class="footer-bottom">
+    <footer class="main-footer py-4 mt-5" style="background-color: #2E1F18; color: #F5F5DC;">
+        <div class="container text-center">
             <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
         </div>
     </footer>
-        <script>
-        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        const lista = document.getElementById('lista-checkout');
-        const totalElemento = document.getElementById('total-checkout');
-        const btnConfirmar = document.getElementById('btn-confirmar');
 
-        function renderCheckout() {
-            lista.innerHTML = "";
-            let total = 0;
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const listaCheckout = document.getElementById('lista-checkout');
+            const totalCheckout = document.getElementById('total-checkout');
+            const formularioEnvio = document.getElementById('formulario-envio');
+            const contadorCarritoNav = document.getElementById('contador-carrito');
 
-            carrito.forEach((item, index) => {
-                total += item.precio;
+            function renderizarCheckout() {
+                const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                listaCheckout.innerHTML = '';
+                let total = 0;
 
-                const div = document.createElement('div');
-                div.classList.add('producto');
-                div.innerHTML = `
-                    <img src="${item.imagen}" alt="${item.nombre}">
-                    <div class="info">
-                        <span>${item.nombre}</span><br>
-                        <span>$${item.precio.toLocaleString()}</span>
-                    </div>
-                    <button class="eliminar" data-index="${index}">×</button>
-                `;
-                lista.appendChild(div);
-            });
+                if (carrito.length === 0) {
+                    alert('Tu carrito está vacío. Serás redirigido a la página de productos.');
+                    window.location.href = 'producto.html';
+                    return;
+                }
 
-            totalElemento.textContent = "Total: $" + total.toLocaleString();
-
-            // Guardar carrito actualizado
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-
-            // Eventos de eliminar
-            document.querySelectorAll('.eliminar').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const i = btn.getAttribute('data-index');
-                    carrito.splice(i, 1);
-                    renderCheckout();
+                carrito.forEach(item => {
+                    const div = document.createElement('div');
+                    div.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-2');
+                    div.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <img src="${item.imagen || 'https://via.placeholder.com/50'}" 
+                                 alt="${item.nombre}" 
+                                 style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;" 
+                                 class="me-3">
+                            <div>
+                                <h5 class="mb-0">${item.nombre}</h5>
+                                <small class="text-muted">x${item.cantidad}</small>
+                            </div>
+                        </div>
+                        <span>$${(item.precio * item.cantidad).toLocaleString('es-CL')}</span>
+                    `;
+                    listaCheckout.appendChild(div);
+                    total += item.precio * item.cantidad;
                 });
+
+                totalCheckout.textContent = `$${total.toLocaleString('es-CL')}`;
+                
+                // Guardar total de ítems en localStorage para la página de confirmación
+                localStorage.setItem('totalItems', carrito.reduce((sum, item) => sum + item.cantidad, 0));
+            }
+
+            formularioEnvio.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                if (confirm("¿Estás seguro de que deseas confirmar la compra?")) {
+                    localStorage.removeItem('carrito');
+                    window.location.href = "confirmacion.html";
+                }
             });
-        }
 
-        // Confirmar compra → vacía el carrito y redirige
-        btnConfirmar.addEventListener('click', () => {
-            localStorage.removeItem('carrito');
-            window.location.href = "confirmacion.html";
+            function actualizarContadorCarrito() {
+                const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+                if (contadorCarritoNav) {
+                    contadorCarritoNav.textContent = totalItems;
+                }
+            }
+            
+            renderizarCheckout();
+            actualizarContadorCarrito();
         });
-
-        renderCheckout();
-        </script>
-        </body>
+    </script>
+</body>
 </html>
