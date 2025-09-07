@@ -1,112 +1,111 @@
-/* ===== Estilos Generales ===== */
+/* Estilos globales y paleta de colores del proyecto  */
+:root {
+  --color-principal: #2E1F18; /* Café oscuro */
+  --color-secundario: #5C4A3C; /* Tostado oscuro */
+  --color-acento: #E67E22; /* Naranja brillante */
+  --color-texto-principal: #4A3A2F; /* Marrón cálido */
+  --color-texto-secundario: #999999; /* Gris */
+}
+
+/* Estilos para el cuerpo de la página */
 body {
-  background-color: #F5F5DC; /* Fondo beige claro */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Un color de fondo claro que complementa el café */
 }
 
-/* ===== Sección de Contacto ===== */
-.contact-section {
-    padding: 50px 0;
-    background-color: #F5F5DC;
+/* Encabezado */
+header {
+    background-color: var(--color-principal);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--color-acento);
 }
 
-.contact-section h2 {
-    color: #2E1F18; /* Café oscuro */
+.navbar .nav-link {
+    color: #fff; /* Color de texto blanco para los enlaces de la barra de navegación */
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-acento); /* Naranja al pasar el mouse */
+}
+
+/* Carrusel */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* Secciones principales y tarjetas */
+.seccion-productos, .seccion-banner {
+    padding: 3rem 0;
+}
+
+.card {
+    border: 1px solid var(--color-secundario);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-title {
+    color: var(--color-texto-principal);
     font-weight: bold;
-    text-transform: uppercase;
 }
 
-.contact-section p {
-    color: #3e2723;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+.card-text {
+    color: var(--color-texto-secundario);
 }
 
-/* ===== Card del Formulario ===== */
-form {
-    background-color: #fff; /* Fondo blanco para contrastar */
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    padding: 25px;
+.btn-primary {
+    background-color: var(--color-acento);
+    border-color: var(--color-acento);
 }
 
-/* Etiquetas de los campos */
-form label {
-    color: #2E1F18;
-    font-weight: 600;
+.btn-primary:hover {
+    background-color: darken(var(--color-acento), 10%); /* Oscurecer el naranja al pasar el mouse */
+    border-color: darken(var(--color-acento), 10%);
 }
 
-/* Inputs y selects */
-form input,
-form select,
-form textarea {
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+/* Banner */
+.banner-promocional {
+    background-color: var(--color-acento);
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
 }
 
-/* Efecto focus en los campos */
-form input:focus,
-form select:focus,
-form textarea:focus {
-    border-color: #556B2F;
-    box-shadow: 0 0 0 0.2rem rgba(85, 107, 47, 0.3);
-    outline: none;
+/* Pie de página */
+footer {
+    background-color: var(--color-principal);
+    color: #fff;
+    padding: 2rem 0;
 }
 
-/* ===== Botón de Enviar ===== */
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--color-acento);
+}
+
+/* Estilos del botón de envío */
 .btn-enviar {
-  background-color: #556B2F; /* Verde musgo */
-    color: white;
+    background-color: #b2a298; /* Un tono de marrón más claro */
+    border-color: #b39f93;
+    color: rgb(80, 58, 58); /* Texto blanco para un alto contraste */
     font-weight: bold;
     padding: 10px 40px;
     border-radius: 8px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-enviar:hover {
-    background-color: #3e4e24;
+.btn-enviar:hover,
+.btn-enviar:active {
+    background-color: var(--color-texto-principal); /* Marrón cálido (más oscuro) al pasar el cursor */
+    border-color: var(--color-texto-principal);
     transform: translateY(-2px);
-}
-
-/* ===== Botón de Contacto en el Banner (opcional) ===== */
-.btn-contacto {
-    display: inline-block;
-    background-color: #556B2F;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn-contacto:hover {
-    background-color: #2E1F18;
-    color: #fff;
-    transform: scale(1.05);
-}
-
-/* ===== Responsivo ===== */
-@media (max-width: 768px) {
-    .contact-section {
-        padding: 30px 15px;
-    }
-    form {
-        padding: 15px;
-    }
-}
-
-/* Estilos para los mensajes de error de validación */
-.error-message {
-    color: #dc3545; /* Color rojo de Bootstrap */
-    font-size: 0.875em;
-    margin-top: 0.25rem;
-}
-
-/* Opcional: Estilo para resaltar los campos con error */
-.is-invalid {
-    border-color: #dc3545 !important;
 }

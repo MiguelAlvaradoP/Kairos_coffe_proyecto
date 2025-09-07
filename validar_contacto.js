@@ -7,21 +7,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const interesPrincipal = document.getElementById('tipo');
 
     form.addEventListener('submit', function(event) {
-        // Prevenir el envío del formulario por defecto
         event.preventDefault(); 
 
-        // Validar los campos
         if (validarFormulario()) {
-            alert('¡Mensaje enviado con éxito!');
-            form.reset(); // Limpiar el formulario después del envío exitoso
+            mostrarExito();
+            form.reset(); 
         }
     });
 
     function validarFormulario() {
         let esValido = true;
 
-        // Limpiar mensajes de error previos
-        document.querySelectorAll('.error-message').forEach(el => el.remove());
+        // Limpiar mensajes de error previos y clases de Bootstrap de validación
+        document.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
+        document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+        document.querySelectorAll('.alert-success').forEach(el => el.remove()); 
 
         // Validar campo de Nombre
         if (nombre.value.trim() === '') {
@@ -47,16 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             esValido = false;
         }
 
-        // Función para validar el formato del teléfono
-    function validarTelefono(telefono) {
-        // Expresión regular para el formato +569 12345678
-        const re = /^\+56 9\s\d{8}$/;
-        // Expresión regular para el formato +569 1234 5678
-        const re2 = /^\+56 9\s\d{4}\s\d{4}$/;
-        // Permitir ambos formatos para ser más flexible
-        return re.test(telefono) || re2.test(telefono);
-    }
-
         // Validar campo de Interés Principal
         if (interesPrincipal.value === 'Selecciona...') {
             mostrarError(interesPrincipal, 'Por favor, selecciona una opción.');
@@ -72,22 +62,37 @@ document.addEventListener('DOMContentLoaded', function() {
         return esValido;
     }
 
-    function mostrarError(elemento, mensaje) {
-        // Crear un nuevo elemento para el mensaje de error
-        const errorDiv = document.createElement('div');
-        errorDiv.classList.add('error-message');
-        errorDiv.textContent = mensaje;
-
-        // Insertar el mensaje de error después del campo
-        elemento.parentNode.insertBefore(errorDiv, elemento.nextSibling);
-
-        // Agrega clase de error al input para resaltarlo
-        elemento.classList.add('is-invalid');
-    }
-
     function validarEmail(email) {
-        // Expresión regular para un formato de email básico
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
+    }
+    
+    function validarTelefono(telefono) {
+        const re = /^\+56 9\s\d{8}$/;
+        const re2 = /^\+56 9\s\d{4}\s\d{4}$/;
+        return re.test(telefono) || re2.test(telefono);
+    }
+    
+    function mostrarError(elemento, mensaje) {
+        elemento.classList.add('is-invalid');
+
+        const errorDiv = document.createElement('div');
+        errorDiv.classList.add('invalid-feedback');
+        errorDiv.textContent = mensaje;
+
+        elemento.parentNode.appendChild(errorDiv);
+    }
+
+    function mostrarExito() {
+        const successDiv = document.createElement('div');
+        successDiv.classList.add('alert', 'alert-success', 'mt-3', 'text-center');
+        successDiv.textContent = '¡Mensaje enviado con éxito!';
+        
+        // Inserta el mensaje de éxito justo antes del formulario, dentro de su contenedor padre
+        form.parentNode.insertBefore(successDiv, form);
+
+        setTimeout(() => {
+            successDiv.remove();
+        }, 3000);
     }
 });
