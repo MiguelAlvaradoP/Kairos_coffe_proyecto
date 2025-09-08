@@ -328,7 +328,7 @@
 
             // Define las variables de los inputs aquí, al inicio
             const usernameInput = document.getElementById('username');
-            // Asumimos que también hay un input para la contraseña, como en tu código anterior
+            // Asumimos que también hay un input para la contraseña
             const passwordInput = document.getElementById('password'); 
 
             const username = usernameInput.value;
@@ -339,7 +339,6 @@
                 loginAlert.classList.add('alert-success');
                 loginAlert.textContent = '¡Inicio de sesión exitoso! Bienvenido de vuelta.';
                 
-                // ¡Esta es la corrección!
                 // Limpiamos los campos inmediatamente al iniciar sesión con éxito.
                 usernameInput.value = '';
                 passwordInput.value = '';
