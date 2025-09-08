@@ -99,3 +99,25 @@
 });
 
 }
+// --- Lógica de Validación del Newsletter ---
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('newsletterEmail');
+            const newsletterAlert = document.getElementById('newsletterAlert');
+            
+            if (emailInput.value.trim() !== '') {
+                newsletterAlert.classList.remove('d-none', 'alert-danger');
+                newsletterAlert.classList.add('alert-success');
+                newsletterAlert.textContent = '¡Suscripción exitosa! Recibirás nuestras novedades pronto.';
+                emailInput.value = ''; // Limpiar el campo
+                
+                setTimeout(() => {
+                    newsletterAlert.classList.add('d-none');
+                }, 3000); // Oculta el mensaje después de 3 segundos
+            } else {
+                newsletterAlert.classList.remove('d-none', 'alert-success');
+                newsletterAlert.classList.add('alert-danger');
+                newsletterAlert.textContent = 'Por favor, ingresa un correo válido.';
+            }
+        });
