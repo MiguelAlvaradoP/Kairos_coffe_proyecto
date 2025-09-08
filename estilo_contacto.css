@@ -1,52 +1,63 @@
-/* Estilos globales y paleta de colores del proyecto  */
+/* ===============================
+   Variables globales y paleta
+   =============================== */
 :root {
-  --color-principal: #2E1F18; /* Café oscuro */
-  --color-secundario: #5C4A3C; /* Tostado oscuro */
-  --color-acento: #E67E22; /* Naranja brillante */
-  --color-texto-principal: #4A3A2F; /* Marrón cálido */
-  --color-texto-secundario: #999999; /* Gris */
+  --color-principal: #2E1F18;       /* Café oscuro */
+  --color-secundario: #5C4A3C;      /* Marrón tostado */
+  --color-acento: #DCCCA3;           /* Beige cálido */
+  --color-texto-principal: #556B2F; /* Verde oliva oscuro */
+  --color-texto-secundario: #999;   /* Gris */
+  --color-fondo: #F5F5DC;           /* Fondo claro tipo crema */
 }
 
-/* Estilos para el cuerpo de la página */
+/* ===============================
+   Estilos generales
+   =============================== */
 body {
     font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa; /* Un color de fondo claro que complementa el café */
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
 }
 
-/* Encabezado */
-header {
-    background-color: var(--color-principal);
-    padding: 1rem 0;
-    border-bottom: 2px solid var(--color-acento);
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-principal);
 }
 
-.navbar .nav-link {
-    color: #fff; /* Color de texto blanco para los enlaces de la barra de navegación */
+/* ===============================
+   Navbar
+   =============================== */
+.navbar {
+  text-align: center;
+  background: #556B2F;
+  padding: 10px;
+  /* --- CAMBIOS PARA QUE SE QUEDE FIJO --- */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
+  /* --- FIN CAMBIOS --- */
+}
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.navbar .nav-link:hover {
-    color: var(--color-acento); /* Naranja al pasar el mouse */
-}
 
-/* Carrusel */
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-/* Secciones principales y tarjetas */
-.seccion-productos, .seccion-banner {
-    padding: 3rem 0;
-}
-
+/* ===============================
+   Tarjetas / Secciones
+   =============================== */
 .card {
     border: 1px solid var(--color-secundario);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .card-title {
@@ -58,25 +69,58 @@ header {
     color: var(--color-texto-secundario);
 }
 
-.btn-primary {
+/* ===============================
+   Botones
+   =============================== */
+.btn-custom, .btn-enviar {
     background-color: var(--color-acento);
-    border-color: var(--color-acento);
+    border: none;
+    color: var(--color-principal);
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-primary:hover {
-    background-color: darken(var(--color-acento), 10%); /* Oscurecer el naranja al pasar el mouse */
-    border-color: darken(var(--color-acento), 10%);
+.btn-custom:hover, .btn-enviar:hover {
+    background-color: var(--color-texto-principal);
+    color: #fff;
+    transform: translateY(-2px);
 }
 
-/* Banner */
+.btn-secondary {
+    background-color: var(--color-secundario);
+    color: #fff;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #4a382e;
+}
+
+/* ===============================
+   Carrusel
+   =============================== */
+.carousel-caption {
+    background: rgba(0,0,0,0.4);
+    border-radius: 8px;
+}
+
+/* ===============================
+   Banners
+   =============================== */
 .banner-promocional {
     background-color: var(--color-acento);
     color: #fff;
     padding: 2rem;
     text-align: center;
+    border-radius: 12px;
 }
 
-/* Pie de página */
+/* ===============================
+   Footer
+   =============================== */
 footer {
     background-color: var(--color-principal);
     color: #fff;
@@ -86,26 +130,59 @@ footer {
 footer a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
     color: var(--color-acento);
 }
 
-/* Estilos del botón de envío */
-.btn-enviar {
-    background-color: #b2a298; /* Un tono de marrón más claro */
-    border-color: #b39f93;
-    color: rgb(80, 58, 58); /* Texto blanco para un alto contraste */
-    font-weight: bold;
-    padding: 10px 40px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+/* ===============================
+   Checkout / Lista de productos
+   =============================== */
+#lista-checkout {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
-.btn-enviar:hover,
-.btn-enviar:active {
-    background-color: var(--color-texto-principal); /* Marrón cálido (más oscuro) al pasar el cursor */
-    border-color: var(--color-texto-principal);
-    transform: translateY(-2px);
+.producto-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.producto-checkout img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.producto-checkout .detalle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-checkout .nombre {
+    font-weight: 500;
+}
+
+.producto-checkout .precio,
+.producto-checkout .subtotal {
+    font-size: 0.9rem;
+    color: var(--color-texto-principal);
+}
+
+.producto-checkout .eliminar {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
 }

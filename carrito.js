@@ -1,134 +1,101 @@
-document.addEventListener('DOMContentLoaded', () => {
 
-    // Referencias a los elementos del DOM
-    const iconoCarrito = document.querySelector('.icono-carrito');
-    const carritoPanel = document.getElementById('carrito-panel');
-    const listaCarrito = document.getElementById('lista-carrito');
-    const totalCarrito = document.getElementById('total-carrito');
-    const botonesAgregar = document.querySelectorAll('.btn-agregar');
-    const cerrarCarritoBtn = document.getElementById('cerrar-carrito');
-    const pagarBtn = document.getElementById('btn-pagar');
+       const carruseles = document.querySelectorAll('.carrusel-container');
 
-    // Funciones del carrito
-    function obtenerCarrito() {
-        return JSON.parse(localStorage.getItem('carrito')) || [];
-    }
+        carruseles.forEach(container => {
+            const prevBtn = container.querySelector('.prev');
+            const nextBtn = container.querySelector('.next');
+            const carrusel = container.querySelector('.carrusel');
 
-    function guardarCarrito(carrito) {
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        actualizarContadorCarrito();
-    }
-
-    function renderizarCarrito() {
-        const carrito = obtenerCarrito();
-        listaCarrito.innerHTML = '';
-        let total = 0;
-
-        if (carrito.length === 0) {
-            listaCarrito.innerHTML = '<p class="text-center mt-3">El carrito está vacío.</p>';
-        } else {
-            carrito.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-                li.innerHTML = `
-                    <div>
-                        <span class="fw-bold">${item.nombre}</span>
-                        <br>
-                        <small>Cantidad: ${item.cantidad}</small>
-                    </div>
-                    <span>$${(item.precio * item.cantidad).toLocaleString('es-CL')}</span>
-                    <button class="btn btn-sm btn-outline-danger btn-eliminar-item" data-index="${index}">X</button>
-                `;
-                listaCarrito.appendChild(li);
-                total += item.precio * item.cantidad;
+            prevBtn.addEventListener('click', () => {
+                carrusel.scrollBy({ left: -260, behavior: 'smooth' });
             });
-        }
-        
-        totalCarrito.textContent = `$${total.toLocaleString('es-CL')}`;
 
-        document.querySelectorAll('.btn-eliminar-item').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                eliminarDelCarrito(index);
+            nextBtn.addEventListener('click', () => {
+                carrusel.scrollBy({ left: 260, behavior: 'smooth' });
             });
         });
-    }
-
-    function agregarAlCarrito(producto) {
-        let carrito = obtenerCarrito();
-        const productoExistente = carrito.find(item => item.id === producto.id);
-
-        if (productoExistente) {
-            productoExistente.cantidad++;
-        } else {
-            carrito.push({ ...producto, cantidad: 1 });
-        }
-        guardarCarrito(carrito);
-        // Opcional: mostrar un mensaje de éxito
-        alert(`¡Se agregó ${producto.nombre} al carrito!`);
-    }
-    
-    function eliminarDelCarrito(index) {
-        const carrito = obtenerCarrito();
-        carrito.splice(index, 1);
-        guardarCarrito(carrito);
-        renderizarCarrito();
-    }
-
-    function actualizarContadorCarrito() {
-        const carrito = obtenerCarrito();
-        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-        const contador = document.getElementById('contador-carrito');
-        if (contador) {
-            contador.textContent = totalItems;
-            contador.style.display = totalItems > 0 ? 'inline-block' : 'none';
-        }
-    }
 
 
-    // Manejo de Eventos
-    // Lógica para abrir/cerrar el panel del carrito con un solo clic
-    if (iconoCarrito) {
-        iconoCarrito.addEventListener('click', () => {
-            carritoPanel.classList.toggle('open');
-            if (carritoPanel.classList.contains('open')) {
-                renderizarCarrito();
-            }
-        });
-    }
+        //Carrito de compra
 
-    if (cerrarCarritoBtn) {
-        cerrarCarritoBtn.addEventListener('click', () => {
-            carritoPanel.classList.remove('open');
-        });
-    }
+            // Array que va a almacenar los productos seleccionados
+             let carrito = [];
+                const botones = document.querySelectorAll('.btn-carrito');
+                const contadorCarrito = document.getElementById('contador-carrito');
+                const listaCarrito = document.getElementById('lista-carrito');
+                const totalCarrito = document.getElementById('total-carrito');
+                const iconoCarrito = document.querySelector('.carrito-container');
+                const botonCerrar = document.getElementById('cerrar-carrito');
+                const carritoPanel = document.getElementById('carrito-panel');
 
-    // Eventos para los botones "Agregar al Carrito"
-    botonesAgregar.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const card = e.target.closest('.card');
-            if (card) {
-                const producto = {
-                    id: card.dataset.id,
-                    nombre: card.dataset.nombre,
-                    precio: parseFloat(card.dataset.precio)
-                };
-                agregarAlCarrito(producto);
-            }
+                // Abrir carrito
+            iconoCarrito.addEventListener('click', () => {
+                carritoPanel.classList.add('active');
+                mostrarCarrito();
+            });
+
+            // Cerrar carrito
+            botonCerrar.addEventListener('click', () => {
+                carritoPanel.classList.remove('active');
+            });
+
+    // Agregar producto
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const producto = boton.closest('.producto');
+            const nombre = producto.querySelector('h2').innerText;
+            const precioTexto = producto.querySelectorAll('h2')[1].innerText.replace('$','').replace('.','');
+            const precio = parseInt(precioTexto);
+            const imagen = producto.querySelector('img').src;
+            const id = boton.id;
+
+            const item = { id, nombre, precio, imagen };
+            carrito.push(item);
+
+            contadorCarrito.textContent = carrito.length;
+            mostrarCarrito();
         });
     });
 
-    if (pagarBtn) {
-        pagarBtn.addEventListener('click', () => {
-            if (obtenerCarrito().length > 0) {
-                window.location.href = "checkout.html";
-            } else {
-                alert("El carrito está vacío.");
-            }
+    // Mostrar productos en el panel
+    function mostrarCarrito() {
+    listaCarrito.innerHTML = "";
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+        total += item.precio;
+
+        const div = document.createElement('div');
+        div.classList.add('item-carrito');
+        div.innerHTML = `
+            <img src="${item.imagen}" alt="${item.nombre}">
+            <span>${item.nombre}</span>
+            <span>$${item.precio.toLocaleString()}</span>
+            <button class="eliminar-item" data-index="${index}">×</button>
+        `;
+        listaCarrito.appendChild(div);
+    });
+
+    totalCarrito.textContent = "Total: $" + total.toLocaleString();
+
+    // Agregar funcionalidad a botones de eliminar
+    const botonesEliminar = document.querySelectorAll('.eliminar-item');
+    botonesEliminar.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const index = boton.getAttribute('data-index');
+            carrito.splice(index, 1); // eliminar el producto del carrito
+            contadorCarrito.textContent = carrito.length; // actualizar contador
+            mostrarCarrito(); // refrescar la lista
         });
-    }
-    
-    // Inicializar al cargar la página
-    actualizarContadorCarrito();
-    renderizarCarrito();
+    });
+    // Botón pagar
+    const btnPagar = document.getElementById('btn-pagar');
+
+    btnPagar.addEventListener('click', () => {
+    // Guardar carrito en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    // Redirigir a la página de pago
+    window.location.href = 'checkout.html';
 });
+
+}

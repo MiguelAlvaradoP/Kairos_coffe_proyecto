@@ -1,125 +1,463 @@
-/* Estilos Globales y Variables */
-:root {
-    --color-principal: #2E1F18; /* Café oscuro */
-    --color-acento: #556B2F; /* Verde musgo */
-    --color-texto-claro: #F5F5DC; /* Fondo beige claro */
-    --color-secundario: #435427; /* Verde más oscuro para hover */
-}
-
 body {
-    background-color: var(--color-texto-claro);
+    background-attachment: scroll;
+    background-repeat: repeat;
+    background-size: auto;
+    margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #F5F5DC;
+
+}
+html {
+    scroll-behavior: smooth;
 }
 
-/* NAVBAR y Carrito */
-.bg-custom-dark {
-    background-color: var(--color-principal) !important;
+/* NAVBAR */
+.navbar {
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    background: #556B2F;
+    position: relative;
+    padding: 10px 20px;
+    top: 0;
+    z-index: 1000;
+    position: sticky;
 }
 
-.navbar a.nav-link {
-  color: var(--color-texto-claro) !important;
+.navbar a {
+  color: #F5F5DC;
+  margin: 0 18px;
+  text-decoration: none;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.navbar a.nav-link:hover {
-  color: #DCCCA3 !important; /* Un color de acento para el hover */
+.navbar a:hover {
+  color: #DCCCA3;
+}
+.carrito-container {
+    margin-left: auto; /* Lo empuja a la derecha */
+    position: relative;
+    cursor: pointer;
 }
 
-/* Estilos para el panel del carrito */
+
+/* Icono carrito */
+.icono-carrito {
+    width: 30px;
+    height: 30px;
+}
+
+/* Contador (circulito rojo) */
+#contador-carrito {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+/* Panel lateral */
 .carrito-panel {
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -400px; /* oculto por defecto */
     width: 350px;
     height: 100%;
-    background-color: #fff;
+    background: #F5F5DC;
     box-shadow: -2px 0 10px rgba(0,0,0,0.2);
     padding: 20px;
     transition: right 0.3s ease-in-out;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+#btn-pagar {
+    padding: 12px 30px;
+    background-color: #5C4A3C; /* Café tostado */
+    color: #FFD700; /* Dorado */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.carrito-panel.open {
+#btn-pagar:hover {
+    background-color: #4b3a2f; /* Café más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+
+/* Panel abierto */
+.carrito-panel.active {
     right: 0;
 }
 
-.carrito-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-#total-carrito {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--color-principal);
-}
-
+/* Botón cerrar */
 #cerrar-carrito {
-    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
     border: none;
-    font-size: 1.5rem;
-    color: var(--color-principal);
+    font-size: 24px;
+    color: red;
     cursor: pointer;
 }
 
-#lista-carrito .list-group-item {
+/* Lista con scroll */
+#lista-carrito {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 40px;
+    max-height: calc(100vh - 80px); /* ajusta según altura del header */
+}
+
+#lista-carrito div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+#lista-carrito img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+/* Botón cerrar */
+#cerrar-carrito {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
     border: none;
-    padding: 10px 0;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
 }
-
-/* Estilos de botones */
-/* Esto es lo que se movió y se corrigió */
-.btn-custom {
-    background-color: var(--color-acento);
-    color: white; /* Ajustado a blanco para mejor contraste */
+.eliminar-item {
+    background: transparent;
     border: none;
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.item-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.item-carrito img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
-.btn-custom:hover {
-    background-color: var(--color-secundario); /* Usando la variable para el hover */
-    color: white;
+
+/* SECCIONES */
+.productos-daroma {
+    background-color: rgba(46, 31, 24, 0.9);
+    color: #F5F5DC;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 1300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Carrusel de productos */
+.productos-daroma h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    color: #DCCCA3;
+    border-bottom: 2px solid #556B2F;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* CARRUSEL */
 .carrusel-container {
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: #2E1F18;
 }
 
 .carrusel {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+    gap: 20px;
+    padding: 15px 0;
 }
 
-.carrusel-btn {
-    z-index: 100;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: var(--color-principal);
-    color: var(--color-texto-claro);
-    border: none;
-    transition: background-color 0.3s;
+.carrusel::-webkit-scrollbar {
+    display: none;
 }
+
+/* PRODUCTOS */
+.producto {
+    flex: 0 0 25%;
+    background-color: #556B2F;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: #DCCCA3;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #F5F5DC;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.producto img {
+    width: auto;           /* Mantiene proporción */
+    height: 180px;         /* 🔑 Todas tendrán la misma altura */
+    object-fit: contain;   /* Ajusta dentro del espacio sin recortar */
+    margin: 0 auto 10px;   /* Centra la imagen */
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.producto h2 {
+    font-size: 1.2em;
+    margin: 6px 0;
+    color: #F5F5DC;
+}
+
+.producto p {
+    margin: 5px 0;
+    color: #DCCCA3;
+}
+
+.producto h2:last-of-type {
+    color: #FFD580; /* precio en beige dorado */
+    font-weight: bold;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(220, 204, 163, 0.3);
+}
+
+.producto img:hover {
+    transform: scale(1.15);
+}
+
+/* BOTONES CARRUSEL */
+.carrusel-btn {
+    background-color: rgba(46, 31, 24, 0.8);
+    border: none;
+    color: #F5F5DC;
+    font-size: 2em;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background 0.3s ease;
+}
+
+.carrusel-btn.prev { left: 5px; }
+.carrusel-btn.next { right: 5px; }
 
 .carrusel-btn:hover {
-    background-color: var(--color-acento);
+    background-color: #DCCCA3;
+    color: #2E1F18;
+}
+h1,h3{
+    text-align: center;
+}
+.btn-carrito {
+    margin-top: auto;
+    padding: 10px 15px;
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
-/* Card de productos */
-.card-title, .card-text {
-    color: var(--color-principal);
+.btn-carrito:hover {
+    background: #5d4037;
+}
+.main-footer {
+    background-color: #2E1F18; /* Café oscuro de fondo */
+    color: #f0f0f0; /* Color de texto claro para contrastar */
+    padding: 40px 0 20px 0; /* Espaciado interno */
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-around; /* Distribuye el espacio entre las columnas */
+    max-width: 1200px; /* Ancho máximo del contenido del footer */
+    margin: 0 auto; /* Centra el contenido del footer */
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1; /* Permite que las secciones crezcan y se encojan */
+    min-width: 200px; /* Ancho mínimo para cada columna */
+    margin: 20px 15px; /* Margen entre secciones */
+}
+
+.footer-section.about {
+    flex: 1.2; /* El logo y métodos de pago pueden ocupar un poco más de espacio */
+    min-width: 250px;
+}
+
+.footer-logo {
+    max-width: 180px; /* Tamaño del logo */
+    margin-bottom: 20px;
+}
+
+.payment-methods p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.payment-icon {
+    height: 30px; /* Altura de los iconos de pago */
+    margin-right: 8px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.payment-icon:hover {
+    opacity: 1;
+}
+
+.footer-section h4 {
+    color: #fff; /* Títulos en blanco */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea debajo de los títulos */
+    padding-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #f0f0f0; /* Color de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #a07a67; /* Un tono café más claro para el hover */
+}
+
+/* Newsletter */
+.footer-section.newsletter p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px 0 0 5px; /* Bordes redondeados solo a la izquierda */
+    background-color: #4a3833; /* Fondo más claro para el input */
+    color: #f0f0f0;
+    outline: none;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #b0b0b0;
+}
+
+.newsletter-form button {
+    background-color: #a07a67; /* Color del botón de envío */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0; /* Bordes redondeados solo a la derecha */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #c09a87;
+}
+
+/* Contacto */
+.footer-section.contact p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.footer-section.contact p a {
+    color: #a07a67;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-section.contact p a:hover {
+    color: #c09a87;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a img {
+    height: 30px; /* Tamaño de los iconos de redes sociales */
+    margin-right: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.social-links a img:hover {
+    opacity: 1;
+}
+
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+    font-size: 0.85rem;
+    color: #b0b0b0;
 }
