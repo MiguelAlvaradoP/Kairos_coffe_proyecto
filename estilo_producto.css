@@ -76,14 +76,15 @@ body {
 }
 
 /* Estilos de botones */
+/* Esto es lo que se movió y se corrigió */
 .btn-custom {
     background-color: var(--color-acento);
-    color: white;
+    color: white; /* Ajustado a blanco para mejor contraste */
     border: none;
 }
 
 .btn-custom:hover {
-    background-color: var(--color-secundario);
+    background-color: var(--color-secundario); /* Usando la variable para el hover */
     color: white;
 }
 
