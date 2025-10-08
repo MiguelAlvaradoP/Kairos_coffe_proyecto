@@ -3,147 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de compra</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Confirmación de compra - Kairós Coffee</title>
+    
+    <!-- Bootstrap -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
+
+    <!-- Estilos propios -->
     <link rel="stylesheet" href="estilo_confirmacion.css">
-    <style>
-        .btn-custom {
-            background-color: #556B2F;
-            color: white;
-            border: none;
-        }
-        .btn-custom:hover {
-            background-color: #435427;
-            color: white;
-        }
-        .bg-custom-dark {
-            background-color: #2E1F18;
-            color: white;
-        }
-    </style>
 </head>
+
 <body class="bg-light d-flex flex-column min-vh-100">
 
-    <div class="navbar navbar-expand-lg navbar-dark sticky-top bg-custom-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Kairós Coffee</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="producto.html#cafe">CAFÉ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="producto.html#capsulas">CÁPSULAS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="producto.html#yerba_y_te">TÉ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="producto.html#yerba_y_te">YERBA MATE</a></li>
-                    <li class="nav-item"><a class="nav-link" href="producto.html#accesorios">ACCESORIOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacto.html">CONTÁCTANOS</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-custom-dark" aria-label="Menú principal de navegación">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Kairós Coffee</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    <main class="container my-5 flex-grow-1 d-flex align-items-center justify-content-center">
-        <div class="card shadow-lg p-5 text-center" style="background-color: #F5F5DC;">
-            <h2 class="card-title mb-4" style="color: #2E1F18; font-size: 2.5rem;">¡Gracias por tu compra!</h2>
-            <p class="mb-2 fs-5" style="color: #555;">Tu pedido ha sido registrado exitosamente.</p>
-            <p class="mb-4 fs-5" style="color: #555;">Pronto recibirás un correo con los detalles de la compra.</p>
-            <div class="d-flex justify-content-center mb-4">
-                <img src="https://org.coloradomesa.edu/~cagardner2/images/ProjectCafeGif2.gif" alt="Banner Animado de Café" class="img-fluid rounded shadow-sm">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                        <li class="nav-item"><a class="nav-link" href="producto.html#cafe">CAFÉ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="producto.html#capsulas">CÁPSULAS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="producto.html#yerba_y_te">TÉ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="producto.html#yerba_y_te">YERBA MATE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="producto.html#accesorios">ACCESORIOS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">CONTÁCTANOS</a></li>
+                    </ul>
+                </div>
             </div>
-            <p id="mensaje-dinamico" class="mb-4 fs-5 fw-bold" style="color: #556B2F;"></p>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="container my-5 flex-grow-1 d-flex align-items-center justify-content-center">
+        <section class="card shadow-lg p-5 text-center confirmation-card" aria-labelledby="confirmation-title">
+            <h1 id="confirmation-title" class="card-title mb-4 titulo-confirmacion">
+                ¡Gracias por tu compra!
+            </h1>
+            
+            <p class="mb-2 fs-5 texto-confirmacion">Tu pedido ha sido registrado exitosamente.</p>
+            <p class="mb-4 fs-5 texto-confirmacion">Pronto recibirás un correo con los detalles de la compra.</p>
+            
+            <div class="d-flex justify-content-center mb-4">
+                <img 
+                    src="https://org.coloradomesa.edu/~cagardner2/images/ProjectCafeGif2.gif" 
+                    alt="Animación de granos de café cayendo" 
+                    class="img-fluid rounded shadow-sm"
+                >
+            </div>
+            
+            <div class="summary-details my-4 text-start w-100">
+                <h5 class="mb-3 fw-bold subtitulo-detalle">Detalle de Pago</h5>
+                <table class="table table-borderless confirmation-table">
+                    <tbody>
+                        <tr>
+                            <td>Cantidad de artículos comprados:</td>
+                            <td id="summary-quantity" class="text-end fw-bold">0</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td class="fw-bold">TOTAL PAGADO:</td>
+                            <td id="summary-total" class="text-end fw-bold"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="mensaje-dinamico" class="mb-4 fs-5 fw-bold mensaje-dinamico" aria-live="polite"></p>
             <a href="index.html" class="btn btn-custom btn-lg">Volver al inicio</a>
-        </div>
+        </section>
     </main>
 
-   <footer class="main-footer py-4 mt-5 bg-custom-dark text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 mb-4 text-center text-md-start">
-                    <img src="LOGO_KAIROS_COFFE.png" alt="Kairós Coffee Logo" class="img-fluid mb-3" style="max-width: 150px;">
-                    <h5 class="fw-bold">Métodos de Pago:</h5>
-                    <div class="d-flex justify-content-center justify-content-md-start gap-2">
-                        <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="img-fluid" style="width: 50px;">
-                        <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="img-fluid" style="width: 50px;">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="img-fluid" style="width: 50px;">
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="img-fluid" style="width: 50px;">
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-2 mb-4 text-center text-md-start">
-                    <h5 class="fw-bold">Kairós Coffee</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Nuestra Historia</a></li>
-                        <li><a href="producto.html" class="text-white text-decoration-none">Productos</a></li>
-                        <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Kairós Coffee Chile</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-6 col-md-2 mb-4 text-center text-md-start">
-                    <h5 class="fw-bold">Información</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Despachos y Retiros</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Cambios y Devoluciones</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-12 col-md-5 text-center text-md-start">
-                    <h5 class="fw-bold">Newsletter</h5>
-                    <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
-                    <form class="d-flex newsletter-form" id="newsletterForm">
-                        <input type="email" class="form-control me-2" placeholder="Correo electrónico" id="newsletterEmail" required>
-                        <button type="submit" class="btn btn-primary">→</button>
-                    </form>
-                    <div id="newsletterAlert" class="alert d-none mt-2" role="alert"></div>
-                    <h5 class="fw-bold mt-4">Contáctanos</h5>
-                    <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl" class="text-white">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
-                    <div class="social-links d-flex justify-content-center justify-content-md-start gap-3">
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" style="width: 30px;"></a>
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" style="width: 30px;"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom text-center pt-3 mt-3 border-top border-secondary">
-            <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mensajeDinamico = document.getElementById('mensaje-dinamico');
-            const totalItemsGuardados = localStorage.getItem('totalItems') || 0;
-            if (totalItemsGuardados > 0) {
-                mensajeDinamico.textContent = `Has comprado ${totalItemsGuardados} productos. Te esperamos pronto.`;
-            }
-            localStorage.removeItem('totalItems');
-        });
-        // --- Lógica de Validación del Newsletter ---
-        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            const emailInput = document.getElementById('newsletterEmail');
-            const newsletterAlert = document.getElementById('newsletterAlert');
-            
-            if (emailInput.value.trim() !== '') {
-                newsletterAlert.classList.remove('d-none', 'alert-danger');
-                newsletterAlert.classList.add('alert-success');
-                newsletterAlert.textContent = '¡Suscripción exitosa! Recibirás nuestras novedades pronto.';
-                emailInput.value = ''; // Limpiar el campo
-                
-                setTimeout(() => {
-                    newsletterAlert.classList.add('d-none');
-                }, 3000); // Oculta el mensaje después de 3 segundos
-            } else {
-                newsletterAlert.classList.remove('d-none', 'alert-success');
-                newsletterAlert.classList.add('alert-danger');
-                newsletterAlert.textContent = 'Por favor, ingresa un correo válido.';
-            }
-        });
-    </script>
+    <!-- Lógica JS -->
+    <script src="confirmacion.js"></script>
+    <script src="newsletter.js"></script>
+
 </body>
 </html>

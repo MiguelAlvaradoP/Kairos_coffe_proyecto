@@ -1,36 +1,107 @@
-body{
-    /*background-image: url(https://img.freepik.com/vector-premium/patron-costuras-granos-cafe_109161-2305.jpg);
-    background-attachment: scroll; /* El fondo se mueve con el contenido */
-    background-repeat: repeat;      /* Se repite para cubrir */
-    background-size: auto;    
+/*
+  ESTILOS OPTIMIZADOS PARA KAIRÓS COFFEE
+  Utiliza clases de Bootstrap (bg-*, text-*, d-*, py-*, etc.) para layout y tipografía
+  Mantiene estilos personalizados para la identidad de marca (navbar, modal, carousel)
+*/
+
+/* Variables CSS para facilitar cambios de color */
+:root {
+    --color-primary: #556B2F; /* Verde Oliva Oscuro (Navbar, botones primarios) */
+    --color-dark-coffee: #2E1F18; /* Café Muy Oscuro (Footer) */
+    --color-tostado: #5C4A3C; /* Café Tostado (Modal background) */
+    --color-gold: #FFD700; /* Dorado (Modal text) */
+    --color-background: #F5F5DC; /* Beige Claro (Body, Fondo de botón Registro) */
+}
+
+body {
+    background-color: var(--color-background);
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #F5F5DC;
 }
 html {
     scroll-behavior: smooth;
 }
-/* Barra de navegación */
+
+/* =================================================================== */
+/* 1. Barra de navegación (Modificada para distribución horizontal)     */
+/* =================================================================== */
 .navbar {
-  text-align: center;
-  background: #556B2F;
-  padding: 10px;
-  /* --- CAMBIOS PARA QUE SE QUEDE FIJO --- */
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
-  /* --- FIN CAMBIOS --- */
+    background: var(--color-primary);
+    padding: 10px 20px; /* Ajustado para que los elementos no estén pegados a los bordes */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Distribución horizontal: REEMPLAZA justify-content: center; */
+    display: flex;
+    justify-content: space-between; /* Distribuye a la izquierda (links) y derecha (acciones) */
+    align-items: center;
 }
 .navbar a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
+    color: white;
+    margin: 0 15px; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.navbar a:hover {
+    color: var(--color-gold); 
 }
 
-/*ACCESO CUENTA*/
-/* Modal login */
-/* Modal login */
+/* Contenedores para la distribución */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.navbar-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo para el botón REGISTRARSE (Borde y letra en color primario) */
+.btn-acento-claro {
+    background-color: var(--color-background) !important; /* Fondo Beige Claro */
+    color: var(--color-primary) !important; /* Letra Verde Oliva */
+    border: 1px solid var(--color-primary) !important;
+    font-weight: bold; /* Asegura que el texto esté resaltado */
+    transition: all 0.2s;
+}
+.btn-acento-claro:hover {
+    background-color: #dcdcdc !important; 
+    border-color: #435425 !important;
+}
+
+/* Estilo para el botón de INICIAR SESIÓN */
+#loginBtn {
+    background-color: var(--color-tostado);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+#loginBtn:hover {
+    background-color: #3e2f24; 
+    color: #FFC700; 
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+#loginBtn h2 {
+    margin: 0; 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* =================================================================== */
+/* 2. Modal de Login (Colores de botón corregidos)                     */
+/* =================================================================== */
+/* Reiniciar el estilo del elemento <dialog> para Bootstrap/Custom */
 .modal {
     display: none;
     position: fixed;
@@ -41,34 +112,31 @@ html {
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    border: none;
 }
 
-.modal.active {
+.modal[open] { 
     display: flex;
-    animation: fadeIn 0.3s ease forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
-    background: #5C4A3C; /* Café tostado */
+    background: var(--color-tostado); /* Fondo tostado */
     padding: 30px;
     border-radius: 15px;
     width: 320px;
     position: relative;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    color: #FFD700; /* Letras doradas */
+    color: var(--color-gold); 
     text-align: center;
 }
 
 .modal-content h2 {
     margin-top: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #FFD700;
+    color: var(--color-gold);
     margin-bottom: 20px;
 }
 
@@ -77,21 +145,18 @@ html {
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
-    border: 1px solid #FFD700;
+    border: 1px solid var(--color-gold);
     background: #fff7e6;
     color: #2E1F18;
     font-size: 1rem;
 }
 
-.modal-content input::placeholder {
-    color: #8B6B4F;
-}
-
+/* BOTÓN DE ACCIÓN PRIMARIA (INICIAR SESIÓN) */
 .modal-content button.submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #FFD700;
-    color: #5C4A3C;
+    background-color: var(--color-primary); /* ¡Verde Oliva! */
+    color: white; /* Texto blanco para alto contraste */
     border: none;
     border-radius: 8px;
     font-weight: bold;
@@ -102,7 +167,7 @@ html {
 }
 
 .modal-content button.submit-btn:hover {
-    background-color: #e6c200;
+    background-color: #435425; /* Tono más oscuro de Verde Oliva para el hover */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -114,7 +179,7 @@ html {
     background: none;
     border: none;
     cursor: pointer;
-    color: #FFD700;
+    color: var(--color-gold);
     font-weight: bold;
     transition: color 0.2s ease;
 }
@@ -123,9 +188,21 @@ html {
     color: #fff;
 }
 
+/* Enlace de Registro dentro del modal */
+.modal-content .link-registro {
+    color: var(--color-primary); /* Enlace en Verde Oliva */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.modal-content .link-registro:hover {
+    color: #435425;
+}
+
+/* Mensaje flotante (Toast/Alert) */
 .login-message {
     position: fixed;
-    top: -100px; /* inicia fuera de la pantalla */
+    top: -100px;
     right: 20px;
     background-color: #d4edda;
     color: #155724;
@@ -136,164 +213,125 @@ html {
     opacity: 0;
     transition: all 0.5s ease;
 }
-
-/* Clase que activa el slide down */
 .login-message.show {
-    top: 20px; /* posición final */
+    top: 20px; 
     opacity: 1;
 }
-
-/* Opcional: para mensajes de error */
 .login-message.error {
     background-color: #f8d7da;
     color: #721c24;
 }
 
-
-/* Animación */
-@keyframes slideDown {
-    0% { transform: translateY(-50px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-  .modal-content h2 {
-    margin-top: 0;
-    color: #2E1F18;
-    text-align: center;
-  }
-  .modal-content input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  .modal-content button.submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #556B2F;
+/* =================================================================== */
+/* 3. Barra de Envíos (Nueva distribución horizontal)                   */
+/* =================================================================== */
+.shipping-bar-horizontal {
+    background-color: #799d4f; /* Tono de verde complementario */
     color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .modal-content button.submit-btn:hover {
-    background-color: #435427;
-  }
-  .close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #2E1F18;
-    font-weight: bold;
-  }
-/* ===== Carrusel ===== */
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.shipping-bar-horizontal p {
+    margin: 0; 
+    white-space: nowrap; 
+}
+.shipping-bar-horizontal p:not(.active) {
+    /* Oculta los mensajes inactivos si usas JS para rotar */
+    display: none; 
+}
+
+/* =================================================================== */
+/* 4. Carrusel Principal                                               */
+/* =================================================================== */
 .carousel {
-  position: relative;
-  width: 100%;
-  height: 80vh; /* ocupa 80% de la altura de la pantalla */
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 86vh; 
+    overflow: hidden;
 }
-.carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* llena todo el espacio sin deformarse */
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+.carousel figure { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    margin: 0; 
 }
-.carousel img.active {
-  opacity: 1;
+.carousel figure img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Texto sobre la imagen */
+.carousel figure.active { 
+    opacity: 1;
+}
+
 .carousel-text {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  color: white;
-  max-width: 40%;
-
-  background-color: rgba(46, 31, 24, 0.8); /* Café moka oscuro con 80% opacidad */
-  padding: 25px; /* Espacio dentro del recuadro */
-  border-radius: 15px; /* Esquinas redondeadas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 40%;
+    background-color: rgba(46, 31, 24, 0.8); 
+    padding: 25px; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-
-.carousel-text h2 {
-  font-size: 2.5rem;
-  margin: 0 0 15px;
+.carousel-text h1 { 
+    font-size: 2.5rem;
+    margin: 0 0 15px;
 }
 .carousel-text p {
-  font-size: 1.2rem;
-  margin: 0 0 20px;
+    font-size: 1.2rem;
+    margin: 0 0 20px;
 }
-.carousel-text a {
-  background: #fff;
-  color: #3e2723;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
+.carousel-text a.btn {
+    /* Usar clase de Bootstrap .btn-light y corregir el color del texto */
+    background: #fff;
+    color: var(--color-dark-coffee);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-/* Indicadores (puntitos) */
 .indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
 }
-.indicators div {
-  width: 12px;
-  height: 12px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 50%;
-  cursor: pointer;
+.indicators button { 
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    padding: 0;
 }
 .indicators .active {
-  background: white;
+    background: white;
 }
 
-/* ===== Estilos para el Banner Giratorio de Envío ===== */
-.shipping-banner {
-    background-color: white; /* Fondo blanco */
-    color: #3e2723; /* Letras café oscuro */
-    text-align: center;
-    padding: 15px 0; /* Espaciado arriba y abajo */
-    font-weight: bold;
-    font-size: 1.1rem;
-    overflow: hidden; /* Oculta los mensajes que no están activos */
-    position: relative; /* Necesario para posicionar los mensajes hijos */
-    height: 30px; /* Altura fija para el banner */
-    display: flex; /* Para centrar el mensaje */
-    align-items: center; /* Para centrar verticalmente el mensaje */
-    justify-content: center; /* Para centrar horizontalmente el mensaje */
-    margin-top: -5px; /* Ajuste para eliminar un pequeño espacio si lo hay */
-}
 
-.shipping-message {
-    position: absolute; /* Posiciona los mensajes uno encima del otro */
-    width: 100%;
-    opacity: 0; /* Mensajes inicialmente invisibles */
-    transition: opacity 1s ease-in-out; /* Transición suave entre mensajes */
-    padding: 0 20px; /* Padding horizontal para el texto */
-    box-sizing: border-box; /* Asegura que el padding no desborde el width */
+/* =================================================================== */
+/* 5. Categorías                                                       */
+/* =================================================================== */
+.categorias-section {
+    padding: 30px 0;
 }
-
-.shipping-message.active {
-    opacity: 1; /* El mensaje activo es visible */
-}
-
-/*CATEGORIA*/
 .categorias-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -309,8 +347,8 @@ html {
     height: 250px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-decoration: none; 
 }
-
 .categoria-card img {
     width: 100%;
     height: 100%;
@@ -318,22 +356,19 @@ html {
     display: block;
     transition: transform 0.4s ease;
 }
-
 .categoria-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
-
 .categoria-card:hover img {
     transform: scale(1.1);
 }
-
 .categoria-titulo {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 10px 0;
-    background: rgba(46, 31, 24, 0.7); /* Fondo semitransparente */
+    background: rgba(46, 31, 24, 0.7); 
     color: #fff;
     font-weight: bold;
     text-align: center;
@@ -341,54 +376,30 @@ html {
     letter-spacing: 1px;
     transition: background 0.3s ease;
 }
-
 .categoria-card:hover .categoria-titulo {
     background: rgba(46, 31, 24, 0.9);
 }
 
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    .categorias-section {
-        padding: 30px 15px;
-    }
-    .categoria-card {
-        padding: 20px 15px;
-        min-height: 220px;
-    }
-    .categoria-card img {
-        max-width: 70px;
-    }
-}
-
-
-
-
-/* ===== Estilos para el Banner GIF ===== */
+/* =================================================================== */
+/* 6. Banner GIF y Texto                                               */
+/* =================================================================== */
 .banner-gif {
     width: 100%;
-    /* CRUCIAL: Añadimos position: relative para que el texto se posicione dentro de este contenedor */
     position: relative; 
     overflow: hidden;
     margin-top: 50px;
 }
-
 .banner-gif img {
     display: block;
     width: 100%;
     height: auto;
 }
-
-/* ===== Estilos para el Texto sobre el GIF ===== */
 .banner-gif-text {
-    /* Mantenemos position: absolute para superponerlo */
     position: absolute;
-    /* Usamos top y left para ubicarlo en el centro del contenedor padre (.banner-gif) */
     top: 50%;
     left: 50%;
-    /* Y transform para centrarlo perfectamente */
     transform: translate(-50%, -50%);
-    
     background-color: rgba(255, 255, 255, 0.7);
     color: #3e2723;
     padding: 20px 40px;
@@ -397,281 +408,119 @@ html {
     max-width: 60%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 .banner-gif-text p {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
 }
 
-/* ===== FOOTER ===== */
+/* =================================================================== */
+/* 7. Footer                                                           */
+/* =================================================================== */
 .main-footer {
-    background-color: #2E1F18; /* Café oscuro de fondo */
-    color: #f0f0f0; /* Color de texto claro para contrastar */
-    padding: 40px 0 20px 0; /* Espaciado interno */
-    font-family: Arial, sans-serif;
+    background-color: var(--color-dark-coffee) !important;
+    color: #f0f0f0; 
 }
 
-.footer-content {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    justify-content: space-around; /* Distribuye el espacio entre las columnas */
-    max-width: 1200px; /* Ancho máximo del contenido del footer */
-    margin: 0 auto; /* Centra el contenido del footer */
-    padding: 0 20px;
+.main-footer .fw-bold {
+    color: #fff;
+    margin-top: 15px; 
 }
-
-.footer-section {
-    flex: 1; /* Permite que las secciones crezcan y se encojan */
-    min-width: 200px; /* Ancho mínimo para cada columna */
-    margin: 20px 15px; /* Margen entre secciones */
-}
-
-.footer-section.about {
-    flex: 1.2; /* El logo y métodos de pago pueden ocupar un poco más de espacio */
-    min-width: 250px;
-}
-
-.footer-logo {
-    max-width: 180px; /* Tamaño del logo */
-    margin-bottom: 20px;
-}
-
-.payment-methods p {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #e0e0e0;
-}
-
-.payment-icon {
-    height: 30px; /* Altura de los iconos de pago */
-    margin-right: 8px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-.payment-icon:hover {
-    opacity: 1;
-}
-
-.footer-section h4 {
-    color: #fff; /* Títulos en blanco */
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea debajo de los títulos */
-    padding-bottom: 10px;
-}
-
-.footer-section ul {
-    list-style: none; /* Quita los puntos de la lista */
-    padding: 0;
-    margin: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-    color: #f0f0f0; /* Color de los enlaces */
-    text-decoration: none;
+.main-footer a {
+    color: #f0f0f0;
     transition: color 0.3s ease;
 }
-
-.footer-section ul li a:hover {
-    color: #a07a67; /* Un tono café más claro para el hover */
+.main-footer a:hover {
+    color: #a07a67; 
 }
-
-/* Newsletter */
-.footer-section.newsletter p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.newsletter-form {
-    display: flex;
-    margin-top: 15px;
-}
-
 .newsletter-form input[type="email"] {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px 0 0 5px; /* Bordes redondeados solo a la izquierda */
-    background-color: #4a3833; /* Fondo más claro para el input */
+    background-color: #4a3833;
     color: #f0f0f0;
-    outline: none;
+    border: 1px solid #4a3833;
 }
-
-.newsletter-form input[type="email"]::placeholder {
-    color: #b0b0b0;
-}
-
 .newsletter-form button {
-    background-color: #a07a67; /* Color del botón de envío */
-    color: white;
+    background-color: #a07a67;
     border: none;
-    padding: 10px 15px;
-    border-radius: 0 5px 5px 0; /* Bordes redondeados solo a la derecha */
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .newsletter-form button:hover {
     background-color: #c09a87;
 }
 
-/* Contacto */
-.footer-section.contact p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-.footer-section.contact p a {
-    color: #a07a67;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.footer-section.contact p a:hover {
-    color: #c09a87;
-}
-
-.social-links {
-    margin-top: 20px;
-}
-
-.social-links a img {
-    height: 30px; /* Tamaño de los iconos de redes sociales */
-    margin-right: 15px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-.social-links a img:hover {
-    opacity: 1;
-}
-
-
-/* Footer Bottom */
 .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
     font-size: 0.85rem;
     color: #b0b0b0;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column; /* Apila las columnas en pantallas pequeñas */
-        align-items: center;
-    }
-    .footer-section {
-        margin: 20px 0;
-        text-align: center;
-        min-width: auto;
-    }
-    .footer-section.about,
-    .footer-section.links,
-    .footer-section.info,
-    .footer-section.newsletter,
-    .footer-section.contact {
-        width: 100%; /* Ocupa todo el ancho */
-        text-align: center;
-    }
-    .newsletter-form {
-        justify-content: center; /* Centra el formulario */
-    }
-}
 
+/* =================================================================== */
+/* 8. RESPONSIVE                                                       */
+/* =================================================================== */
 
-/* ===== RESPONSIVE ===== */
-
-/* Tablets */
+/* Tablets (md en Bootstrap) */
 @media (max-width: 992px) {
-  .carousel-text {
-    max-width: 70%;
-    font-size: 0.9rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .categorias-section img {
-    max-width: 120px;
-  }
-
-  .categorias-section h3 {
-    font-size: 1rem;
-  }
+    .carousel-text {
+        max-width: 70%;
+        font-size: 0.9rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .shipping-bar-horizontal {
+        font-size: 0.8rem;
+    }
 }
 
-/* Móviles */
+/* Móviles (sm en Bootstrap) */
 @media (max-width: 600px) {
-  /* Navbar */
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .navbar a {
-    display: block;
-    margin: 8px 0;
-    font-size: 1rem;
-  }
+    /* Navbar: Se fuerza la estructura en columna para móviles */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .navbar-links {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .navbar-links a {
+        margin: 5px 0;
+    }
+    .navbar-user-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    #loginBtn,
+    .btn-acento-claro {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
 
-  /* Carrusel texto */
-  .carousel-text {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    padding: 15px;
-  }
-  .carousel-text h2 {
-    font-size: 1.5rem;
-  }
-  .carousel-text p {
-    font-size: 1rem;
-  }
+    /* Carrusel texto */
+    .carousel-text {
+        top: 60%;
+        max-width: 90%;
+        padding: 15px;
+    }
+    .carousel-text h1 { 
+        font-size: 1.5rem;
+    }
+    .carousel-text p {
+        font-size: 1rem;
+    }
 
-  /* Banner GIF texto */
-  .banner-gif-text {
-    max-width: 80%;
-    font-size: 1rem;
-    padding: 15px;
-  }
+    /* Banner GIF texto */
+    .banner-gif-text {
+        max-width: 80%;
+        font-size: 1rem;
+        padding: 15px;
+    }
 
-  /* Footer */
-  .footer-section {
-    margin: 15px 0;
-    text-align: center;
-  }
-}
-#loginBtn {
-    background-color: #5C4A3C; /* Café tostado */
-    color: #FFD700; /* Dorado */
-    border: 2px solid #FFD700; /* Borde dorado */
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-#loginBtn:hover {
-    background-color: #3e2f24; /* Café más oscuro al pasar el mouse */
-    color: #FFC700; /* Dorado más brillante */
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-#loginBtn h2 {
-    margin: 0; /* eliminar margen del h2 */
-    font-size: 1rem;
-    font-weight: bold;
+    /* Footer */
+    .main-footer .social-links {
+        justify-content: center !important;
+    }
 }

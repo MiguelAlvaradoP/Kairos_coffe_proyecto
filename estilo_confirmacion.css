@@ -1,97 +1,147 @@
-/* Estilos generales para centrar el contenido */
-body {
-    background-color: #F5F5DC; /* Un color de fondo suave y claro */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Asegura que ocupe al menos la altura de la ventana */
-    box-sizing: border-box;
-}
-
-/* Contenedor principal para la página de confirmación */
-.confirmacion-container {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Estilos para el panel de confirmación */
-.confirmacion-panel {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    margin-bottom: 20px;
-}
-
-.confirmacion-header h2 {
-    color: #3e2723;
-    font-size: 2.5rem;
-    margin-top: 0;
-}
-
-.confirmacion-body p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.confirmacion-footer {
-    margin-top: 20px;
-}
-
-.btn-volver {
-    background-color: #3e2723;
+/*
+|--------------------------------------------------------------------------
+| COLORES Y UTILIDADES
+|--------------------------------------------------------------------------
+*/
+.btn-custom {
+    background-color: #556B2F; /* Verde militar oscuro */
     color: white;
     border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
     font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-.btn-volver:hover {
-    background-color: #5d4037;
+.btn-custom:hover {
+    background-color: #435427; /* Verde más oscuro al pasar el ratón */
+    color: white;
+}
+.bg-custom-dark {
+    background-color: #2E1F18 !important; /* Café muy oscuro */
+    color: white;
+}
+.card {
+    border: 1px solid #DCCCA3; 
 }
 
-/* Estilos para el Banner GIF */
-.banner-gif {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    margin-top: 30px;
-    border-radius: 10px;
+
+/*
+|--------------------------------------------------------------------------
+| ESTILOS GLOBALES Y MAIN (CONFIRMACIÓN)
+|--------------------------------------------------------------------------
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5DC; /* Fondo Beige claro */
+    margin: 0;
+    padding: 0;
 }
 
-.banner-gif img {
-    display: block;
-    width: 100%;
+.confirmation-card {
+    max-width: 600px;
+    width: 100%; 
+    background-color: #F5F5DC !important;
+}
+
+.card h1 {
+    color: #2E1F18; 
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Mensaje dinámico (total de productos) */
+#mensaje-dinamico {
+    color: #556B2F; 
+    font-size: 1.1rem;
+}
+
+.card img {
+    max-width: 300px; 
     height: auto;
 }
 
-/* Estilos para el Texto sobre el GIF */
-.banner-gif-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #3e2723;
-    padding: 20px 40px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 60%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* 🎯 ESTILOS PARA EL RESUMEN DE COMPRA */
+.summary-details {
+    max-width: 400px; /* Limita el ancho de la tabla dentro del card */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.banner-gif-text p {
+.confirmation-table {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+/* Fila Total para destacarla */
+.confirmation-table .total-row {
+    border-top: 2px solid #2E1F18; /* Línea de separación antes del total */
     font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
+    color: #556B2F; /* Verde Oliva para el total */
+}
+
+.confirmation-table .total-row td {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ESTILOS DEL FOOTER 
+|--------------------------------------------------------------------------
+*/
+.main-footer {
+    background-color: #2E1F18;
+    color: #f0f0f0;
+    padding: 40px 0 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Enlaces del Footer */
+.main-footer ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.main-footer ul li a:hover {
+    color: #DCCCA3;
+}
+
+/* Newsletter Form */
+.newsletter-form input[type="email"] {
+    background-color: #4a3833;
+    color: #f0f0f0;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+}
+.newsletter-form input[type="email"]::placeholder {
+    color: #b0b0b0;
+}
+.newsletter-form button {
+    background-color: #a07a67; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.newsletter-form button:hover {
+    background-color: #c09a87;
+}
+
+/* Redes Sociales */
+.social-links a img {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.social-links a img:hover {
+    opacity: 1;
+}
+
+/* Pie de página final */
+.footer-bottom {
+    font-size: 0.85rem;
+    color: #b0b0b0;
 }

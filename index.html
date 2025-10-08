@@ -3,258 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kairós Coffee</title>
+    <title>Kairós Coffee - Tu momento empieza aquí ☕</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilo_index.css">
- </head>
+</head>
 <body>
-    <!-- Mensaje flotante -->
-<div class="login-message" id="loginMessage"></div>
-    <div class="navbar">
-        <a href="index.html">INICIO</a>
-        <a href="producto.html#cafe">CAFÉ</a>
-        <a href="producto.html#capsulas">CÁPSULAS</a>
-        <a href="producto.html#accesorios">ACCESORIOS</a>
-        <a href="contacto.html">CONTÁCTANOS</a>
-        <a href="producto.html#yerba_y_te">YERBA MATE</a>
-        <button id="loginBtn" class="btn btn-outline-light">
-            <h2>INICIAR SESIÓN</h2>
-        </button>
-    </div>
-<!-- Modal Login -->
-<div class="modal" id="loginModal">
-    <div class="modal-content">
-        <button class="close-btn" id="closeModal">&times;</button>
-        <h2>Iniciar Sesión</h2>
-        <div id="loginAlert"></div>
-        <form id="loginForm">
-            <input type="email" id="username" placeholder="Correo electrónico" required>
-            <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="submit" class="submit-btn">Entrar</button>
-        </form>
-    </div>
-</div>
-    <div class="carousel">
-        <img src="https://www.branding.news/wp-content/uploads/2017/09/03_Taylors-of-Harrogate_Pearlfisher_Origins-Coffee-Range_Digital_02.jpg" class="active" alt="Marley Coffee">
-        <img src="https://mercadodelcafe.cl/cdn/shop/files/Banner_Queres_ser_distribuidor_3ba621ff-56b8-49cf-b563-2117396c78cc.png?crop=center&height=600&v=1732561906&width=1500" alt="Juan Valdez">
-        <img src="https://www.illy.com/on/demandware.static/-/Sites-siteCatalog_illycaffe_SFRA_ES/default/dwedea435b/plp_header/PLP_caff%C3%A8_Banner%20home_CAM_03_A_2880%C3%97800.jpg" alt="OCCaffé">
-        <img src="https://live.staticflickr.com/8426/7738096728_0d0f420c2f_k.jpg" alt="Borbone Coffee">
-        <img src="https://www.occaffe.cl/cdn/shop/files/Banner_occaffe_1000x1000.jpg?v=1622158073" alt="">
+    <div class="login-message" id="loginMessage" role="alert" aria-live="polite"></div>
+
+    <nav class="navbar" role="navigation">
+        <div class="navbar-links">
+            <a href="index.html">INICIO</a>
+            <a href="producto.html#cafe">CAFÉ</a>
+            <a href="producto.html#capsulas">CÁPSULAS</a>
+            <a href="producto.html#accesorios">ACCESORIOS</a>
+            <a href="contacto.html">CONTÁCTANOS</a>
+            <a href="producto.html#yerba_y_te">YERBA MATE</a>
+        </div>
+        
+        <div class="navbar-user-actions">
+            <a href="registro.html" class="btn btn-sm btn-acento-claro me-2 fw-bold">REGISTRARSE</a> 
+
+            <button id="loginBtn" class="btn btn-sm btn-outline-light" aria-haspopup="dialog" aria-controls="loginModal">
+                <span class="fw-bold">INICIAR SESIÓN</span>
+            </button>
+        </div>
+    </nav>
+
+    <dialog class="modal-login" id="loginModal" aria-labelledby="loginTitle">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal" aria-label="Cerrar modal">&times;</button>
+            <h2 id="loginTitle">Iniciar Sesión</h2>
+            <div id="loginAlert" role="alert" aria-live="assertive"></div>
+            <form id="loginForm">
+                <input type="email" id="username" placeholder="Correo electrónico" required autocomplete="email">
+                <input type="password" id="password" placeholder="Contraseña" required autocomplete="current-password">
+                <button type="submit" class="submit-btn">Entrar</button>
+            </form>
+            <p class="mt-3 text-center">¿No tienes cuenta? <a href="registro.html" class="link-registro">Regístrate aquí</a></p>
+        </div>
+    </dialog>
+
+    <header class="carousel" role="banner" aria-label="Imágenes destacadas de productos">
+        <figure class="carousel-item active">
+            <img src="https://www.branding.news/wp-content/uploads/2017/09/03_Taylors-of-Harrogate_Pearlfisher_Origins-Coffee-Range_Digital_02.jpg" alt="Café Marley Coffee">
+        </figure>
+        <figure class="carousel-item">
+            <img src="https://mercadodelcafe.cl/cdn/shop/files/Banner_Queres_ser_distribuidor_3ba621ff-56b8-49cf-b563-2117396c78cc.png?crop=center&height=600&v=1732561906&width=1500" alt="Banner para distribuidores">
+        </figure>
+        <figure class="carousel-item">
+            <img src="https://www.illy.com/on/demandware.static/-/Sites-siteCatalog_illycaffe_SFRA_ES/default/dwedea435b/plp_header/PLP_caff%C3%A8_Banner%20home_CAM_03_A_2880%C3%97800.jpg" alt="Café illy">
+        </figure>
+        <figure class="carousel-item">
+            <img src="https://live.staticflickr.com/8426/7738096728_0d0f420c2f_k.jpg" alt="Café Borbone">
+        </figure>
+        <figure class="carousel-item">
+            <img src="https://www.occaffe.cl/cdn/shop/files/Banner_occaffe_1000x1000.jpg?v=1622158073" alt="Café OCCaffé">
+        </figure>
+
 
         <div class="carousel-text">
-            <h2>Kairós Coffee</h2>
+            <h1>Kairós Coffee</h1>
             <p>Tu momento empieza aquí ☕</p>
-            <a href="producto.html">Ver Productos</a>
+            <a href="producto.html" class="btn btn-light">Ver Productos</a>
         </div>
 
-        <div class="indicators"></div>
-    </div>
+        <div class="indicators" role="tablist"></div>
+        
+    </header>
 
-    <div class="shipping-banner">
-        <div class="shipping-message active">Envío GRATIS sobre $30.000</div>
-        <div class="shipping-message">Enviamos a TODAS las regiones</div>
-        <div class="shipping-message">Envío EXPRESS en menos de 24hrs</div>
-    </div>
-    <br>
-    <br>
-<div class="categorias-section">
-    <div class="categorias-grid">
-        <a href="producto.html#cafe" class="categoria-card">
-            <img src="https://png.pngtree.com/png-vector/20230501/ourmid/pngtree-coffee-bean-material-png-image_7078658.png" alt="cafe_grano">
-            <div class="categoria-titulo">CAFÉ EN GRANO</div>
-        </a>
-        <a href="producto.html#cafe" class="categoria-card">
-            <img src="https://png.pngtree.com/png-vector/20240913/ourmid/pngtree-ground-coffee-png-image_12926372.png" alt="cafe_molido">
-            <div class="categoria-titulo">CAFÉ MOLIDO</div>
-        </a>
-        <a href="producto.html#capsulas" class="categoria-card">
-            <img src="https://png.pngtree.com/png-vector/20231113/ourmid/pngtree-coffee-capsules-pleasure-png-image_10448876.png" alt="capsulas">
-            <div class="categoria-titulo">CÁPSULAS</div>
-        </a>
-        <a href="producto.html#mate_y_te" class="categoria-card">
-            <img src="https://espressionante.com/wp-contenido/uploads/2024/04/220512_ipso_800x800_forte_01-1.png" alt="té">
-            <div class="categoria-titulo">TÉ Y MATE</div>
-        </a>
-        <a href="producto.html#accesorios" class="categoria-card">
-            <img src="https://png.pngtree.com/png-clipart/20231017/original/pngtree-moka-pot-italian-coffee-maker-file-png-png-image_13326139.png" alt="accesorios">
-            <div class="categoria-titulo">ACCESORIOS</div>
-        </a>
-    </div>
-</div>
+    <main>
+        
+        <section class="shipping-bar-horizontal">
+        <p class="shipping-message active mb-0">Envío **GRATIS** sobre $30.000</p>
+        <p class="shipping-message mb-0">Enviamos a **TODAS** las regiones</p>
+        <p class="shipping-message mb-0">Envío **EXPRESS** en menos de 24hrs</p>
+        </section>
+        <br>
+        <section class="categorias-section container my-5">
+            <h2 class="visually-hidden">Explora nuestras categorías de productos</h2>
+            <div class="categorias-grid">
+                <a href="producto.html#cafe" class="categoria-card">
+                    <img src="https://png.pngtree.com/png-vector/20230501/ourmid/pngtree-coffee-bean-material-png-image_7078658.png" alt="Icono de café en grano">
+                    <div class="categoria-titulo">CAFÉ EN GRANO</div>
+                </a>
+                <a href="producto.html#cafe" class="categoria-card">
+                    <img src="https://png.pngtree.com/png-vector/20240913/ourmid/pngtree-ground-coffee-png-image_12926372.png" alt="Icono de café molido">
+                    <div class="categoria-titulo">CAFÉ MOLIDO</div>
+                </a>
+                <a href="producto.html#capsulas" class="categoria-card">
+                    <img src="https://png.pngtree.com/png-vector/20231113/ourmid/pngtree-coffee-capsules-pleasure-png-image_10448876.png" alt="Icono de cápsulas de café">
+                    <div class="categoria-titulo">CÁPSULAS</div>
+                </a>
+                <a href="producto.html#yerba_y_te" class="categoria-card">
+                    <img src="https://espressionante.com/wp-contenido/uploads/2024/04/220512_ipso_800x800_forte_01-1.png" alt="Icono de té o mate">
+                    <div class="categoria-titulo">TÉ Y MATE</div>
+                </a>
+                <a href="producto.html#accesorios" class="categoria-card">
+                    <img src="https://png.pngtree.com/png-clipart/20231017/original/pngtree-moka-pot-italian-coffee-maker-file-png-png-image_13326139.png" alt="Icono de accesorios para café (Moka)">
+                    <div class="categoria-titulo">ACCESORIOS</div>
+                </a>
+            </div>
+        </section>
 
-
-    <div class="banner-gif">
-    <img src="https://org.coloradomesa.edu/~cagardner2/images/ProjectCafeGif2.gif" alt="Banner Animado de Café">
-    
-    <div class="banner-gif-text">
-        <p>"Una taza de té es una excusa para la introspección."</p>
-        <p>- Lin Yutang</p>
-    </div>
-    </div>
+        <section class="banner-gif" aria-label="Cita inspiracional de café">
+            <img src="https://org.coloradomesa.edu/~cagardner2/images/ProjectCafeGif2.gif" alt="Banner Animado de Café">
+            <div class="banner-gif-text">
+                <p>"Una taza de té es una excusa para la introspección."</p>
+                <p>- Lin Yutang</p>
+            </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="main-footer py-4 mt-5 bg-custom-dark text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 mb-4 text-center text-md-start">
-                    <img src="LOGO_KAIROS_COFFE.png" alt="Kairós Coffee Logo" class="img-fluid mb-3" style="max-width: 150px;">
-                    <h5 class="fw-bold">Métodos de Pago:</h5>
-                    <div class="d-flex justify-content-center justify-content-md-start gap-2">
-                        <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="img-fluid" style="width: 50px;">
-                        <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="img-fluid" style="width: 50px;">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="img-fluid" style="width: 50px;">
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="img-fluid" style="width: 50px;">
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4 text-center text-md-start">
+            <img src="ASSETS/img/Logo_KairosCoffee.png" alt="Kairós Coffee Logo" class="img-fluid mb-3" style="max-width: 150px" />
+            <h5 class="fw-bold">Métodos de Pago:</h5>
+            <div class="d-flex justify-content-center justify-content-md-start gap-2">
+                <img src="https://cdn.shopify.com/s/files/1/0013/9935/7503/files/logo-flow_480x480.jpg?v=1695649953" alt="Flowpagos" class="img-fluid" style="width: 50px" />
+                <img src="https://cdn.prod.website-files.com/64199d190fc7afa82666d89c/6491bee00befc2b527384a4b_webpay.webp" alt="Webpay" class="img-fluid" style="width: 50px" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvd2_tKsiq60CoFcnhi-RP7aWMN-dTWQDsA&s" alt="Transbank" class="img-fluid" style="width: 50px" />
+                <img src="https://http2.mlstatic.com/D_NQ_NP_747557-MLA74838869274_032024-O.webp" alt="Mercado Pago" class="img-fluid" style="width: 50px" />
+            </div>
+            </div>
 
-                <div class="col-6 col-md-2 mb-4 text-center text-md-start">
-                    <h5 class="fw-bold">Kairós Coffee</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Nuestra Historia</a></li>
-                        <li><a href="producto.html" class="text-white text-decoration-none">Productos</a></li>
-                        <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Kairós Coffee Chile</a></li>
-                    </ul>
-                </div>
+            <div class="col-6 col-md-2 mb-4 text-center text-md-start">
+            <h5 class="fw-bold">Kairós Coffee</h5>
+            <ul class="list-unstyled">
+                <li><a href="#" class="text-white text-decoration-none">Nuestra Historia</a></li>
+                <li><a href="producto.html" class="text-white text-decoration-none">Productos</a></li>
+                <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Kairós Coffee Chile</a></li>
+            </ul>
+            </div>
 
-                <div class="col-6 col-md-2 mb-4 text-center text-md-start">
-                    <h5 class="fw-bold">Información</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Despachos y Retiros</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Cambios y Devoluciones</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
+            <div class="col-6 col-md-2 mb-4 text-center text-md-start">
+            <h5 class="fw-bold">Información</h5>
+            <ul class="list-unstyled">
+                <li><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Despachos y Retiros</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Cambios y Devoluciones</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Términos y Condiciones</a></li>
+            </ul>
+            </div>
 
-                <div class="col-12 col-md-5 text-center text-md-start">
-                    <h5 class="fw-bold">Newsletter</h5>
-                    <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
-                    <form class="d-flex newsletter-form" id="newsletterForm">
-                        <input type="email" class="form-control me-2" placeholder="Correo electrónico" id="newsletterEmail" required>
-                        <button type="submit" class="btn btn-primary">→</button>
-                    </form>
-                    <div id="newsletterAlert" class="alert d-none mt-2" role="alert"></div>
-                    <h5 class="fw-bold mt-4">Contáctanos</h5>
-                    <p>Si tienes alguna pregunta escríbenos a <a href="mailto:ventas@cairoscoffee.cl" class="text-white">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711. ¡Nos pondremos en contacto contigo lo antes posible!</p>
-                    <div class="social-links d-flex justify-content-center justify-content-md-start gap-3">
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" style="width: 30px;"></a>
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" style="width: 30px;"></a>
-                    </div>
-                </div>
+            <div class="col-12 col-md-5 text-center text-md-start">
+            <h5 class="fw-bold">Newsletter</h5>
+            <p>Suscríbete a nuestro newsletter y entérate de todas nuestras ofertas y novedades.</p>
+            <form class="d-flex newsletter-form" id="newsletterForm">
+                <input type="email" class="form-control me-2" placeholder="Correo electrónico" id="newsletterEmail" required />
+                <button type="submit" class="btn btn-primary">→</button>
+            </form>
+            <div id="newsletterAlert" class="alert d-none mt-2" role="alert"></div>
+            <h5 class="fw-bold mt-4">Contáctanos</h5>
+            <p>
+                Si tienes alguna pregunta escríbenos a
+                <a href="mailto:ventas@cairoscoffee.cl" class="text-white">ventas@cairoscoffee.cl</a> o a nuestro whatsapp +56999345711.
+                ¡Nos pondremos en contacto contigo lo antes posible!
+            </p>
+            <div class="social-links d-flex justify-content-center justify-content-md-start gap-3">
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" style="width: 30px" /></a>
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" style="width: 30px" /></a>
+            </div>
             </div>
         </div>
-        <div class="footer-bottom text-center pt-3 mt-3 border-top border-secondary">
-            <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
         </div>
+        <div class="footer-bottom text-center pt-3 mt-3 border-top border-secondary">
+        <p>&copy; 2025 Kairós Coffee. Todos los derechos reservados.</p>
+    </div>
     </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-            // --- Carrusel de imágenes ---
-        const images = document.querySelectorAll(".carousel img");
-        const indicatorsContainer = document.querySelector(".indicators");
-        let current = 0;
-
-        // Crear puntitos
-        images.forEach((_, i) => {
-            const dot = document.createElement("div");
-            if (i === 0) dot.classList.add("active");
-            dot.addEventListener("click", () => showImage(i));
-            indicatorsContainer.appendChild(dot);
-        });
-        const dots = document.querySelectorAll(".indicators div");
-
-        function showImage(index) {
-            images[current].classList.remove("active");
-            dots[current].classList.remove("active");
-            current = index;
-            images[current].classList.add("active");
-            dots[current].classList.add("active");
-        }
-
-        function showNextImage() {
-            showImage((current + 1) % images.length);
-        }
-
-        setInterval(showNextImage, 4000); // Cambia cada 4 segundos
-
-        // --- Banner giratorio de envío ---
-        const shippingMessages = document.querySelectorAll(".shipping-message");
-        let currentShippingMessage = 0;
-
-        function showShippingMessage(index) {
-            shippingMessages[currentShippingMessage].classList.remove("active");
-            currentShippingMessage = index;
-            shippingMessages[currentShippingMessage].classList.add("active");
-        }
-
-        function showNextShippingMessage() {
-            showShippingMessage((currentShippingMessage + 1) % shippingMessages.length);
-        }
-
-        setInterval(showNextShippingMessage, 4000);
-
-        const loginBtn = document.getElementById('loginBtn');
-const modal = document.getElementById('loginModal');
-const closeModal = document.getElementById('closeModal');
-const loginForm = document.getElementById('loginForm');
-const loginMessage = document.getElementById('loginMessage');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
-
-// Abrir modal
-loginBtn.addEventListener('click', () => modal.classList.add('active'));
-
-// Cerrar modal
-closeModal.addEventListener('click', () => modal.classList.remove('active'));
-window.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
-
-// Manejo del formulario
-loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const username = usernameInput.value.trim();
-
-    if(username !== '') {
-        modal.classList.remove('active'); // cerrar modal
-
-        // Mostrar mensaje con efecto slide-in
-        loginMessage.textContent = `¡Bienvenido de vuelta, ${username}!`;
-        loginMessage.classList.add('show');
-
-        // Limpiar inputs
-        usernameInput.value = '';
-        passwordInput.value = '';
-
-        // Ocultar mensaje después de 3 segundos
-        setTimeout(() => loginMessage.classList.remove('show'), 3000);
-    } else {
-        loginMessage.textContent = 'Por favor, ingresa tu correo electrónico';
-        loginMessage.classList.add('show', 'error');
-        setTimeout(() => loginMessage.classList.remove('show', 'error'), 3000);
-    }
-});
-
-        // --- Lógica de Validación del Newsletter ---
-        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const emailInput = document.getElementById('newsletterEmail');
-            const newsletterAlert = document.getElementById('newsletterAlert');
-            
-            if (emailInput.value.trim() !== '') {
-                newsletterAlert.classList.remove('d-none', 'alert-danger');
-                newsletterAlert.classList.add('alert-success');
-                newsletterAlert.textContent = '¡Suscripción exitosa! Recibirás nuestras novedades pronto.';
-                emailInput.value = ''; // Limpiar el campo
-                
-                setTimeout(() => {
-                    newsletterAlert.classList.add('d-none');
-                }, 3000); // Oculta el mensaje después de 3 segundos
-            } else {
-                newsletterAlert.classList.remove('d-none', 'alert-success');
-                newsletterAlert.classList.add('alert-danger');
-                newsletterAlert.textContent = 'Por favor, ingresa un correo válido.';
-            }
-        });
-</script>
-</body>
+    <script src="carrusel.js"></script>
+    <script src="main.js"></script>
+    <script src="newsletter.js"></script>
+    </body>
 </html>
