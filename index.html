@@ -194,26 +194,26 @@
         setInterval(showNextShippingMessage, 4000);
 
         const loginBtn = document.getElementById('loginBtn');
-const modal = document.getElementById('loginModal');
-const closeModal = document.getElementById('closeModal');
-const loginForm = document.getElementById('loginForm');
-const loginMessage = document.getElementById('loginMessage');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
+        const modal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+        const loginForm = document.getElementById('loginForm');
+        const loginMessage = document.getElementById('loginMessage');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
 
-// Abrir modal
-loginBtn.addEventListener('click', () => modal.classList.add('active'));
+        // Abrir modal
+        loginBtn.addEventListener('click', () => modal.classList.add('active'));
 
-// Cerrar modal
-closeModal.addEventListener('click', () => modal.classList.remove('active'));
-window.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
+        // Cerrar modal
+        loseModal.addEventListener('click', () => modal.classList.remove('active'));
+        window.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
 
-// Manejo del formulario
-loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const username = usernameInput.value.trim();
+        // Validación usuario-contraseña
+        loginForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const username = usernameInput.value.trim();
 
-    if(username !== '') {
+        if(username !== '') {
         modal.classList.remove('active'); // cerrar modal
 
         // Mostrar mensaje con efecto slide-in
@@ -226,12 +226,12 @@ loginForm.addEventListener('submit', e => {
 
         // Ocultar mensaje después de 3 segundos
         setTimeout(() => loginMessage.classList.remove('show'), 3000);
-    } else {
+        } else {
         loginMessage.textContent = 'Por favor, ingresa tu correo electrónico';
         loginMessage.classList.add('show', 'error');
         setTimeout(() => loginMessage.classList.remove('show', 'error'), 3000);
-    }
-});
+        }
+        });
 
         // --- Lógica de Validación del Newsletter ---
         document.getElementById('newsletterForm').addEventListener('submit', function(event) {
