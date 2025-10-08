@@ -1,198 +1,165 @@
-/* --- Estilos personalizados --- */
-
-/* Colores y botones */
+/*
+|--------------------------------------------------------------------------
+| COLORES Y UTILIDADES GENERALES
+|--------------------------------------------------------------------------
+*/
 .btn-custom {
-    background-color: #556B2F;
+    background-color: #556B2F; /* Verde militar oscuro */
     color: white;
     border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 .btn-custom:hover {
-    background-color: #435427;
+    background-color: #435427; /* Verde más oscuro al pasar el ratón */
     color: white;
 }
 .bg-custom-dark {
-    background-color: #2E1F18;
+    background-color: #2E1F18 !important; /* Café muy oscuro */
     color: white;
 }
-
-/* Productos en checkout optimizados */
-#lista-checkout {
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 5px;
+.card {
+    border: 1px solid #DCCCA3; /* Borde suave */
+    background-color: #F5F5DC; /* Fondo Beige claro para las tarjetas */
 }
+body {
+    background-color: #F5F5DC; /* Fondo general */
+}
+.form-label {
+    font-weight: 500;
+    color: #2E1F18;
+}
+
+/*
+|--------------------------------------------------------------------------
+| ESTILOS DE CHECKOUT (LISTA DE PRODUCTOS) - FIX DE ALINEACIÓN
+|--------------------------------------------------------------------------
+*/
 
 .producto-checkout {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
+    /* Estilo de la fila de cada producto */
+    display: flex; /* Aseguramos que sea un contenedor flex */
+    align-items: center; 
+    padding: 10px 0;
+    margin-bottom: 0 !important;
 }
 
-.producto-checkout img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 5px;
+.producto-info {
+    /* Permite que crezca, pero también que se encoja sin conflicto */
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0; /* CLAVE: Permite que el elemento se encoja correctamente */
     margin-right: 10px;
 }
 
-.producto-checkout .detalle {
-    flex: 1;
+.producto-info .nombre {
+    /* Manejo del texto largo para que no desborde */
+    white-space: normal; 
+    word-break: break-word; 
+    /* Opcional: Trunca el nombre si es demasiado largo */
+    /* max-height: 2.4em; 
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+/* Control de Cantidad (+/-) */
+.quantity-control {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    width: 100px; 
+    flex-shrink: 0; /* CLAVE: Evita que el control se encoja */
+    border: 1px solid #ccc; 
+    border-radius: .25rem;
+    overflow: hidden; 
+}
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: #f0f0f0;
+    color: #2E1F18;
+    font-weight: bold;
+    flex-shrink: 0; 
+}
+.quantity-control button:hover:not(:disabled) {
+    background-color: #DCCCA3;
+}
+.quantity-control button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.quantity-control input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    pointer-events: none;
+    font-weight: bold;
+    color: #2E1F18;
 }
 
-.producto-checkout .nombre {
-    font-weight: 500;
-}
-
-.producto-checkout .precio,
+/* Subtotal del producto */
 .producto-checkout .subtotal {
-    font-size: 0.9rem;
-    color: #556B2F;
+    width: 100px; 
+    flex-shrink: 0; /* CLAVE: Evita que el precio se encoja */
+    text-align: right;
+    margin-left: 15px; 
 }
 
 .producto-checkout .eliminar {
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    color: red;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-
-/* Body y layout general */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #F5F5DC;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Navbar */
-.navbar-brand {
-    font-weight: bold;
-}
-
-/* Footer */
-.main-footer {
-    background-color: #2E1F18;
-    color: #f0f0f0;
-    padding: 40px 0 20px 0;
-    font-family: Arial, sans-serif;
-}
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin: 20px 15px;
-}
-.footer-section.about {
-    flex: 1.2;
-    min-width: 250px;
-}
-.footer-logo {
-    max-width: 180px;
-    margin-bottom: 20px;
-}
-.payment-methods p {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #e0e0e0;
-}
-.payment-icon {
     height: 30px;
-    margin-right: 8px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-.payment-icon:hover {
-    opacity: 1;
-}
-.footer-section h4 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-}
-.footer-section ul {
-    list-style: none;
+    width: 30px;
+    line-height: 1;
     padding: 0;
-    margin: 0;
+    font-size: 1.2rem;
+    border: 1px solid #dc3545;
+    flex-shrink: 0; /* Evita que el botón de eliminar se encoja */
 }
-.footer-section ul li {
-    margin-bottom: 10px;
+
+/* Sección Cupón */
+.coupon-section .input-group {
+    border: 1px solid #DCCCA3;
+    border-radius: .375rem;
+    overflow: hidden;
 }
-.footer-section ul li a {
-    color: #f0f0f0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.footer-section ul li a:hover {
-    color: #a07a67;
-}
-.footer-section.newsletter p,
-.footer-section.contact p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-.newsletter-form {
-    display: flex;
-    margin-top: 15px;
-}
-.newsletter-form input[type="email"] {
-    flex-grow: 1;
-    padding: 10px 15px;
+.coupon-section .form-control {
     border: none;
-    border-radius: 5px 0 0 5px;
-    background-color: #4a3833;
-    color: #f0f0f0;
-    outline: none;
 }
-.newsletter-form input[type="email"]::placeholder {
-    color: #b0b0b0;
-}
-.newsletter-form button {
-    background-color: #a07a67;
+.btn-custom-coupon {
+    background-color: #A07A67; 
     color: white;
+    font-weight: bold;
     border: none;
-    padding: 10px 15px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.newsletter-form button:hover {
-    background-color: #c09a87;
+.btn-custom-coupon:hover {
+    background-color: #8C6A5A;
+    color: white;
 }
-.social-links a img {
-    height: 30px;
-    margin-right: 15px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+
+/* Resumen Financiero (IVA, Descuento, Total) */
+.summary-table {
+    font-size: 1.05rem;
+    margin-bottom: 0;
 }
-.social-links a img:hover {
-    opacity: 1;
+.summary-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
-    color: #b0b0b0;
+.summary-table .total-row td {
+    border-top: 2px solid #2E1F18; 
+    color: #556B2F; 
+}
+.summary-table #summary-total {
+    color: #2E1F18;
+    font-weight: bolder !important;
+}
+.summary-table #summary-discount {
+    font-weight: bold; 
 }

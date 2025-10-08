@@ -1,53 +1,77 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-       const carruseles = document.querySelectorAll('.carrusel-container');
+    // ===================================================================
+    // 1. LÓGICA DEL CARRUSEL (Desplazamiento con botones)
+    // ===================================================================
+    const carruseles = document.querySelectorAll('.carrusel-container');
 
-        carruseles.forEach(container => {
-            const prevBtn = container.querySelector('.prev');
-            const nextBtn = container.querySelector('.next');
-            const carrusel = container.querySelector('.carrusel');
+    carruseles.forEach(container => {
+        const prevBtn = container.querySelector('.prev');
+        const nextBtn = container.querySelector('.next');
+        const carrusel = container.querySelector('.carrusel');
 
+        // Asegúrate de que los botones existan antes de agregar listeners
+        if (prevBtn && nextBtn && carrusel) {
             prevBtn.addEventListener('click', () => {
-                carrusel.scrollBy({ left: -260, behavior: 'smooth' });
+                // Desplazamiento lateral de 280px (ancho del producto + gap)
+                carrusel.scrollBy({ left: -280, behavior: 'smooth' });
             });
 
             nextBtn.addEventListener('click', () => {
-                carrusel.scrollBy({ left: 260, behavior: 'smooth' });
+                // Desplazamiento lateral de 280px
+                carrusel.scrollBy({ left: 280, behavior: 'smooth' });
             });
-        });
+        }
+    });
 
 
-        //Carrito de compra
+    // ===================================================================
+    // 2. LÓGICA DEL CARRITO DE COMPRAS (Panel lateral)
+    // ===================================================================
 
-            // Array que va a almacenar los productos seleccionados
-             let carrito = [];
-                const botones = document.querySelectorAll('.btn-carrito');
-                const contadorCarrito = document.getElementById('contador-carrito');
-                const listaCarrito = document.getElementById('lista-carrito');
-                const totalCarrito = document.getElementById('total-carrito');
-                const iconoCarrito = document.querySelector('.carrito-container');
-                const botonCerrar = document.getElementById('cerrar-carrito');
-                const carritoPanel = document.getElementById('carrito-panel');
+    // Array que va a almacenar los productos seleccionados
+    let carrito = [];
 
-                // Abrir carrito
-            iconoCarrito.addEventListener('click', () => {
-                carritoPanel.classList.add('active');
-                mostrarCarrito();
-            });
+    // Selectores de elementos del DOM
+    const botones = document.querySelectorAll('.btn-carrito');
+    const contadorCarrito = document.getElementById('contador-carrito');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalCarrito = document.getElementById('total-carrito');
+    const iconoCarrito = document.querySelector('.carrito-container');
+    const botonCerrar = document.getElementById('cerrar-carrito');
+    const carritoPanel = document.getElementById('carrito-panel');
 
-            // Cerrar carrito
-            botonCerrar.addEventListener('click', () => {
-                carritoPanel.classList.remove('active');
-            });
 
-    // Agregar producto
+    // --- Funciones del Panel ---
+
+    // Abrir carrito
+    iconoCarrito.addEventListener('click', () => {
+        carritoPanel.classList.add('active');
+        mostrarCarrito();
+    });
+
+    // Cerrar carrito
+    botonCerrar.addEventListener('click', () => {
+        carritoPanel.classList.remove('active');
+    });
+
+
+    // --- Lógica de Añadir Producto ---
+
     botones.forEach(boton => {
         boton.addEventListener('click', () => {
             const producto = boton.closest('.producto');
             const nombre = producto.querySelector('h2').innerText;
-            const precioTexto = producto.querySelectorAll('h2')[1].innerText.replace('$','').replace('.','');
+
+            // 🔑 CORRECCIÓN: Asumiendo que el precio está en el <h3>, y eliminando puntos/comas
+            // El `replace(/\./g, '')` se usa para eliminar los puntos de los miles (ej: 1.500 -> 1500)
+            const precioTexto = producto.querySelector('h3').innerText
+                                        .replace('$', '')
+                                        .replace(/\./g, '')
+                                        .trim(); 
             const precio = parseInt(precioTexto);
             const imagen = producto.querySelector('img').src;
-            const id = boton.id;
+            const id = boton.id || `prod-${Date.now()}`; // Usa un ID del botón o genera uno
 
             const item = { id, nombre, precio, imagen };
             carrito.push(item);
@@ -57,50 +81,66 @@
         });
     });
 
-    // Mostrar productos en el panel
+
+    // --- Lógica de Renderizado y Eliminación ---
+
     function mostrarCarrito() {
-    listaCarrito.innerHTML = "";
-    let total = 0;
+        listaCarrito.innerHTML = "";
+        let total = 0;
 
-    carrito.forEach((item, index) => {
-        total += item.precio;
+        carrito.forEach((item, index) => {
+            total += item.precio;
 
-        const div = document.createElement('div');
-        div.classList.add('item-carrito');
-        div.innerHTML = `
-            <img src="${item.imagen}" alt="${item.nombre}">
-            <span>${item.nombre}</span>
-            <span>$${item.precio.toLocaleString()}</span>
-            <button class="eliminar-item" data-index="${index}">×</button>
-        `;
-        listaCarrito.appendChild(div);
-    });
-
-    totalCarrito.textContent = "Total: $" + total.toLocaleString();
-
-    // Agregar funcionalidad a botones de eliminar
-    const botonesEliminar = document.querySelectorAll('.eliminar-item');
-    botonesEliminar.forEach(boton => {
-        boton.addEventListener('click', () => {
-            const index = boton.getAttribute('data-index');
-            carrito.splice(index, 1); // eliminar el producto del carrito
-            contadorCarrito.textContent = carrito.length; // actualizar contador
-            mostrarCarrito(); // refrescar la lista
+            const div = document.createElement('div');
+            div.classList.add('item-carrito');
+            div.innerHTML = `
+                <img src="${item.imagen}" alt="${item.nombre}">
+                <span>${item.nombre}</span>
+                <span>$${item.precio.toLocaleString('es-CL')}</span>
+                <button class="eliminar-item" data-index="${index}">×</button>
+            `;
+            listaCarrito.appendChild(div);
         });
-    });
-    // Botón pagar
+
+        // Asegura que el Total se muestre en el footer del panel (elemento totalCarrito)
+        totalCarrito.textContent = "Total: $" + total.toLocaleString('es-CL');
+
+
+        // Agregar funcionalidad a botones de eliminar
+        const botonesEliminar = document.querySelectorAll('.eliminar-item');
+        botonesEliminar.forEach(boton => {
+            boton.addEventListener('click', () => {
+                // El atributo data-index guarda la posición en el array del carrito
+                const index = parseInt(boton.getAttribute('data-index')); 
+                carrito.splice(index, 1); // eliminar el producto
+                contadorCarrito.textContent = carrito.length; // actualizar contador
+                mostrarCarrito(); // refrescar la lista
+            });
+        });
+
+    }
+    
+    // --- Lógica del Botón Pagar ---
     const btnPagar = document.getElementById('btn-pagar');
+    if (btnPagar) { // Solo si el botón existe en el HTML
+        btnPagar.addEventListener('click', () => {
+            if (carrito.length > 0) {
+                // Guardar carrito en localStorage antes de redirigir
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                // Redirigir a la página de pago
+                window.location.href = 'checkout.html';
+            } else {
+                alert('El carrito está vacío. Agrega productos antes de pagar.');
+            }
+        });
+    }
 
-    btnPagar.addEventListener('click', () => {
-    // Guardar carrito en localStorage
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    // Redirigir a la página de pago
-    window.location.href = 'checkout.html';
-});
-
-}
-// --- Lógica de Validación del Newsletter ---
-        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+    // ===================================================================
+    // 3. Lógica de Validación del Newsletter (en el Footer)
+    // ===================================================================
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
             const emailInput = document.getElementById('newsletterEmail');
@@ -121,3 +161,6 @@
                 newsletterAlert.textContent = 'Por favor, ingresa un correo válido.';
             }
         });
+    }
+
+}); // Fin DOMContentLoaded
