@@ -1,0 +1,16 @@
+/* src/styles/buttons.css */
+.btn-custom {
+    background-color: #556B2F; /* Verde militar oscuro */
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #435427; /* Verde más oscuro al pasar el ratón */
+    color: white;
+}
