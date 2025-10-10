@@ -1,7 +1,8 @@
 import React from "react";
 import { CarritoProvider } from "./context/CarritoContext";
 import ProductosPage from "./pages/ProductosPage";
-import "./productos.css";
+import "./assets/productos.css";
+
 
 function App() {
   return (

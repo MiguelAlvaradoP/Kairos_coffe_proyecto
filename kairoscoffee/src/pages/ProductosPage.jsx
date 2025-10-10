@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import "../productosPage.css";
+import "../assets/productosPage.css";
+
 
 const productos = {
   cafeDaroma: [
@@ -64,6 +65,14 @@ const productos = {
     { id: 47, nombre: "CÁPSULAS DE CAFÉ APOYO INTENSO - X60 CÁPSULAS", descripcion: "Café molido 60 cápsulas", precio: "35.500", imagen: "https://mercadodelcafe.cl/cdn/shop/files/Cafe_Apoyo_Intenso_60caps_compatibles_con_nespresso_2048x2048.png?v=1758724882" },
     { id: 48, nombre: "CÁPSULAS DE CAFÉ DULCE COMPAÑIA - X60 CÁPSULAS", descripcion: "Café molido 60 cápsulas", precio: "35.500", imagen: "https://mercadodelcafe.cl/cdn/shop/files/595e19d6-c632-47ef-a673-6fc818331f1e.png?v=1753462651" },
     { id: 49, nombre: "CÁPSULAS CAFÉ CON SENTIDO - X60 CÁPSULAS", descripcion: "Café molido 60 cápsulas", precio: "35.500", imagen: "https://mercadodelcafe.cl/cdn/shop/files/595e19d6-c632-47ef-a673-6fc818331f1e.png?v=1753462651&width=460" },
+  ],
+   teyerba: [
+    { id: 50, nombre: "TÉ NEGROR EN HOJAS CEYLON", descripcion: "te negro 100% - 75gr", precio: "16.500", imagen: "https://shopdilmah.cl/cdn/shop/files/mmp5431-edited-2d4878d4-76bf-4257-aaa9-d206a27f8a82_1300x1300.jpg?v=1754588179" },
+    { id: 51, nombre: "", descripcion: "", precio: "6.500", imagen: "" },
+    { id: 52, nombre: "", descripcion: "", precio: "11.000", imagen: "" },
+    { id: 53, nombre: "", descripcion: "", precio: "35.500", imagen: "" },
+    { id: 54, nombre: "", descripcion: "", precio: "35.500", imagen: "" },
+    { id: 55, nombre: "", descripcion: "", precio: "35.500", imagen: "" },
   ],
   accesorios: [
     { id: 11, nombre: "TAZA CERÁMICA", descripcion: "350ml", precio: "2.000", imagen: "https://cafedaroma.cl/wp-content/uploads/2022/09/taza.png" },
