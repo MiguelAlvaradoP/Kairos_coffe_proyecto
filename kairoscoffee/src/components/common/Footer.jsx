@@ -11,7 +11,7 @@ const Footer = () => {
             {/* Columna 1: Logo y Pagos */}
             <div className="col-12 col-md-3 mb-4 text-center text-md-start">
                 {/* Reemplaza ASSETS/img/Logo_KairosCoffee.png con la ruta de React, ej: /assets/Logo_KairosCoffee.png */}
-                <img src="/assets/Logo_KairosCoffee.png" alt="Kairós Coffee Logo" className="img-fluid mb-3" style={{ maxWidth: '150px' }} />
+                <img src="/assets/img/Logo_KairosCoffee.png" alt="Kairós Coffee Logo" className="img-fluid mb-3" style={{ maxWidth: '150px' }} />
                 <h5 className="fw-bold">Métodos de Pago:</h5>
                 <div className="d-flex justify-content-center justify-content-md-start gap-2">
                 {/* Rutas de imágenes simplificadas para ejemplo */}
