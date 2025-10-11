@@ -1,69 +1,105 @@
-// src/components/common/LoginModal.jsx
-import React, { useState, useEffect } from 'react';
-import useAuth from '../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+// RUTA: src/components/common/LoginModal.jsx
 
-const LoginModal = ({ isModalOpen, closeModal, handleLogin, loginMessage }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
-    // Usamos useEffect para manejar la apertura del modal como un elemento HTML nativo
+import React, { useState, useEffect } from "react";
+// 2. Importamos Link para la navegación interna
+import { Link } from "react-router-dom";
+// 1. Importamos el módulo de estilos específico del componente
+import styles from "./LoginModal.module.css";
+
+const LoginModal = ({ onClose }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Efecto para mostrar el mensaje de éxito y luego cerrar
     useEffect(() => {
-        const modalElement = document.getElementById('loginModal');
-        if (modalElement) {
-            if (isModalOpen) {
-                modalElement.showModal();
-            } else {
-                modalElement.close();
-            }
+        if (message && message.type === 'success') {
+            const timer = setTimeout(() => {
+                onClose();
+            }, 1500);
+            // Limpiamos el temporizador si el componente se desmonta
+            return () => clearTimeout(timer);
         }
-    }, [isModalOpen]);
+    }, [message, onClose]);
 
 
     const handleSubmit = (e) => {
-        handleLogin(e, email, password);
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        // Simulación de autenticación (puedes conectar con authService luego)
+        // Usamos un timeout para simular una llamada a la API
+        setTimeout(() => {
+            if (email === "demo@kairoscoffee.cl" && password === "1234") {
+                setMessage({ type: "success", text: "Inicio de sesión exitoso ☕" });
+            } else {
+                setMessage({ type: "error", text: "Credenciales incorrectas" });
+            }
+            setIsSubmitting(false);
+        }, 500); // Simula 0.5s de carga
     };
 
     return (
-        // Reemplazamos el <div> con <dialog> (compatible con navegadores modernos)
-        <dialog className="modal-login" id="loginModal" aria-labelledby="loginTitle">
-        <div className="modal-content">
-            <button className="close-btn" onClick={closeModal} aria-label="Cerrar modal">&times;</button>
-            <h2 id="loginTitle">Iniciar Sesión</h2>
-            
-            {loginMessage && (
-                <div 
-                    className={`alert mt-3 ${loginMessage.startsWith('❌') ? 'alert-danger' : 'alert-success'}`} 
-                    role="alert" 
-                    aria-live="assertive"
+        // 3. Ya no usamos la clase .active, el modal es visible por defecto
+        <dialog
+            open
+            className={styles.modal}
+            aria-labelledby="loginTitle"
+        >
+            {/* 4. Usamos camelCase para las clases: styles.modalContent */}
+            <div className={styles.modalContent}>
+                <button
+                    className={styles.closeBtn}
+                    onClick={onClose}
+                    aria-label="Cerrar modal"
                 >
-                    {loginMessage}
-                </div>
-            )}
+                    &times;
+                </button>
 
-            <form onSubmit={handleSubmit} id="loginForm">
-            <input 
-                type="email" 
-                id="username" 
-                placeholder="Correo electrónico" 
-                required 
-                autoComplete="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input 
-                type="password" 
-                id="password" 
-                placeholder="Contraseña" 
-                required 
-                autoComplete="current-password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit" className="submit-btn">Entrar</button>
-            </form>
-            <p className="mt-3 text-center">¿No tienes cuenta? <Link to="/registro" className="link-registro">Regístrate aquí</Link></p>
-        </div>
+                <h2 id="loginTitle">Iniciar Sesión</h2>
+
+                {message && (
+                    <div
+                        // Lógica de clases para el mensaje de estado
+                        className={`${styles.loginMessage} ${
+                            message.type === 'error' ? styles.error : styles.show
+                        }`}
+                    >
+                        {message.text}
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        placeholder="Correo electrónico"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        autoComplete="email"
+                    />
+                    <input
+                        type="password"
+                        placeholder="Contraseña"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        autoComplete="current-password"
+                    />
+                    <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                        {isSubmitting ? 'Verificando...' : 'Entrar'}
+                    </button>
+                </form>
+
+                <p className="mt-3 text-center">
+                    ¿No tienes cuenta?{" "}
+                    {/* 2. Usamos Link en lugar de <a> para evitar recargas */}
+                    <Link to="/registro" className={styles.linkRegistro}>
+                        Regístrate aquí
+                    </Link>
+                </p>
+            </div>
         </dialog>
     );
 };

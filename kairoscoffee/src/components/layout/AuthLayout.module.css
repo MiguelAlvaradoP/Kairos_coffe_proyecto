@@ -1,0 +1,25 @@
+/* RUTA: src/components/layout/AuthLayout.module.css */
+
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: var(--color-background); /* Usa el color de fondo global */
+    padding: 20px;
+}
+
+.authHeader {
+    margin-bottom: 30px;
+}
+
+.logo {
+    max-width: 180px; /* Un tamaño prominente para el logo */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}

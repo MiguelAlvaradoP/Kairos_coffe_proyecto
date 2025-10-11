@@ -1,18 +1,20 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Auth0Provider } from '@auth0/auth0-react';
-import App from './App';
+// RUTA: src/index.js
 
-const root = createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
+// 1. Importa los estilos globales de Bootstrap PRIMERO
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// 2. Importa tus estilos globales personalizados DESPUÉS.
+//    Esto asegura que tus reglas (ej. --color-primary) puedan
+//    sobreescribir las de Bootstrap si es necesario.
+import "./assets/styles/global.css"; 
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider
-    domain="dev-zjxrrfutupruimyb.us.auth0.com"
-    clientId="sAGxMf8Tco0tNtPpvhaarafeiBvigsJv"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
+  <React.StrictMode>
     <App />
-  </Auth0Provider>
+  </React.StrictMode>
 );

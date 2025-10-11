@@ -1,0 +1,42 @@
+/* RUTA: src/components/home/ShippingBar.module.css */
+
+/* 2. Definimos la animación de fundido */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.shippingBar {
+    background-color: #799d4f; /* Un verde olivo más suave */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    min-height: 40px; /* Altura fija para evitar saltos de layout */
+    overflow: hidden; /* Oculta el texto mientras se anima */
+}
+
+.shippingMessage {
+    margin: 0; 
+    white-space: nowrap;
+    /* Aplicamos la animación */
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .shippingBar {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+}

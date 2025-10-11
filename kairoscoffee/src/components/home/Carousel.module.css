@@ -1,0 +1,101 @@
+/* RUTA: src/components/home/Carousel.module.css */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 86vh; 
+    overflow: hidden;
+}
+
+.carouselItem { /* Renombrado de 'figure' a una clase específica */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    margin: 0; 
+}
+
+.carouselItem img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carouselItem.active { 
+    opacity: 1;
+}
+
+.carouselText {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 40%;
+    background-color: rgba(46, 31, 24, 0.8); 
+    padding: 25px; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    /* Transición para suavizar el cambio de texto si se implementa */
+    transition: all 0.5s ease;
+}
+
+.carouselText h1 { 
+    font-size: 2.5rem;
+    margin: 0 0 15px;
+}
+
+.carouselText p {
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+}
+
+.indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.indicators button { 
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.indicators .active {
+    background: white;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .carouselText {
+        max-width: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+@media (max-width: 600px) {
+    .carouselText {
+        top: 60%;
+        max-width: 90%;
+        padding: 15px;
+    }
+    .carouselText h1 { 
+        font-size: 1.8rem;
+    }
+    .carouselText p {
+        font-size: 1.1rem;
+    }
+}

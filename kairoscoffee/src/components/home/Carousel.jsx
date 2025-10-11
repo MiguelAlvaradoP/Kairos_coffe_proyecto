@@ -1,50 +1,79 @@
-// src/components/home/Carousel.jsx
+// RUTA: src/components/home/Carousel.jsx
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// 1. Importa el módulo de estilos específico
+import styles from './Carousel.module.css';
+
+// Importa las imágenes del carrusel
+import img1 from '../../assets/img/carousel-1.jpg';
+import img2 from '../../assets/img/carousel-2.png';
+import img3 from '../../assets/img/carousel-3.jpg';
+
+// 2. Estructura de datos mejorada para contenido dinámico
 const slides = [
-    { url: "https://www.branding.news/wp-content/uploads/2017/09/03_Taylors-of-Harrogate_Pearlfisher_Origins-Coffee-Range_Digital_02.jpg", alt: "Café Marley Coffee" },
-    { url: "https://mercadodelcafe.cl/cdn/shop/files/Banner_Queres_ser_distribuidor_3ba621ff-56b8-49cf-b563-2117396c78cc.png?crop=center&height=600&v=1732561906&width=1500", alt: "Banner para distribuidores" },
-    { url: "https://www.illy.com/on/demandware.static/-/Sites-siteCatalog_illycaffe_SFRA_ES/default/dwedea435b/plp_header/PLP_caff%C3%A8_Banner%20home_CAM_03_A_2880%C3%97800.jpg", alt: "Café illy" },
+    { 
+        img: img1, 
+        alt: 'Granos de café tostado', 
+        title: 'Café de Especialidad',
+        subtitle: 'Descubre granos seleccionados de los mejores orígenes.',
+        link: '/producto#cafe'
+    },
+    { 
+        img: img2, 
+        alt: 'Banner para distribuidores', 
+        title: 'Conviértete en Distribuidor',
+        subtitle: 'Lleva la calidad de Kairós Coffee a tu negocio.',
+        link: '/contacto'
+    },
+    { 
+        img: img3, 
+        alt: 'Cafetera y taza de café illy', 
+        title: 'Accesorios Perfectos',
+        subtitle: 'Encuentra todo lo que necesitas para tu ritual del café.',
+        link: '/producto#accesorios'
+    },
 ];
 
 const Carousel = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [current, setCurrent] = useState(0);
 
-    // Lógica para el cambio automático del carrusel
     useEffect(() => {
         const interval = setInterval(() => {
-            setActiveIndex((current) => (current + 1) % slides.length);
-        }, 5000); // Cambia cada 5 segundos
-
+            setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        }, 5000); // Aumentado a 5 segundos para dar tiempo a leer
         return () => clearInterval(interval);
     }, []);
 
+    const currentSlide = slides[current];
+
     return (
-        <header className="carousel" role="banner" aria-label="Imágenes destacadas de productos">
+        // 3. Aplicamos las clases del módulo importado
+        <header className={styles.carousel} role="banner" aria-label="Imágenes destacadas de productos">
             {slides.map((slide, index) => (
                 <figure 
                     key={index} 
-                    className={`carousel-item ${index === activeIndex ? 'active' : ''}`}
-                    style={{ display: index === activeIndex ? 'block' : 'none' }}
+                    className={`${styles.carouselItem} ${index === current ? styles.active : ''}`}
                 >
-                    <img src={slide.url} alt={slide.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+                    <img src={slide.img} alt={slide.alt} />
                 </figure>
             ))}
 
-            <div className="carousel-text">
-                <h1>Kairós Coffee</h1>
-                <p>Tu momento empieza aquí ☕</p>
-                <Link to="/productos" className="btn btn-light">Ver Productos</Link>
+            {/* El contenido del texto ahora es dinámico */}
+            <div className={styles.carouselText}>
+                <h1>{currentSlide.title}</h1>
+                <p>{currentSlide.subtitle}</p>
+                <Link to={currentSlide.link} className="btn btn-light">Ver Más</Link>
             </div>
 
-            <div className="indicators" role="tablist">
+            <div className={styles.indicators} role="tablist">
                 {slides.map((_, index) => (
                     <button 
                         key={index}
-                        className={index === activeIndex ? 'active' : ''}
-                        onClick={() => setActiveIndex(index)}
-                        aria-label={`Ir al slide ${index + 1}`}
+                        className={index === current ? styles.active : ''}
+                        onClick={() => setCurrent(index)}
+                        aria-label={`Ir a la imagen ${index + 1}`}
                     />
                 ))}
             </div>
