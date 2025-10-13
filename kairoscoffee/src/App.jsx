@@ -1,16 +1,20 @@
-// RUTA: src/App.jsx
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./router/AppRouter";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './auth/AuthProvider';
+import Home from './pages/Home';
+import Register from './pages/Register';
 
-const App = () => {
+function App() {
     return (
-        // Habilita el sistema de rutas para toda la aplicación
-        <BrowserRouter>
-        {/* Cede el control al router para que decida qué mostrar */}
-        <AppRouter />
-        </BrowserRouter>
+        <Router>
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/registro" element={<Register />} />
+                </Routes>
+            </AuthProvider>
+        </Router>
     );
-};
+}
 
 export default App;
