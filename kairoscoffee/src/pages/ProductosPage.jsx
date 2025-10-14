@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+
+
+import React, { useState, useRef } from "react";
 import "../styles/productosPage.css";
 
 const productos = {
@@ -70,7 +72,7 @@ const productos = {
     { id: 51, nombre: "20 BOLSAS DE TÉ RESERVE DILMAH VERDE MENTA", descripcion: "té verde menta 5% y aceite de menta 0.75% - 40gr", precio: "11.500", imagen: "https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-green-tea-with-mint-f4381995-ee17-4f2c-9876-9d692d068240_1300x1300.jpg?v=1726096173" },
     { id: 52, nombre: "INFUSIÓN DILMAH MANZANILLA VIVID", descripcion: "flores de manzanilla 100% - 60gr", precio: "16.000", imagen: "https://shopdilmah.cl/cdn/shop/files/infusion-dilmah-vivid-camomilla-lata-60g-6un-6623d627-785e-4160-aa7f-828becf58dda_1300x1300.jpg?v=1726512627" },
     { id: 53, nombre: "20 BOLSAS TÉ RESERVE DILMAH SPICE CHAI", descripcion: "té negro canela 10%, raiz de jengibre 10%, granos de pimienta negra 5%, yemas de clavo 5%", precio: "35.500", imagen: "https://shopdilmah.cl/cdn/shop/files/85-reserve_ceylon-ceylon-spice-chai-74f466ea-b93a-4df0-a168-701906c076c2_b3237980-4bd7-4f39-b443-2d09b6eee857_1300x1300.jpg?v=1726096301" },
-    { id: 54, nombre: "20 BOLSAS TÉ NEGRO SABORES SURTIDOS", descripcion: "vainilla, limón, mango, frutilla, durazno, caramelo - 40gr", precio: "15.500", imagen: "20 BOLSAS TÉ NEGRO SABORES SURTIDOS" },
+    { id: 54, nombre: "20 BOLSAS TÉ NEGRO SABORES SURTIDOS", descripcion: "vainilla, limón, mango, frutilla, durazno, caramelo - 40gr", precio: "15.500", imagen: "https://shopdilmah.cl/cdn/shop/files/exquisitely-flavoured-tea-individually-wrapped-bags-020-x-2g-vertical-variety-pack-80284-012-001-17025-large-1-f91c1b75-3a28-4f33-b2c7-421974a02a90_963cbaab-d478-4d26-9600-c8fb29a72ed1_1300x1300.jpg?v=1730899924" },
     { id: 55, nombre: "ELIXIR CONCENTRADO DE TÉ NEGRO DURAZNO ALMENDRA", descripcion: "Agua, Azúcar de caña, Miel de abeja, Extracto de té negro de Ceylon cosechado a mano. - 60ml", precio: "35.500", imagen: "https://shopdilmah.cl/cdn/shop/files/p-45060-001-1-09c1177c-2a4a-4ba2-871a-888bd8594678_de76020d-2ee4-482b-8d82-abb99aa3699c_1300x1300.jpg?v=1726096164" },
   ],
   mate:  [
@@ -89,7 +91,8 @@ const productos = {
   ],
 };
 
-function Slider({ items }) {
+
+function Slider({ items, agregarAlCarrito }) {
   const sliderRef = useRef(null);
 
   const scrollLeft = () => {
@@ -102,57 +105,138 @@ function Slider({ items }) {
 
   return (
     <div className="slider-container">
-      <button className="arrow left" onClick={scrollLeft}>&lt;</button>
+      <button className="arrow left" onClick={scrollLeft}>
+        &lt;
+      </button>
       <div className="slider" ref={sliderRef}>
         {items.map((p) => (
           <div className="producto-card" key={p.id}>
             <img src={p.imagen} alt={p.nombre} />
-            <h3>{p.nombre}</h3>
-            <p>{p.descripcion}</p>
-            <p className="precio">${p.precio}</p>
-            <button>Agregar al carrito</button>
+            <div className="contenido">
+              <h3>{p.nombre}</h3>
+              <p>{p.descripcion}</p>
+              <span className="precio">{p.precio}</span>
+            </div>
+            <button onClick={() => agregarAlCarrito(p)}>Agregar al carrito</button>
           </div>
         ))}
       </div>
-      <button className="arrow right" onClick={scrollRight}>&gt;</button>
+      <button className="arrow right" onClick={scrollRight}>
+        &gt;
+      </button>
     </div>
   );
 }
 
 export default function ProductosPage() {
+  const [carrito, setCarrito] = useState([]);
+  const [isCarritoOpen, setIsCarritoOpen] = useState(false);
+
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
+
+  const eliminarDelCarrito = (index) => {
+    const newCarrito = [...carrito];
+    newCarrito.splice(index, 1);
+    setCarrito(newCarrito);
+  };
+
+  const totalCarrito = carrito.reduce((acc, item) => {
+    // eliminamos puntos y parseamos precios numéricos
+    const precioNum = parseInt(item.precio.replace(/\./g, "").replace("$", ""));
+    return acc + precioNum;
+  }, 0);
+
   return (
     <div className="productos-page">
+      {/* CARRITO */}
+      <div className="carrito-container">
+        <button onClick={() => setIsCarritoOpen(true)}>🛒 {carrito.length}</button>
+      </div>
+      {isCarritoOpen && (
+        <div className={`carrito-panel ${isCarritoOpen ? "active" : ""}`}>
+          <button id="cerrar-carrito" onClick={() => setIsCarritoOpen(false)}>
+            ×
+          </button>
+          {/* Panel lateral */}
+      <div className={`carrito-panel ${isCarritoOpen ? "active" : ""}`}>
+        <button className="cerrar-carrito" onClick={() => setIsCarritoOpen(false)}>
+          ×
+        </button>
+        <h2>Carrito de compras</h2>
+
+        {carrito.length === 0 ? (
+          <p>Tu carrito está vacío</p>
+        ) : (
+          <div className="lista-carrito">
+            {carrito.map((item, index) => (
+              <div className="item-carrito" key={item.id}>
+                <img src={item.imagen} alt={item.nombre} />
+                <div className="info">
+                  <span className="nombre">{item.nombre}</span>
+                  <span className="precio">${item.precio.toLocaleString("es-CL")}</span>
+                </div>
+                <button
+                  className="eliminar-item"
+                  onClick={() => eliminarDelCarrito(index)}
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="footer-carrito">
+          <strong>Total: ${totalCarrito.toLocaleString("es-CL")}</strong>
+          <button
+            className="btn-pagar"
+            disabled={carrito.length === 0}
+            onClick={() => alert("Redirigiendo a pagar...")}
+          >
+            Pagar
+          </button>
+        </div>
+        </div>
+        </div>)}
+
+      {/* SECCIONES DE PRODUCTOS */}
       <h1>CAFÉ SELECCIÓN</h1>
-      <h2>Café daroma</h2>
-      <Slider items={productos.cafeDaroma} />
+      <section className="seccion-productos">
+        <div className="carrusel">
+          <h2>Café daroma</h2>
+          <Slider items={productos.cafeDaroma} agregarAlCarrito={agregarAlCarrito} />
+          
+          <h2>Café Marleys Coffee</h2>
+          <Slider items={productos.cafeMarley} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>Café Marleys Coffee</h2>
-      <Slider items={productos.cafeMarley} />
+          <h2>Café Illy Coffee</h2>
+          <Slider items={productos.cafeIlly} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>Café Illy Coffee</h2>
-      <Slider items={productos.cafeIlly} />
+          <h2>Café Lavazza</h2>
+          <Slider items={productos.cafeLavazza} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>Café Lavazza</h2>
-      <Slider items={productos.cafeLavazza} />
+          <h1>CÁPSULAS SELECCIÓN</h1>
+          <h2>cápsulas Marleys Coffee</h2>
+          <Slider items={productos.capsulasMarley} agregarAlCarrito={agregarAlCarrito} />
 
-      <h1>CÁPSULAS SELECCIÓN</h1>
-      <h2>cápsulas Marleys Coffee</h2>
-      <Slider items={productos.capsulasMarley} />
+          <h2>cápsulas Illy coffee</h2>
+          <Slider items={productos.capsulasIlly} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>cápsulas Illy coffee</h2>
-      <Slider items={productos.capsulasIlly} />
+          <h2>cápsulas Café con sentido</h2>
+          <Slider items={productos.capsulasCafeConSentido} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>cápsulas Café con sentido</h2>
-      <Slider items={productos.capsulasCafeConSentido} />
+          <h2>té selección</h2>
+          <Slider items={productos.te} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>té selección</h2>
-      <Slider items={productos.te} />
+          <h2>Yerba mate selección</h2>
+          <Slider items={productos.mate} agregarAlCarrito={agregarAlCarrito} />
 
-      <h2>Yerba mate selección</h2>
-      <Slider items={productos.mate} />
-
-      <h2>Accesorios Selección</h2>
-      <Slider items={productos.accesorios} />
+          <h2>Accesorios Selección</h2>
+          <Slider items={productos.accesorios} agregarAlCarrito={agregarAlCarrito} />
+          </div>
+    </section>
     </div>
   );
 }
