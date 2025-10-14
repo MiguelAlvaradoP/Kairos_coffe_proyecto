@@ -1,0 +1,57 @@
+:root {
+    --color-principal: #2E1F18;
+    --color-secundario: #5C4A3C;
+    --color-acento: #DCCCA3;
+    --color-texto-principal: #556B2F;
+    --color-fondo: #F5F5DC;
+    }
+
+    body {
+    background-color: var(--color-fondo);
+    font-family: "Arial", sans-serif;
+    }
+
+    h2 {
+    color: var(--color-principal);
+    }
+
+    .card {
+    border: 1px solid var(--color-secundario);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-label {
+    color: var(--color-principal);
+    font-weight: bold;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+    border-color: var(--color-texto-principal);
+    box-shadow: 0 0 0 0.25rem rgba(85, 107, 47, 0.25);
+    }
+
+    /* Botón Enviar */
+    .btn-enviar {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-enviar:hover {
+    background-color: var(--color-texto-principal);
+    color: #fff;
+    transform: translateY(-2px);
+}

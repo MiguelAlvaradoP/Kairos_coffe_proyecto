@@ -4,6 +4,8 @@ import '../styles/global.css';
 import '../styles/home.css';
 import LogoKairos from '../assets/img/Logo_KairosCoffee.png';
 
+
+
 export default function Footer() {
     return (
         <footer className="main-footer py-4 mt-5 bg-custom-dark text-white">
