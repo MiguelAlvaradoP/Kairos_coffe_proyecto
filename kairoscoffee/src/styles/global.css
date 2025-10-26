@@ -1,0 +1,342 @@
+/* Paleta y reset */
+:root {
+    --color-primary: #556B2F;
+    --color-dark-coffee: #2E1F18;
+    --color-tostado: #5C4A3C;
+    --color-gold: #FFD700;
+    --color-background: #F5F5DC;
+}
+
+body {
+    background-color: var(--color-background);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--color-primary);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.navbar a:hover {
+    color: var(--color-gold);
+}
+.navbar-links, .navbar-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Botón Registrarse */
+.btn-registro {
+    background-color: transparent; /* Fondo transparente */
+    color: var(--color-gold); /* Texto dorado */
+    border: 2.5px solid var(--color-gold); /* Borde dorado siempre visible */
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 0 0 transparent; /* Sin sombra en normal */
+}
+.btn-registro:hover,
+.btn-registro:focus {
+    background-color: var(--color-gold); /* Fondo dorado al hover */
+    color: #fff; /* Texto blanco en hover */
+    border-color: var(--color-gold);
+    box-shadow: 0 6px 14px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+    outline: none;
+}
+.btn-registro:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Botón Iniciar Sesión */
+.login-btn {
+    background-color: var(--color-tostado);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+.login-btn:hover {
+    background-color: #3e2f24;
+    color: #FFC700;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Modal de Login */
+.modal-login {
+    border: none;
+    padding: 0;
+}
+.modal-login::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+    background: var(--color-tostado);
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    color: var(--color-gold);
+    text-align: center;
+}
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+}
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-gold);
+    background: #fff7e6;
+    color: #2E1F18;
+    font-size: 1rem;
+}
+.modal-content button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-weight: bold;
+    cursor: pointer;
+    width: auto !important;
+    height: auto !important;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.close-btn:hover {
+    color: var(--color-dark-coffee);
+}
+
+.modal-content .link-registro {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: underline;
+}
+.modal-content .link-registro:hover {
+    color: #435425;
+}
+
+/* Footer */
+.footer-logo {
+  border-radius: 0.4rem; /* opcional */
+  max-width: 150px;
+  padding: 0.2rem 0.7rem; /* opcional */
+  display: block;
+  background-color: transparent !important; /* Asegura transparencia */
+}
+.main-footer {
+    background-color: var(--color-dark-coffee) !important;
+    color: #f0f0f0;
+}
+.main-footer .fw-bold {
+    color: #fff;
+    margin-top: 15px;
+}
+.main-footer a {
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+.main-footer a:hover {
+    color: #a07a67;
+}
+.footer-bottom {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+}
+.main-footer img {
+    background-color: transparent !important;
+    display: block;
+    max-width: 150px;
+}
+.newsletter-form input[type="email"] {
+    background-color: #4a3833;
+    color: #f0f0f0;
+    border: 1px solid #4a3833;
+}
+.newsletter-form button {
+    background-color: #a07a67;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.newsletter-form button:hover {
+    background-color: #c09a87;
+}
+/* SOLO para inputs de login modal */
+.login-modal-input {
+    font-size: 1rem;
+    padding: 10px 13px;
+    border-radius: 8px;
+    border: 1px solid #b5b5b5;
+    background: #f5f5dc;
+    color: #222;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+.login-modal-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+/* Responsive */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .navbar-links,
+    .navbar-user-actions {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+    .navbar-links a {
+        margin: 5px 0;
+    }
+    .main-footer .social-links {
+        justify-content: center !important;
+    }
+}
+
+/* ============ MODAL DE INICIO DE SESIÓN KAIRÓS (MINIMALISTA/BOOTSTRAP ONLY) ============ */
+.modal-login-minimalista {
+    background: #F8F9FA;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(55,70,40,.11);
+    color: #313233;
+    padding: 2rem 2.3rem 2.3rem 2.3rem;
+    border: 1.5px solid #e3e5e9;
+    min-width: 310px;
+    max-width: 370px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.modal-login-minimalista h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    color: var(--color-primary, #556B2F);
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.modal-login-minimalista .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 1.3rem;
+    background: transparent;
+    border: none;
+    color: var(--color-primary, #556B2F);
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+    transition: color 0.17s;
+}
+.modal-login-minimalista .close-btn:hover {
+    color: var(--color-tostado, #5C4A3C);
+}
+.modal-login-minimalista .btn-auth0 {
+    width: 100%;
+    background: var(--color-primary, #556B2F);
+    color: #fff;
+    border-radius: 0.7rem;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.7rem 0;
+    border: none;
+    margin: 0.7rem 0 0.15rem 0;
+    transition: background 0.19s;
+    box-shadow: 0 2px 7px rgba(44, 57, 31, 0.06);
+}
+.modal-login-minimalista .btn-auth0:hover {
+    background: #7aa267;
+    color: #fff;
+}
+.modal-login-minimalista .text-login-desc {
+    font-size: 0.95rem;
+    margin-top: 2.1rem;
+    color: #232322;
+    font-weight: 500;
+    text-align: center;
+}
+.modal-login-minimalista .link-registro-black {
+    color: #222 !important;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-left: 6px;
+    transition: color 0.17s;
+}
+.modal-login-minimalista .link-registro-black:hover {
+    color: var(--color-primary, #556B2F) !important;
+}
+@media (max-width: 510px) {
+    .modal-login-minimalista {
+        padding: 1.1rem 0.18rem 1.1rem 0.18rem;
+        min-width: 97vw;
+        max-width: 98vw;
+    }
+}
+/* ================================================================================ */
+
+
+
+
