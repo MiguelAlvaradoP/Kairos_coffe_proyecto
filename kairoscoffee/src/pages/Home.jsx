@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Navbar from '../components/common/Navbar';
 import LoginModal from '../components/common/LoginModal';
 import Carousel from '../components/home/Carousel';
-import Footer from '../components/Footer';
+import Footer from '../components/common/Footer';
 import ShippingBar from '../components/common/ShippingBar';
 import CategoriesGrid from '../components/home/CategoriesGrid';
 import BannerGif from '../components/home/BannerGif';
 
-import '../../styles/home.css';
-import '../../styles/global.css';
+import '../styles/home.css';
+import '../styles/global.css';
 
 const Home = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

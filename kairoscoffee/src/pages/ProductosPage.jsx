@@ -1,6 +1,6 @@
 // src/pages/ProductosPage.jsx
 import Navbar from "../components/common/Navbar";
-import Slider from "../components/Slider";
+import Slider from "../components/home/Slider";
 import CarritoPanel from "../components/Carrito/CarritoPanel";
 import { productos } from "../data/Productos";
 import "../styles/productosPage.css";

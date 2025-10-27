@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import ProductoCard from "./ProductoCard";
+import ProductoCard from '../Productos/ProductoCard';
+
 
 export default function Slider({ items, agregarAlCarrito }) {
   const sliderRef = useRef(null);

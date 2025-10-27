@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { LoginButton } from './LoginButton';
-import LogoKairos from '../assets/img/Logo_KairosCoffee.png'; // Importa el logo
+import LogoKairos from '../../assets/img/Logo_KairosCoffee.png'; // Importa el logo
 
 const LoginModal = ({ isOpen, onClose }) => {
     const modalRef = useRef(null);
