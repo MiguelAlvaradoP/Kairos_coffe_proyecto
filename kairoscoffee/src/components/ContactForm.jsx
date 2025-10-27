@@ -39,7 +39,6 @@ const ContactForm = () => {
 
         if (!formData.mensaje.trim())
         newErrors.mensaje = "El mensaje es obligatorio.";
-
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
