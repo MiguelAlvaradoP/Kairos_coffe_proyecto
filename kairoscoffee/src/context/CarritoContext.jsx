@@ -1,3 +1,4 @@
+// src/context/CarritoContext.jsx
 import { createContext, useContext, useState } from "react";
 
 const CarritoContext = createContext();
@@ -17,7 +18,8 @@ export const CarritoProvider = ({ children }) => {
 
   const vaciarCarrito = () => setCarrito([]);
 
-  const total = carrito.reduce((acc, p) => acc + p.precio, 0);
+  // 👇 Convertir precio a número para evitar concatenaciones
+  const total = carrito.reduce((acc, p) => acc + Number(p.precio || 0), 0);
 
   return (
     <CarritoContext.Provider

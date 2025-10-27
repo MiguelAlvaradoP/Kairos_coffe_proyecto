@@ -29,7 +29,7 @@ const Carousel = () => {
             <div className="carousel-text">
                 <h1>Kairós Coffee</h1>
                 <p>Tu momento empieza aquí ☕</p>
-                <a href="/productos" className="btn btn-light">Ver Productos</a>
+                <a href="/producto" className="btn btn-light">Ver Productos</a>
             </div>
 
             <div className="indicators" role="tablist">

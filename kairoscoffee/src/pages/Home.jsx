@@ -12,11 +12,19 @@ import '../styles/global.css';
 
 const Home = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [carrito, setCarrito] = useState([]); // Estado del carrito
 
     return (
         <>
-            <Navbar onLoginClick={() => setIsModalOpen(true)} />
-            <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <Navbar 
+                onLoginClick={() => setIsModalOpen(true)} 
+                carrito={carrito} 
+                setCarrito={setCarrito} 
+            />
+            <LoginModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
             <Carousel />
             <main>
                 <ShippingBar />
