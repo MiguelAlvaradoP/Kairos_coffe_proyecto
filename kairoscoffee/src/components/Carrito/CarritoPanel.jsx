@@ -1,7 +1,7 @@
 // src/components/CarritoPanel.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom"; // <-- import para navegación
-import "../styles/productosPage.css";
+import "../../styles/productosPage.css";
 
 const CarritoPanel = ({ carrito = [], isOpen, onClose, eliminarDelCarrito }) => {
   const navigate = useNavigate();

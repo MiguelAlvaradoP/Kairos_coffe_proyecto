@@ -1,7 +1,7 @@
 // src/pages/ProductosPage.jsx
-import Navbar from "../components/Navbar";
+import Navbar from "../components/common/Navbar";
 import Slider from "../components/Slider";
-import CarritoPanel from "../components/CarritoPanel";
+import CarritoPanel from "../components/Carrito/CarritoPanel";
 import { productos } from "../data/Productos";
 import "../styles/productosPage.css";
 import React, { useRef, useState } from "react";         // línea 5

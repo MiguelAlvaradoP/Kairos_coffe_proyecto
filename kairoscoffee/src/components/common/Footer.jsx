@@ -1,8 +1,8 @@
 import React from 'react';
 import Newsletter from './Newsletter';
-import '../styles/global.css';
-import '../styles/home.css';
-import LogoKairos from '../assets/img/Logo_KairosCoffee.png';
+import '../../styles/global.css';
+import '../../styles/home.css';
+import LogoKairos from '../../assets/img/Logo_KairosCoffee.png';
 
 
 
