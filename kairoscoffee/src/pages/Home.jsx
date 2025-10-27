@@ -22,10 +22,10 @@ const Home = () => {
                 setCarrito={setCarrito} 
             />
             <LoginModal 
-            isOpen={isModalOpen} 
-             onClose={() => setIsModalOpen(false)} 
-/>
-<Carousel />
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
+            <Carousel />
 
             <main>
                 <ShippingBar />
